@@ -1,4 +1,5 @@
-# ap-statistics-reference
-Study Aid -- Interactive Statistics Formula Sheet 
-
-Licensed under CC BY-NC 4.0. Based on the AP Statistics 2026 Exam Reference Sheet by College Board.
+Created by [Your Name], Middlesex School, 2026.
+For free noncommercial educational use.
+Based on the AP Statistics 2026 Exam Reference Sheet by College Board.
+AP Statistics is a trademark of College Board.
+This tool is not affiliated with or endorsed by College Board.
