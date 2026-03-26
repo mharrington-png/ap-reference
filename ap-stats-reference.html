@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Statistics — 2026 Exam Reference Information</title>
+
+<script>
+MathJax = {
+  tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+  options: { skipHtmlTags: ['script','noscript','style','textarea'] },
+  startup: {
+    ready() {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        document.querySelectorAll('.formula-card').forEach(card => {
+          card.addEventListener('click', function() {
+            this.classList.toggle('open');
+          });
+        });
+      });
+    }
+  }
+};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body {
+  background: #e8e8e8;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 13.5px;
+  color: #000;
+  line-height: 1.45;
+}
+
+/* ── Page ── */
+.page {
+  background: #fff;
+  max-width: 780px;
+  margin: 24px auto;
+  padding: 38px 46px 52px;
+  box-shadow: 0 2px 18px rgba(0,0,0,.20);
+}
+@media(max-width:620px){
+  .page{margin:0;padding:18px 14px 36px;box-shadow:none}
+}
+
+/* ── Booklet header ── */
+.bk-header { margin-bottom: 8px; border-bottom: 2px solid #1a4d8f; padding-bottom: 14px; }
+.bk-eyebrow {
+  font-family: Arial, sans-serif;
+  font-size: 10.5px;
+  color: #666;
+  margin-bottom: 6px;
+  letter-spacing: .03em;
+}
+.bk-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a4d8f;
+  margin-bottom: 5px;
+  letter-spacing: -.01em;
+}
+.bk-subtitle {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #444;
+  margin-bottom: 0;
+  font-style: italic;
+}
+.bk-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 10.5px;
+  color: #1a4d8f;
+  background: #eef3fb;
+  border: 1px solid #b8ccec;
+  border-radius: 3px;
+  padding: 4px 10px;
+  margin-top: 12px;
+  margin-bottom: 18px;
+}
+.hint-dot{width:6px;height:6px;background:#1a4d8f;border-radius:50%;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ── Section title bar ── */
+.sec-title {
+  background: #1a4d8f;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin: 22px 0 0;
+  letter-spacing: .01em;
+}
+
+/* ── Subsection bar ── */
+.sub-title {
+  background: #dce5f3;
+  color: #1a4d8f;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border: 1px solid #b8ccec;
+  border-top: none;
+}
+
+/* ── Tables ── */
+.ftable {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #b8b8b8;
+  margin: 0;
+}
+.ftable + .ftable { border-top: none; }
+
+.ftable thead th {
+  background: #dce5f3;
+  font-family: Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: bold;
+  color: #1a4d8f;
+  padding: 5px 9px;
+  border: 1px solid #b8ccec;
+  text-align: left;
+  letter-spacing: .02em;
+}
+
+/* ── Formula row (clickable) ── */
+.formula-card {
+  cursor: pointer;
+  border-top: 1px solid #d8d8d8;
+  transition: background .12s;
+}
+.formula-card:first-child, thead + tbody .formula-card:first-child { border-top: none; }
+.formula-card:hover { background: #f4f7ff; }
+.formula-card.open  { background: #eef3fb; }
+
+.formula-card td {
+  padding: 7px 9px;
+  vertical-align: middle;
+  border-right: 1px solid #ddd;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.formula-card td:last-child { border-right: none; }
+
+.td-label {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #222;
+  white-space: nowrap;
+  width: 28%;
+}
+.td-formula { width: 66%; }
+.td-stat { text-align: center; font-size: 12px; }
+
+.td-chev {
+  width: 24px;
+  text-align: center;
+  padding: 7px 5px !important;
+  border-right: none !important;
+  color: #1a4d8f;
+}
+.chev {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform .22s ease;
+  line-height: 1;
+}
+.formula-card.open .chev { transform: rotate(180deg); }
+
+/* ── Expand row ── */
+.exp-row { display: none; }
+.formula-card.open + .exp-row { display: table-row; }
+
+.exp-cell {
+  padding: 0 !important;
+  border-top: 2px solid #1a4d8f !important;
+  border-right: none !important;
+}
+
+.exp-inner {
+  padding: 13px 15px 15px;
+  background: #f7f9ff;
+  border-bottom: 1px solid #c4d4ee;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 18px;
+}
+@media(max-width:520px){ .exp-inner{grid-template-columns:1fr} }
+.exp-inner.full { grid-template-columns: 1fr; }
+.span2 { grid-column: 1 / -1; }
+
+.exp-label {
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: #1a4d8f;
+  margin-bottom: 5px;
+}
+.exp-text {
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #111;
+}
+.exp-text strong { font-weight: bold; }
+.exp-text em { font-style: italic; }
+
+.exp-example {
+  background: #fff;
+  border: 1px solid #ccd8f0;
+  border-left: 3px solid #1a4d8f;
+  padding: 8px 11px;
+  font-size: 12px;
+  line-height: 1.75;
+  color: #111;
+}
+.res { color: #1a4d8f; font-weight: bold; }
+
+/* ── Footer ── */
+.pg-footer {
+  margin-top: 26px;
+  padding-top: 9px;
+  border-top: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 9.5px;
+  color: #777;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* MathJax tuning */
+mjx-container { line-height: 1 !important; }
+
+/* ══════════════════════════════════════════════
+   TABLE SECTION
+══════════════════════════════════════════════ */
+
+/* Tab bar */
+.tbl-tabs {
+  display: flex;
+  border-bottom: 2px solid #1a4d8f;
+  margin-top: 0;
+}
+.tbl-tab {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 14px;
+  cursor: pointer;
+  color: #1a4d8f;
+  background: #dce5f3;
+  border: 1px solid #b8ccec;
+  border-bottom: none;
+  margin-right: 2px;
+  letter-spacing: .02em;
+  user-select: none;
+  transition: background .12s;
+}
+.tbl-tab.active {
+  background: #1a4d8f;
+  color: #fff;
+}
+.tbl-tab:hover:not(.active) { background: #c8d8f0; }
+
+/* Panel wrapper */
+.tbl-panel { display: none; }
+.tbl-panel.active { display: block; }
+
+/* Calculator + table layout */
+.tbl-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 14px;
+  padding: 14px 12px;
+  background: #f7f9ff;
+  border: 1px solid #b8ccec;
+  border-top: none;
+}
+@media(max-width:560px){
+  .tbl-body { grid-template-columns: 1fr; }
+}
+
+/* Calculator panel */
+.calc-panel {
+  background: #fff;
+  border: 1px solid #ccd8f0;
+  border-radius: 3px;
+  padding: 12px 13px;
+}
+.calc-panel h4 {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #1a4d8f;
+  margin-bottom: 10px;
+}
+.calc-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+}
+.calc-row label {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap;
+  min-width: 54px;
+}
+.calc-input {
+  width: 80px;
+  font-family: 'Times New Roman', serif;
+  font-size: 13px;
+  padding: 3px 6px;
+  border: 1px solid #b8ccec;
+  border-radius: 2px;
+  outline: none;
+  background: #fff;
+}
+.calc-input:focus { border-color: #1a4d8f; box-shadow: 0 0 0 2px rgba(26,77,143,.12); }
+
+.calc-btn {
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px;
+  background: #1a4d8f;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: .04em;
+}
+.calc-btn:hover { background: #163d72; }
+
+.calc-result {
+  margin-top: 10px;
+  padding: 9px 10px;
+  background: #eef3fb;
+  border: 1px solid #b8ccec;
+  border-radius: 2px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #111;
+  line-height: 1.7;
+  min-height: 56px;
+}
+.calc-result .r-val {
+  font-size: 15px;
+  font-weight: bold;
+  color: #1a4d8f;
+  display: block;
+  margin-bottom: 2px;
+}
+.calc-result .r-desc { color: #444; font-size: 10.5px; }
+
+/* The lookup mini-table */
+.lookup-wrap {
+  overflow-x: auto;
+}
+.lookup-wrap h4 {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #1a4d8f;
+  margin-bottom: 8px;
+}
+
+.lookup-tbl {
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 10.5px;
+  width: 100%;
+}
+.lookup-tbl th {
+  background: #dce5f3;
+  color: #1a4d8f;
+  font-weight: bold;
+  font-size: 9.5px;
+  padding: 3px 6px;
+  border: 1px solid #b8ccec;
+  text-align: center;
+  white-space: nowrap;
+}
+.lookup-tbl td {
+  padding: 2px 6px;
+  border: 1px solid #dde6f5;
+  text-align: center;
+  color: #222;
+  transition: background .15s;
+  white-space: nowrap;
+}
+/* Row highlight */
+.lookup-tbl tr.row-hi td { background: #dce5f3; }
+/* Column highlight */
+.lookup-tbl td.col-hi { background: #dce5f3; }
+/* Intersection cell */
+.lookup-tbl td.cell-hi {
+  background: #1a4d8f !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+/* Row label column */
+.lookup-tbl td.row-label {
+  font-weight: bold;
+  color: #1a4d8f;
+  background: #eef3fb;
+  text-align: right;
+}
+.lookup-tbl tr.row-hi td.row-label {
+  background: #1a4d8f;
+  color: #fff;
+}
+
+/* Tail diagram */
+.tail-diagram {
+  margin-top: 10px;
+  text-align: center;
+}
+.tail-diagram svg { max-width: 100%; }
+
+/* Curve shading area label */
+.shade-label {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* ── Table animation ──────────────────────────────────── */
+
+/* Base transition on ALL cells — allows animated reveal */
+.lookup-tbl td,
+.lookup-tbl th {
+  transition:
+    opacity       0.35s ease,
+    padding-top   0.35s ease,
+    padding-bottom 0.35s ease,
+    padding-left  0.35s ease,
+    padding-right 0.35s ease,
+    font-size     0.30s ease,
+    border-top-width   0.35s ease,
+    border-bottom-width 0.35s ease,
+    border-left-width  0.35s ease,
+    border-right-width 0.35s ease,
+    background    0.15s ease;
+}
+
+/* Rows outside window: collapse vertically + fade */
+.lookup-tbl tr.row-hide > td,
+.lookup-tbl tr.row-hide > th {
+  opacity: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  border-top-width: 0 !important;
+  border-bottom-width: 0 !important;
+  overflow: hidden;
+}
+
+/* Cols outside window: collapse horizontally + fade */
+.lookup-tbl td.col-hide,
+.lookup-tbl th.col-hide {
+  opacity: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  font-size: 0 !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+  overflow: hidden;
+  max-width: 0;
+}
+
+/* Ensure hit-cell highlight is crisp */
+.lookup-tbl td.cell-hi {
+  background: #1a4d8f !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ── Header ─────────────────────────────────────────────── -->
+<div class="bk-header">
+  <div class="bk-eyebrow">AP Statistics &nbsp;·&nbsp; 2026 Exam Reference</div>
+  <div class="bk-title">Formula &amp; Table Reference</div>
+  <div class="bk-subtitle">An interactive study tool — click any formula to see a plain-English explanation and worked example, and use the table calculators to look up critical values dynamically.</div>
+</div>
+<div class="bk-hint"><span class="hint-dot"></span>Click any formula row to expand &nbsp;·&nbsp; Use the table calculators below for z, t, and χ² lookups</div>
+
+
+<!-- ════════════════════════════════════════════════
+     I. DESCRIPTIVE STATISTICS
+════════════════════════════════════════════════ -->
+<div class="sec-title">I. &nbsp;Descriptive Statistics</div>
+
+<p style="font-family:Arial,sans-serif;font-size:9.5px;color:#666;padding:5px 10px 4px;background:#f7f9ff;border:1px solid #dce5f3;border-top:none;margin:0">
+  <em>Note: The actual exam reference sheet does not label individual formulas in this section — they appear without names.</em>
+</p>
+
+<table class="ftable">
+<tbody>
+
+<!-- Mean -->
+<tr class="formula-card">
+  <td class="td-label">Sample Mean</td>
+  <td class="td-formula">\(\displaystyle\bar{x}=\frac{\displaystyle\sum x_i}{n}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Add up all the data values and divide by how many there are. The mean is the <strong>balancing point</strong> of the distribution. It is sensitive to outliers — a single extreme value can pull it far from the center of the bulk of the data.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    Scores: 72, 85, 90, 88, 75 &nbsp;(\(n=5\))<br>
+    \(\bar{x}=\dfrac{72+85+90+88+75}{5}=\dfrac{410}{5}=\)<span class="res"> 82</span>
+  </div>
+</div></td></tr>
+
+<!-- Std Dev -->
+<tr class="formula-card">
+  <td class="td-label">Sample Standard Deviation</td>
+  <td class="td-formula">\(\displaystyle s_x=\sqrt{\frac{\displaystyle\sum(x_i-\bar{x})^2}{n-1}}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Measures how spread out the data are around \(\bar{x}\). We divide by \(n-1\) rather than \(n\) to produce an <strong>unbiased estimate</strong> of the population standard deviation \(\sigma\). Larger \(s_x\) means more variability in the data.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    Values: 2, 4, 4, 4, 5, 5, 7, 9 &nbsp;(\(n=8,\;\bar{x}=5\))<br>
+    \(\sum(x_i-\bar{x})^2 = 9{+}1{+}1{+}1{+}0{+}0{+}4{+}16 = 32\)<br>
+    \(s_x = \sqrt{32/7}\approx\)<span class="res"> 2.14</span>
+  </div>
+</div></td></tr>
+
+<!-- LSRL -->
+<tr class="formula-card">
+  <td class="td-label">Least-Squares Regression Line</td>
+  <td class="td-formula">\(\hat{y} = a + bx\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">\(\hat{y}\) ("y-hat") is the <strong>predicted</strong> response for a given \(x\). The line minimizes the sum of squared vertical residuals \(\sum(y_i-\hat{y}_i)^2\). \(b\) is the slope and \(a\) is the \(y\)-intercept. Use \(\hat{y}\) only for interpolation within the range of the data.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    Predicting test score from hours studied: \(\hat{y}=50+8x\)<br>
+    For \(x=4\) hours: \(\hat{y}=50+8(4)=\)<span class="res"> 82 points</span>
+  </div>
+</div></td></tr>
+
+<!-- Slope -->
+<tr class="formula-card">
+  <td class="td-label">Slope of the LSRL</td>
+  <td class="td-formula">\(\displaystyle b=r\frac{s_y}{s_x}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">The slope is the correlation coefficient scaled by the ratio of the standard deviations. For every 1-unit increase in \(x\), \(\hat{y}\) changes by \(b\) units. <strong>The sign of \(b\) always matches the sign of \(r\).</strong></p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    \(r=0.85,\;s_y=10,\;s_x=4\)<br>
+    \(b=0.85\times\tfrac{10}{4}=0.85\times 2.5=\)<span class="res"> 2.125</span><br>
+    Each extra unit of \(x\) predicts <span class="res">+2.125</span> units of \(\hat{y}\).
+  </div>
+</div></td></tr>
+
+<!-- Correlation -->
+<tr class="formula-card">
+  <td class="td-label">Correlation Coefficient</td>
+  <td class="td-formula">\(\displaystyle r=\frac{1}{n-1}\sum\!\left(\frac{x_i-\bar{x}}{s_x}\right)\!\!\left(\frac{y_i-\bar{y}}{s_y}\right)\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Measures the <strong>strength and direction</strong> of a <em>linear</em> association. Always \(-1\le r\le 1\). Values near \(\pm 1\) are strong; near 0 are weak. \(r\) only measures <em>linear</em> association — a perfectly curved relationship can have \(r\approx 0\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example (conceptual)</div>
+    When tall people also tend to be heavier, both \(z\)-scores are positive together → their products are positive → \(r\) is positive. A calculator gives the exact value. Example result: <span class="res">\(r=+0.87\)</span> (strong positive linear association).
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+
+<!-- ════════════════════════════════════════════════
+     II. PROBABILITY AND DISTRIBUTIONS
+════════════════════════════════════════════════ -->
+<div class="sec-title" style="margin-top:24px;">II. &nbsp;Probability and Distributions</div>
+
+<table class="ftable">
+<tbody>
+
+<!-- Addition rule -->
+<tr class="formula-card">
+  <td class="td-formula">\(P(A\cup B)=P(A)+P(B)-P(A\cap B)\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="2"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Probability that \(A\) <em>or</em> \(B\) (or both) occur. We subtract the overlap \(P(A\cap B)\) to avoid double-counting it. If \(A\) and \(B\) are <strong>mutually exclusive</strong>, \(P(A\cap B)=0\) and the rule simplifies to \(P(A)+P(B)\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    Standard deck: \(P(\heartsuit)=\tfrac{13}{52}\), \(P(\text{face})=\tfrac{12}{52}\), \(P(\heartsuit\cap\text{face})=\tfrac{3}{52}\)<br>
+    \(P(\heartsuit\cup\text{face})=\tfrac{13+12-3}{52}=\tfrac{22}{52}\approx\)<span class="res"> 0.423</span>
+  </div>
+</div></td></tr>
+
+<!-- Conditional -->
+<tr class="formula-card">
+  <td class="td-formula">\(\displaystyle P(A\mid B)=\frac{P(A\cap B)}{P(B)}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="2"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">The probability of \(A\) <strong>given that \(B\) has occurred</strong>. We restrict the sample space to outcomes where \(B\) happened, then find what fraction also include \(A\). Events are <strong>independent</strong> when \(P(A\mid B)=P(A)\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    \(P(\text{studied})=0.90\), \(P(\text{pass}\cap\text{studied})=0.63\)<br>
+    \(P(\text{pass}\mid\text{studied})=0.63/0.90=\)<span class="res"> 0.70</span>
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+<!-- Distributions 3-column table -->
+<table class="ftable" style="border-top:none">
+<thead>
+  <tr>
+    <th style="width:46%">Probability Distribution</th>
+    <th style="width:22%">Mean</th>
+    <th style="width:22%">Standard Deviation</th>
+    <th style="width:10%"></th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- Discrete RV -->
+<tr class="formula-card">
+  <td class="td-formula">
+    <span style="font-size:11px;color:#333;font-style:italic">Discrete random variable, \(X\)</span><br>
+    \(\mu_X=E(X)={\displaystyle\sum} x_i\cdot P(x_i)\)
+  </td>
+  <td class="td-stat">\(\mu_X\)</td>
+  <td class="td-stat">\(\sigma_X=\sqrt{{\displaystyle\sum}(x_i-\mu_X)^2\cdot P(x_i)}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">Mean — what it means</div>
+    <p class="exp-text">The <strong>expected value</strong>: a probability-weighted average of all possible outcomes. Multiply each value by its probability and sum. Think of it as the long-run average if the random process were repeated many, many times.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example — Fair Die</div>
+    \(X=\) face value; each \(P(x)=\tfrac{1}{6}\)<br>
+    \(\mu_X=\tfrac{1}{6}(1{+}2{+}3{+}4{+}5{+}6)=\tfrac{21}{6}=\)<span class="res"> 3.5</span><br>
+    \(\sigma_X=\sqrt{\tfrac{1}{6}[(1{-}3.5)^2+\cdots+(6{-}3.5)^2]}\approx\)<span class="res"> 1.71</span>
+  </div>
+</div></td></tr>
+
+<!-- Binomial -->
+<tr class="formula-card">
+  <td class="td-formula">
+    <span style="font-size:11px;color:#333;font-style:italic">If \(X\) has a binomial distribution with parameters \(n\) and \(p\), then:</span><br>
+    \(P(X=x)=\dbinom{n}{x}p^x(1-p)^{n-x}\)<br>
+    <span style="font-size:11px;color:#555">\(x=0,1,2,\ldots,n\)</span>
+  </td>
+  <td class="td-stat">\(np\)</td>
+  <td class="td-stat">\(\sqrt{np(1-p)}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Use when you have <strong>\(n\) independent trials</strong>, each with probability \(p\) of success, and you want \(P(\text{exactly }x\text{ successes})\). \(\binom{n}{x}\) counts the arrangements; \(p^x(1-p)^{n-x}\) is the probability of each arrangement. Conditions: <strong>B</strong>inary, <strong>I</strong>ndependent, <strong>N</strong>umber fixed, <strong>S</strong>ame \(p\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    5 T/F questions; random guess (\(p=0.5\)). \(P(X=3)\)?<br>
+    \(\binom{5}{3}(0.5)^3(0.5)^2=10\times 0.125\times 0.25=\)<span class="res"> 0.3125</span><br>
+    \(\mu=5(0.5)=2.5\); &nbsp;\(\sigma=\sqrt{5(.5)(.5)}\approx 1.12\)
+  </div>
+</div></td></tr>
+
+<!-- Geometric -->
+<tr class="formula-card">
+  <td class="td-formula">
+    <span style="font-size:11px;color:#333;font-style:italic">If \(X\) has a geometric distribution with parameter \(p\), then:</span><br>
+    \(P(X=x)=(1-p)^{x-1}p\)<br>
+    <span style="font-size:11px;color:#555">\(x=1,2,3,\ldots\)</span>
+  </td>
+  <td class="td-stat">\(\dfrac{1}{p}\)</td>
+  <td class="td-stat">\(\dfrac{\sqrt{1-p}}{p}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Use when you repeat independent trials until the <strong>first success</strong>. \(X\) = the trial number of the first success. There is <em>no fixed</em> \(n\) — you stop when you succeed. \((1-p)^{x-1}\) is the probability of \(x-1\) failures first.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    Free-throw shooter, \(p=0.70\). \(P(\text{first make on 3rd attempt})\)?<br>
+    \(P(X=3)=(0.30)^2(0.70)=0.09\times 0.70=\)<span class="res"> 0.063</span><br>
+    On average: \(\mu=1/0.70\approx\)<span class="res"> 1.43 attempts</span>
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+
+<!-- ════════════════════════════════════════════════
+     III. SAMPLING DISTRIBUTIONS & INFERENCE
+════════════════════════════════════════════════ -->
+<div class="sec-title" style="margin-top:24px;">III. &nbsp;Sampling Distributions and Inferential Statistics</div>
+
+<table class="ftable">
+<tbody>
+
+<!-- Test statistic -->
+<tr class="formula-card">
+  <td class="td-label">Standardized Test Statistic</td>
+  <td class="td-formula">\(\displaystyle\text{test statistic}=\frac{\text{statistic}-\text{parameter}}{\text{standard error of the statistic}}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">The skeleton of <strong>every significance test</strong>. Measures how many standard errors the sample statistic lies from the hypothesized parameter value. A large absolute value means the data are unlikely under \(H_0\), providing evidence against it.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    \(H_0:\mu=100\). Sample: \(\bar{x}=107\), \(\text{SE}=3.5\)<br>
+    \(t=(107-100)/3.5=7/3.5=\)<span class="res"> 2.0</span><br>
+    The sample mean is 2 SEs above \(\mu_0=100\).
+  </div>
+</div></td></tr>
+
+<!-- CI -->
+<tr class="formula-card">
+  <td class="td-label">Confidence Interval</td>
+  <td class="td-formula">\(\text{statistic}\pm(\text{critical value})(\text{SE of statistic})\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">An interval of plausible values for the true parameter. The <strong>critical value</strong> (\(z^*\) or \(t^*\)) controls the confidence level. Common \(z^*\) values: 1.645 (90%), 1.960 (95%), 2.576 (99%). The margin of error is \(\text{critical value}\times\text{SE}\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example — 95% CI for \(\mu\)</div>
+    \(\bar{x}=52,\;\text{SE}=2.4,\;z^*=1.960\)<br>
+    \(52\pm 1.960(2.4)=52\pm 4.70=\)<span class="res"> (47.30, 56.70)</span><br>
+    We are 95% confident the true mean is in this interval.
+  </div>
+</div></td></tr>
+
+<!-- Chi-square -->
+<tr class="formula-card">
+  <td class="td-label">Chi-Square Statistic</td>
+  <td class="td-formula">\(\displaystyle\chi^2=\sum\frac{(\text{observed}-\text{expected})^2}{\text{expected}}\)</td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="3"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Measures how far observed counts deviate from expected counts under \(H_0\). Each cell contributes one term; larger \(\chi^2\) = more evidence against \(H_0\). Used for <strong>goodness-of-fit</strong> and <strong>tests of independence/homogeneity</strong>. Always \(\chi^2\ge 0\); the test is always right-tailed.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    Fair die, 60 rolls. Expected: 10 per face. Observed: 8,12,9,11,7,13<br>
+    \(\chi^2=\tfrac{4}{10}+\tfrac{4}{10}+\tfrac{1}{10}+\tfrac{1}{10}+\tfrac{9}{10}+\tfrac{9}{10}=\)<span class="res"> 2.8</span> &nbsp;(df=5; fail to reject \(H_0\))
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+<!-- ── Sampling distributions — proportions ── -->
+<div class="sub-title">Sampling Distributions for Proportions</div>
+
+<table class="ftable" style="border-top:none">
+<thead>
+  <tr>
+    <th style="width:22%">Random Variable</th>
+    <th style="width:34%">Parameters of Sampling Distribution</th>
+    <th style="width:34%">Standard Error* of Sample Statistic</th>
+    <th style="width:10%"></th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- One proportion -->
+<tr class="formula-card">
+  <td class="td-stat"><strong>One population:</strong><br>\(\hat{p}\)</td>
+  <td class="td-stat">
+    \(\mu_{\hat{p}}=p\)<br>
+    \(\sigma_{\hat{p}}=\sqrt{\dfrac{p(1-p)}{n}}\)
+  </td>
+  <td class="td-stat">
+    \(s_{\hat{p}}=\sqrt{\dfrac{\hat{p}(1-\hat{p})}{n}}\)
+  </td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">For a <strong>significance test</strong>, use \(\sigma_{\hat{p}}\) with \(p_0\) from \(H_0\) (you're assuming \(p\) is known). For a <strong>confidence interval</strong>, use \(s_{\hat{p}}\) with \(\hat{p}\) in place of \(p\) (you don't know \(p\), so you estimate it).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example — 95% CI</div>
+    \(n=400,\;\hat{p}=0.62\)<br>
+    \(s_{\hat{p}}=\sqrt{0.62(0.38)/400}\approx 0.0242\)<br>
+    \(0.62\pm 1.96(0.0242)=\)<span class="res"> (0.572, 0.668)</span>
+  </div>
+</div></td></tr>
+
+<!-- Two proportions -->
+<tr class="formula-card">
+  <td class="td-stat"><strong>Two populations:</strong><br>\(\hat{p}_1-\hat{p}_2\)</td>
+  <td class="td-stat">
+    \(\mu=p_1-p_2\)<br>
+    \(\sigma=\sqrt{\dfrac{p_1(1-p_1)}{n_1}+\dfrac{p_2(1-p_2)}{n_2}}\)
+  </td>
+  <td class="td-stat">
+    <em>CI:</em> \(\sqrt{\dfrac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\dfrac{\hat{p}_2(1-\hat{p}_2)}{n_2}}\)<br><br>
+    <em>Test</em> (\(p_1=p_2\) assumed):<br>
+    \(\sqrt{\hat{p}_c(1-\hat{p}_c)\!\left(\tfrac{1}{n_1}+\tfrac{1}{n_2}\right)}\)<br>
+    where \(\hat{p}_c=\dfrac{X_1+X_2}{n_1+n_2}\)
+  </td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text"><strong>CI:</strong> use each sample's \(\hat{p}\) separately — you are not assuming equal proportions.<br><br><strong>Significance test</strong> (\(H_0:p_1=p_2\)): pool both samples into a combined \(\hat{p}_c\), because under \(H_0\) you assume the true proportions are equal.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example — Pooled Test</div>
+    \(X_1=30,\,n_1=100;\;X_2=45,\,n_2=150\)<br>
+    \(\hat{p}_c=75/250=0.30\)<br>
+    \(\text{SE}=\sqrt{0.30(0.70)(1/100+1/150)}\approx\)<span class="res"> 0.056</span>
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+<!-- ── Sampling distributions — means ── -->
+<div class="sub-title" style="border-top:1px solid #b8ccec">Sampling Distributions for Means</div>
+
+<table class="ftable" style="border-top:none">
+<thead>
+  <tr>
+    <th style="width:22%">Random Variable</th>
+    <th style="width:34%">Parameters of Sampling Distribution</th>
+    <th style="width:34%">Standard Error* of Sample Statistic</th>
+    <th style="width:10%"></th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- One mean -->
+<tr class="formula-card">
+  <td class="td-stat"><strong>One population:</strong><br>\(\bar{x}\)</td>
+  <td class="td-stat">
+    \(\mu_{\bar{x}}=\mu\)<br>
+    \(\sigma_{\bar{x}}=\dfrac{\sigma}{\sqrt{n}}\)
+  </td>
+  <td class="td-stat">
+    \(s_{\bar{x}}=\dfrac{s}{\sqrt{n}}\)
+  </td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">The sampling distribution of \(\bar{x}\) is centered at \(\mu\) with SE \(=s/\sqrt{n}\). Larger \(n\) → smaller SE → more precise estimate. The <strong>Central Limit Theorem</strong> guarantees \(\bar{x}\) is approximately Normal for large \(n\), regardless of population shape.</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example — One-Sample \(t\)-test</div>
+    \(n=25,\;\bar{x}=78,\;s=12\)<br>
+    \(\text{SE}=12/\sqrt{25}=12/5=2.4\)<br>
+    Test \(H_0:\mu=75\): \(t=(78-75)/2.4=\)<span class="res"> 1.25</span> &nbsp;(df=24)
+  </div>
+</div></td></tr>
+
+<!-- Two means -->
+<tr class="formula-card">
+  <td class="td-stat"><strong>Two populations:</strong><br>\(\bar{x}_1-\bar{x}_2\)</td>
+  <td class="td-stat">
+    \(\mu=\mu_1-\mu_2\)<br>
+    \(\sigma=\sqrt{\dfrac{\sigma_1^2}{n_1}+\dfrac{\sigma_2^2}{n_2}}\)
+  </td>
+  <td class="td-stat">
+    \(s_{\bar{x}_1-\bar{x}_2}=\sqrt{\dfrac{s_1^2}{n_1}+\dfrac{s_2^2}{n_2}}\)
+  </td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">Combines variability from <strong>two independent samples</strong>. Because the samples are independent, variances add: \(s_1^2/n_1+s_2^2/n_2\). Take the square root for the SE. Used in two-sample \(t\)-tests and confidence intervals for \(\mu_1-\mu_2\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    A: \(\bar{x}_1=84,\,s_1=10,\,n_1=30\) &nbsp;|&nbsp; B: \(\bar{x}_2=79,\,s_2=8,\,n_2=40\)<br>
+    \(\text{SE}=\sqrt{100/30+64/40}=\sqrt{4.93}\approx 2.22\)<br>
+    \(t=(84-79)/2.22\approx\)<span class="res"> 2.25</span>
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+<!-- ── Sampling distributions — regression ── -->
+<div class="sub-title" style="border-top:1px solid #b8ccec">Sampling Distributions for Simple Linear Regression</div>
+
+<table class="ftable" style="border-top:none">
+<thead>
+  <tr>
+    <th style="width:22%">Random Variable</th>
+    <th style="width:34%">Parameters of Sampling Distribution</th>
+    <th style="width:34%">Standard Error* of Sample Statistic</th>
+    <th style="width:10%"></th>
+  </tr>
+</thead>
+<tbody>
+
+<!-- Slope -->
+<tr class="formula-card">
+  <td class="td-stat">
+    <strong>For slope:</strong><br>
+    \(b\)
+  </td>
+  <td class="td-stat">
+    \(\mu_b=\beta\)<br>
+    \(\sigma_b=\dfrac{\sigma}{s_x\sqrt{n}}\)
+  </td>
+  <td class="td-stat">
+    \(s_b=\dfrac{s}{s_x\sqrt{n}}\)<br><br>
+    where \(\;s=\sqrt{\dfrac{\displaystyle\sum(y_i-\hat{y}_i)^2}{n-2}}\)<br><br>
+    and \(\;s_x=\sqrt{\dfrac{\displaystyle\sum(x_i-\bar{x})^2}{n-1}}\)
+  </td>
+  <td class="td-chev"><span class="chev">&#9660;</span></td>
+</tr>
+<tr class="exp-row"><td class="exp-cell" colspan="4"><div class="exp-inner">
+  <div>
+    <div class="exp-label">What it means</div>
+    <p class="exp-text">\(s\) is the <strong>residual standard error</strong> — how much the \(y\)-values scatter around the regression line. More spread in \(x\) (larger \(s_x\)) → more precise slope estimate → smaller \(s_b\). Test \(H_0:\beta=0\) using \(t=b/s_b\) with df \(=n-2\).</p>
+  </div>
+  <div class="exp-example">
+    <div class="exp-label">Worked Example</div>
+    \(n=20,\;b=2.5,\;s=4.1,\;s_x=3.0\)<br>
+    \(s_b=4.1/(3.0\sqrt{20})=4.1/13.42\approx 0.306\)<br>
+    \(t=2.5/0.306\approx\)<span class="res"> 8.17</span> &nbsp;(df=18; strong evidence \(\beta\neq 0\))
+  </div>
+</div></td></tr>
+
+</tbody>
+</table>
+
+<p style="font-family:Arial,sans-serif;font-size:9.5px;color:#555;margin-top:8px;padding:0 2px">
+*Standard deviation is a measurement of variability from the theoretical population. Standard error is the estimate of the standard deviation.
+If the standard deviation of the statistic is assumed to be known, then the standard deviation should be used instead of the standard error.
+</p>
+
+<!-- ════════════════════════════════════════════════
+     TABLES SECTION
+════════════════════════════════════════════════ -->
+<div class="sec-title" style="margin-top:28px;">Tables A / B / C &nbsp;·&nbsp; Interactive Reference</div>
+
+<div class="tbl-tabs">
+  <div class="tbl-tab active" onclick="switchTab('z')">Table A &nbsp;— Standard Normal (z)</div>
+  <div class="tbl-tab" onclick="switchTab('t')">Table B &nbsp;— t Distribution</div>
+  <div class="tbl-tab" onclick="switchTab('chi')">Table C &nbsp;— χ² Distribution</div>
+</div>
+
+<!-- ── TABLE A: Z ── -->
+<div class="tbl-panel active" id="panel-z">
+  <div class="tbl-body">
+    <div class="calc-panel">
+      <h4>Z Calculator</h4>
+      <div class="calc-row">
+        <label>z value</label>
+        <input class="calc-input" id="z-input" type="number" step="0.01" placeholder="e.g. 1.64"
+          onkeydown="if(event.key==='Enter')calcZ()">
+      </div>
+      <div class="calc-row">
+        <label>Tail</label>
+        <select class="calc-input" id="z-tail" style="width:100px">
+          <option value="below">P(Z &lt; z)</option>
+          <option value="above">P(Z &gt; z)</option>
+          <option value="two">P(|Z| &gt; |z|)</option>
+        </select>
+      </div>
+      <button class="calc-btn" onclick="calcZ()">Calculate &amp; Visualize</button>
+      <div class="calc-result" id="z-result" style="margin-top:8px">
+        <span class="r-desc">Enter a z value above.</span>
+      </div>
+      <div class="tail-diagram" id="z-diagram"></div>
+    </div>
+    <div class="lookup-wrap">
+      <h4>Table A — Standard Normal Probabilities &nbsp;<span style="font-weight:normal;color:#666">(P(Z &lt; z))</span></h4>
+      <div id="z-table-container"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TABLE B: t ── -->
+<div class="tbl-panel" id="panel-t">
+  <div class="tbl-body">
+    <div class="calc-panel">
+      <h4>t Table Lookup</h4>
+      <div id="t-mode-primary">
+        <div class="calc-row">
+          <label>Tail prob <i>p</i></label>
+          <select class="calc-input" id="t-p-select" style="width:90px">
+            <option value="0.25">.25</option>
+            <option value="0.20">.20</option>
+            <option value="0.15">.15</option>
+            <option value="0.10">.10</option>
+            <option value="0.05">.05</option>
+            <option value="0.025" selected>.025</option>
+            <option value="0.02">.02</option>
+            <option value="0.01">.01</option>
+            <option value="0.005">.005</option>
+            <option value="0.0025">.0025</option>
+            <option value="0.001">.001</option>
+            <option value="0.0005">.0005</option>
+          </select>
+        </div>
+        <div class="calc-row">
+          <label>df</label>
+          <input class="calc-input" id="t-df-primary" type="number" step="1" min="1" placeholder="e.g. 24"
+            onkeydown="if(event.key==='Enter')calcTPrimary()">
+        </div>
+        <button class="calc-btn" onclick="calcTPrimary()">Look Up Critical Value</button>
+      </div>
+      <div id="t-mode-inverse" style="display:none">
+        <div class="calc-row">
+          <label>t value</label>
+          <input class="calc-input" id="t-val-inv" type="number" step="0.001" placeholder="e.g. 2.09"
+            onkeydown="if(event.key==='Enter')calcTInverse()">
+        </div>
+        <div class="calc-row">
+          <label>df</label>
+          <input class="calc-input" id="t-df-inv" type="number" step="1" min="1" placeholder="e.g. 24"
+            onkeydown="if(event.key==='Enter')calcTInverse()">
+        </div>
+        <div class="calc-row">
+          <label>Tail</label>
+          <select class="calc-input" id="t-tail-inv" style="width:100px">
+            <option value="one">Upper (1-sided)</option>
+            <option value="two">Two-tailed</option>
+          </select>
+        </div>
+        <button class="calc-btn" onclick="calcTInverse()">Find Tail Probability</button>
+      </div>
+      <div style="margin-top:7px;text-align:right">
+        <button id="t-invert-btn" onclick="toggleTMode()"
+          style="font-family:Arial,sans-serif;font-size:9.5px;padding:3px 9px;background:#eef3fb;
+          border:1px solid #b8ccec;color:#1a4d8f;border-radius:2px;cursor:pointer">
+          ⇄ Enter t value instead</button>
+      </div>
+      <div class="calc-result" id="t-result" style="margin-top:8px">
+        <span class="r-desc">Select tail probability and df above.</span>
+      </div>
+      <div class="tail-diagram" id="t-diagram"></div>
+    </div>
+    <div class="lookup-wrap">
+      <h4>Table B — t Critical Values &nbsp;<span style="font-weight:normal;color:#666">(nearest df row highlighted)</span></h4>
+      <p style="font-family:Arial,sans-serif;font-size:9px;color:#888;margin-bottom:6px;font-style:italic">Values are exact for listed df rows. When your df falls between rows, the nearest row is highlighted and the result shown is an approximation — use a calculator for precision.</p>
+      <div id="t-table-container"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TABLE C: chi-sq ── -->
+<div class="tbl-panel" id="panel-chi">
+  <div class="tbl-body">
+    <div class="calc-panel">
+      <h4>χ² Table Lookup</h4>
+      <div id="chi-mode-primary">
+        <div class="calc-row">
+          <label>Tail prob <i>p</i></label>
+          <select class="calc-input" id="chi-p-select" style="width:90px">
+            <option value="0.25">.25</option>
+            <option value="0.20">.20</option>
+            <option value="0.15">.15</option>
+            <option value="0.10">.10</option>
+            <option value="0.05" selected>.05</option>
+            <option value="0.025">.025</option>
+            <option value="0.02">.02</option>
+            <option value="0.01">.01</option>
+            <option value="0.005">.005</option>
+            <option value="0.0025">.0025</option>
+            <option value="0.001">.001</option>
+            <option value="0.0005">.0005</option>
+          </select>
+        </div>
+        <div class="calc-row">
+          <label>df</label>
+          <input class="calc-input" id="chi-df-primary" type="number" step="1" min="1" placeholder="e.g. 3"
+            onkeydown="if(event.key==='Enter')calcChiPrimary()">
+        </div>
+        <button class="calc-btn" onclick="calcChiPrimary()">Look Up Critical Value</button>
+      </div>
+      <div id="chi-mode-inverse" style="display:none">
+        <div class="calc-row">
+          <label>χ² value</label>
+          <input class="calc-input" id="chi-val-inv" type="number" step="0.01" min="0" placeholder="e.g. 7.81"
+            onkeydown="if(event.key==='Enter')calcChiInverse()">
+        </div>
+        <div class="calc-row">
+          <label>df</label>
+          <input class="calc-input" id="chi-df-inv" type="number" step="1" min="1" placeholder="e.g. 3"
+            onkeydown="if(event.key==='Enter')calcChiInverse()">
+        </div>
+        <button class="calc-btn" onclick="calcChiInverse()">Find Tail Probability</button>
+      </div>
+      <div style="margin-top:7px;text-align:right">
+        <button id="chi-invert-btn" onclick="toggleChiMode()"
+          style="font-family:Arial,sans-serif;font-size:9.5px;padding:3px 9px;background:#eef3fb;
+          border:1px solid #b8ccec;color:#1a4d8f;border-radius:2px;cursor:pointer">
+          ⇄ Enter χ² value instead</button>
+      </div>
+      <div class="calc-result" id="chi-result" style="margin-top:8px">
+        <span class="r-desc">Select tail probability and df above.</span>
+      </div>
+      <div class="tail-diagram" id="chi-diagram"></div>
+    </div>
+    <div class="lookup-wrap">
+      <h4>Table C — χ² Critical Values &nbsp;<span style="font-weight:normal;color:#666">(nearest df row highlighted)</span></h4>
+      <p style="font-family:Arial,sans-serif;font-size:9px;color:#888;margin-bottom:6px;font-style:italic">Values are exact for listed df rows. When your df falls between rows, the nearest row is highlighted and the result shown is an approximation — use a calculator for precision.</p>
+      <div id="chi-table-container"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   STATISTICAL FUNCTIONS
+══════════════════════════════════════════════════════════ */
+
+// Accurate normal CDF via rational approximation (Abramowitz & Stegun 26.2.17)
+// Max absolute error < 7.5e-8
+function normCDF(z) {
+  const b1= 0.319381530, b2=-0.356563782, b3= 1.781477937,
+        b4=-1.821255978, b5= 1.330274429, p= 0.2316419;
+  const t = 1 / (1 + p * Math.abs(z));
+  const poly = t*(b1+t*(b2+t*(b3+t*(b4+t*b5))));
+  const pdf = Math.exp(-0.5*z*z) / Math.sqrt(2*Math.PI);
+  const upper = pdf * poly;
+  return z >= 0 ? 1 - upper : upper;
+}
+function lgamma(z) {
+  const g=7,c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,
+    771.32342877765313,-176.61502916214059,12.507343278686905,
+    -0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
+  if(z<0.5) return Math.log(Math.PI/Math.sin(Math.PI*z))-lgamma(1-z);
+  z--;
+  let x=c[0];
+  for(let i=1;i<g+2;i++) x+=c[i]/(z+i);
+  const t=z+g+0.5;
+  return 0.5*Math.log(2*Math.PI)+(z+0.5)*Math.log(t)-t+Math.log(x);
+}
+function gammainc(a,x) {
+  if(x<=0) return 0;
+  if(x<a+1){
+    let term=1/a,sum=term;
+    for(let i=1;i<200;i++){term*=x/(a+i);sum+=term;if(Math.abs(term)<1e-10*Math.abs(sum))break;}
+    return sum*Math.exp(-x+a*Math.log(x)-lgamma(a));
+  } else {
+    let b=x+1-a,c=1e30,d=1/b,h=d;
+    for(let i=1;i<=200;i++){
+      const an=-i*(i-a);b+=2;
+      d=an*d+b;if(Math.abs(d)<1e-30)d=1e-30;
+      c=b+an/c;if(Math.abs(c)<1e-30)c=1e-30;
+      d=1/d;h*=d*c;if(Math.abs(d*c-1)<1e-10)break;
+    }
+    return 1-h*Math.exp(-x+a*Math.log(x)-lgamma(a));
+  }
+}
+function chi2Tail(x,df){return 1-gammainc(df/2,x/2);}
+function betainc(x,a,b){
+  if(x<=0)return 0;if(x>=1)return 1;
+  const lbeta=lgamma(a)+lgamma(b)-lgamma(a+b);
+  const front=Math.exp(Math.log(x)*a+Math.log(1-x)*b-lbeta)/a;
+  let f=1,C=1,D=1-((a+b)*x/(a+1));
+  if(Math.abs(D)<1e-30)D=1e-30;D=1/D;f=D;
+  for(let m=1;m<=200;m++){
+    let num=m*(b-m)*x/((a+2*m-1)*(a+2*m));
+    D=1+num*D;if(Math.abs(D)<1e-30)D=1e-30;D=1/D;
+    C=1+num/C;if(Math.abs(C)<1e-30)C=1e-30;f*=D*C;
+    num=-(a+m)*(a+b+m)*x/((a+2*m)*(a+2*m+1));
+    D=1+num*D;if(Math.abs(D)<1e-30)D=1e-30;D=1/D;
+    C=1+num/C;if(Math.abs(C)<1e-30)C=1e-30;
+    const delta=D*C;f*=delta;if(Math.abs(delta-1)<1e-10)break;
+  }
+  return front*f;
+}
+function tTail(t,df){t=Math.abs(t);return betainc(df/(df+t*t),df/2,0.5);}
+function fmt(p){return p>=0.0001?p.toFixed(4):p.toExponential(3);}
+
+/* ══════════════════════════════════════════════════════════
+   TABLE DATA
+══════════════════════════════════════════════════════════ */
+const Z_ROWS=[];
+for(let i=-34;i<=34;i++) Z_ROWS.push((i/10).toFixed(1));
+const Z_COLS=['0.00','0.01','0.02','0.03','0.04','0.05','0.06','0.07','0.08','0.09'];
+const T_TAIL_PROBS=[0.25,0.20,0.15,0.10,0.05,0.025,0.02,0.01,0.005,0.0025,0.001,0.0005];
+const T_DF_ROWS=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+                 21,22,23,24,25,26,27,28,29,30,40,50,60,80,100,1000];
+const CHI_TAIL_PROBS=[0.25,0.20,0.15,0.10,0.05,0.025,0.02,0.01,0.005,0.0025,0.001,0.0005];
+const CHI_DF_ROWS=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+                   21,22,23,24,25,26,27,28,29,30,40,50,60,80,100];
+
+/* ══════════════════════════════════════════════════════════
+   PRE-COMPUTE TABLE DATA (so windowing is fast)
+══════════════════════════════════════════════════════════ */
+// Z: zData[rowIdx][colIdx] = probability
+const zData = Z_ROWS.map(row => {
+  const r = parseFloat(row);
+  return Z_COLS.map(col => {
+    const zfinal = r >= 0 ? r + parseFloat(col) : r - parseFloat(col);
+    return normCDF(zfinal);
+  });
+});
+
+// T: tData[dfIdx][pIdx] = critical value
+const tData = T_DF_ROWS.map(df => {
+  return T_TAIL_PROBS.map(p => {
+    let lo=0,hi=100,crit=0;
+    for(let i=0;i<60;i++){
+      const mid=(lo+hi)/2;
+      if(tTail(mid,df)/2>p) lo=mid; else hi=mid;
+      crit=(lo+hi)/2;
+    }
+    return crit;
+  });
+});
+
+// Chi: chiData[dfIdx][pIdx] = critical value
+const chiData = CHI_DF_ROWS.map(df => {
+  return CHI_TAIL_PROBS.map(p => {
+    let lo=0,hi=500,crit=0;
+    for(let i=0;i<80;i++){
+      const mid=(lo+hi)/2;
+      if(chi2Tail(mid,df)>p) lo=mid; else hi=mid;
+      crit=(lo+hi)/2;
+    }
+    return crit;
+  });
+});
+
+/* ══════════════════════════════════════════════════════════
+   WINDOW STATE — track current hit cell per table
+══════════════════════════════════════════════════════════ */
+const state = {
+  z:   { hitRow: null, hitCol: null, windowed: false },
+  t:   { hitRow: null, hitCol: null, windowed: false },
+  chi: { hitRow: null, hitCol: null, windowed: false }
+};
+const WIN_ROW = 3; // rows above/below
+const WIN_COL = 4; // cols left/right
+
+/* ══════════════════════════════════════════════════════════
+   RENDER TABLES  (called on init and after each hit)
+══════════════════════════════════════════════════════════ */
+
+/* ── Shared table builder ─────────────────────────────── */
+
+function buildToggleBtn(type) {
+  const { hitRow, windowed } = state[type];
+  if (hitRow === null) return '';
+  const lbl = windowed ? 'Show full table' : 'Zoom to selection';
+  return `<div style="margin-top:5px;text-align:right">
+    <button onclick="toggleWindow('${type}')" class="tbl-toggle-btn" id="${type}-toggle-btn"
+      style="font-family:Arial,sans-serif;font-size:9.5px;padding:3px 9px;background:#eef3fb;
+      border:1px solid #b8ccec;color:#1a4d8f;border-radius:2px;cursor:pointer">${lbl}</button></div>`;
+}
+
+function renderZTable() {
+  const container = document.getElementById('z-table-container');
+  let html = '<table class="lookup-tbl" id="z-tbl"><thead><tr>';
+  html += '<th data-ci="-1">z</th>';
+  for (let ci = 0; ci < Z_COLS.length; ci++)
+    html += `<th data-ci="${ci}">.${Z_COLS[ci].split('.')[1]}</th>`;
+  html += '</tr></thead><tbody>';
+  for (let ri = 0; ri < Z_ROWS.length; ri++) {
+    html += `<tr data-ri="${ri}"><td class="row-label">${Z_ROWS[ri]}</td>`;
+    for (let ci = 0; ci < Z_COLS.length; ci++)
+      html += `<td data-ci="${ci}">${zData[ri][ci].toFixed(4)}</td>`;
+    html += '</tr>';
+  }
+  html += '</tbody></table>' + buildToggleBtn('z');
+  container.innerHTML = html;
+  applyWindowState('z');
+}
+
+function renderTTable() {
+  const container = document.getElementById('t-table-container');
+  const cLevels = ['50%','60%','70%','80%','90%','95%','96%','98%','99%','99.5%','99.8%','99.9%'];
+  const NC = T_TAIL_PROBS.length;
+  let html = `<table class="lookup-tbl" id="t-tbl"><thead>
+    <tr><th colspan="${NC+1}" style="text-align:center;background:#1a4d8f;color:#fff">Tail Probability <i>p</i></th></tr>
+    <tr><th data-pi="-1">df</th>`;
+  for (let pi = 0; pi < NC; pi++) {
+    const p = T_TAIL_PROBS[pi];
+    html += `<th data-pi="${pi}">${p < 0.01 ? p : p.toFixed(3).replace(/^0/,'')}</th>`;
+  }
+  html += '</tr></thead><tbody>';
+  for (let di = 0; di < T_DF_ROWS.length; di++) {
+    html += `<tr data-di="${di}"><td class="row-label">${T_DF_ROWS[di]}</td>`;
+    for (let pi = 0; pi < NC; pi++)
+      html += `<td data-pi="${pi}">${tData[di][pi].toFixed(3)}</td>`;
+    html += '</tr>';
+  }
+  html += '<tr data-conf="1" style="background:#dce5f3"><td class="row-label" style="font-size:9px">C</td>';
+  for (let pi = 0; pi < NC; pi++)
+    html += `<td data-pi="${pi}" style="font-size:9px;font-weight:bold;color:#1a4d8f">${cLevels[pi]}</td>`;
+  html += '</tr></tbody></table>' + buildToggleBtn('t');
+  container.innerHTML = html;
+  applyWindowState('t');
+}
+
+function renderChiTable() {
+  const container = document.getElementById('chi-table-container');
+  const NC = CHI_TAIL_PROBS.length;
+  let html = `<table class="lookup-tbl" id="chi-tbl"><thead>
+    <tr><th colspan="${NC+1}" style="text-align:center;background:#1a4d8f;color:#fff">Tail probability <i>p</i></th></tr>
+    <tr><th data-pi="-1">df</th>`;
+  for (let pi = 0; pi < NC; pi++) {
+    const p = CHI_TAIL_PROBS[pi];
+    html += `<th data-pi="${pi}">${p < 0.01 ? p : p.toFixed(3).replace(/^0/,'')}</th>`;
+  }
+  html += '</tr></thead><tbody>';
+  for (let di = 0; di < CHI_DF_ROWS.length; di++) {
+    html += `<tr data-di="${di}"><td class="row-label">${CHI_DF_ROWS[di]}</td>`;
+    for (let pi = 0; pi < CHI_TAIL_PROBS.length; pi++)
+      html += `<td data-pi="${pi}">${chiData[di][pi].toFixed(2)}</td>`;
+    html += '</tr>';
+  }
+  html += '</tbody></table>' + buildToggleBtn('chi');
+  container.innerHTML = html;
+  applyWindowState('chi');
+}
+
+/* ══════════════════════════════════════════════════════════
+   applyWindowState
+   Always called right after innerHTML is set.
+   1. Apply hit-cell highlights (instant, no animation needed)
+   2. If windowed: paint everything visible first (one rAF),
+      then add row-hide / col-hide classes (second rAF) so the
+      CSS transition fires from "visible" → "hidden".
+   3. If not windowed: just remove any hide classes so they
+      transition back to visible.
+══════════════════════════════════════════════════════════ */
+function applyWindowState(type) {
+  const tblId = { z:'z-tbl', t:'t-tbl', chi:'chi-tbl' }[type];
+  const tbl = document.getElementById(tblId);
+  if (!tbl) return;
+
+  const { hitRow, hitCol, windowed } = state[type];
+  const rowAttr = type === 'z' ? 'ri' : 'di';
+  const colAttr = 'pi'; // same for t and chi; z uses 'ci'
+  const colAttrZ = 'ci';
+
+  // ── 1. Highlight hit row / cell / header ──────────────
+  if (hitRow !== null) {
+    const ra = type === 'z' ? `data-ri="${hitRow}"` : `data-di="${hitRow}"`;
+    const hitTr = tbl.querySelector(`tr[${ra}]`);
+    if (hitTr) {
+      hitTr.classList.add('row-hi');
+      const ca = type === 'z' ? `data-ci="${hitCol}"` : `data-pi="${hitCol}"`;
+      const hitCell = hitTr.querySelector(`td[${ca}]`);
+      if (hitCell) hitCell.classList.add('cell-hi');
+    }
+    // Header column highlight
+    const hca = type === 'z' ? `th[data-ci="${hitCol}"]` : `th[data-pi="${hitCol}"]`;
+    const hitTh = tbl.querySelector(hca);
+    if (hitTh) { hitTh.style.background = '#1a4d8f'; hitTh.style.color = '#fff'; }
+  }
+
+  // ── 2. If NOT windowed — ensure all rows/cols are shown ─
+  if (!windowed || hitRow === null) {
+    tbl.querySelectorAll('tr.row-hide').forEach(r => r.classList.remove('row-hide'));
+    tbl.querySelectorAll('.col-hide').forEach(c => c.classList.remove('col-hide'));
+    return;
+  }
+
+  // ── 3. Windowed: compute bounds ───────────────────────
+  const totalRows = type === 'z' ? Z_ROWS.length
+                  : type === 't' ? T_DF_ROWS.length : CHI_DF_ROWS.length;
+  const totalCols = type === 'z' ? Z_COLS.length : T_TAIL_PROBS.length;
+
+  const rMin = Math.max(0, hitRow - WIN_ROW);
+  const rMax = Math.min(totalRows - 1, hitRow + WIN_ROW);
+  const cMin = Math.max(0, hitCol - WIN_COL);
+  const cMax = Math.min(totalCols - 1, hitCol + WIN_COL);
+
+  // Double-rAF: let browser paint the fully-visible table, THEN add hide classes
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      // Hide out-of-window rows
+      const trSel = type === 'z' ? 'tr[data-ri]' : 'tr[data-di]';
+      tbl.querySelectorAll(trSel).forEach(tr => {
+        const idx = parseInt(tr.getAttribute(type === 'z' ? 'data-ri' : 'data-di'));
+        if (isNaN(idx)) return;
+        tr.classList.toggle('row-hide', idx < rMin || idx > rMax);
+      });
+
+      // Hide out-of-window column cells
+      const cellSel = type === 'z' ? 'td[data-ci], th[data-ci]' : 'td[data-pi], th[data-pi]';
+      tbl.querySelectorAll(cellSel).forEach(cell => {
+        const attr = type === 'z' ? 'data-ci' : 'data-pi';
+        const idx = parseInt(cell.getAttribute(attr));
+        if (isNaN(idx) || idx < 0) return; // row-label sentinel or span header
+        cell.classList.toggle('col-hide', idx < cMin || idx > cMax);
+      });
+    });
+  });
+}
+
+/* ── Toggle between windowed ↔ full ─────────────────────── */
+function toggleWindow(type) {
+  const s = state[type];
+  s.windowed = !s.windowed;
+
+  // Update button label in-place (no full re-render needed)
+  const btn = document.getElementById(`${type}-toggle-btn`);
+  if (btn) btn.textContent = s.windowed ? 'Show full table' : 'Zoom to selection';
+
+  const tblId = { z:'z-tbl', t:'t-tbl', chi:'chi-tbl' }[type];
+  const tbl = document.getElementById(tblId);
+  if (!tbl) return;
+
+  if (s.windowed) {
+    // Expanding → windowed: first ensure everything visible, then animate hide
+    tbl.querySelectorAll('tr.row-hide').forEach(r => r.classList.remove('row-hide'));
+    tbl.querySelectorAll('.col-hide').forEach(c => c.classList.remove('col-hide'));
+    requestAnimationFrame(() => requestAnimationFrame(() => applyWindowState(type)));
+  } else {
+    // Windowed → full: just remove hide classes; CSS transitions them back in
+    tbl.querySelectorAll('tr.row-hide').forEach(r => r.classList.remove('row-hide'));
+    tbl.querySelectorAll('.col-hide').forEach(c => c.classList.remove('col-hide'));
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   CALCULATORS
+══════════════════════════════════════════════════════════ */
+
+// ── Z ──
+function calcZ() {
+  const zRaw = parseFloat(document.getElementById('z-input').value);
+  const tail  = document.getElementById('z-tail').value;
+  const res   = document.getElementById('z-result');
+
+  if (isNaN(zRaw)) {
+    res.innerHTML = '<span class="r-desc">Enter a z value above.</span>';
+    state.z = { hitRow: null, hitCol: null, windowed: false };
+    renderZTable();
+    drawCurve('z', null, null);
+    return;
+  }
+
+  const below = normCDF(zRaw);
+  const above = 1 - below;
+  const two   = 2 * Math.min(below, above);
+  let prob, desc;
+  if (tail==='below'){prob=below;desc=`P(Z < ${zRaw}) = `;}
+  else if(tail==='above'){prob=above;desc=`P(Z > ${zRaw}) = `;}
+  else{prob=two;desc=`P(|Z| > ${Math.abs(zRaw)}) = `;}
+  res.innerHTML = `<span class="r-val">${fmt(prob)}</span><span class="r-desc">${desc}${fmt(prob)}</span>`;
+
+  // Find row/col indices
+  const zClamped = Math.max(-3.4, Math.min(3.4, zRaw));
+  // Row: truncate to one decimal
+  const rowVal = (Math.trunc(Math.round(zClamped * 1000) / 100) / 10).toFixed(1);
+  const ri = Z_ROWS.indexOf(rowVal);
+  const hundredths = Math.abs(Math.round((zClamped - parseFloat(rowVal)) * 100));
+  const ci = Math.min(Math.max(0, hundredths), 9);
+
+  state.z = { hitRow: ri >= 0 ? ri : null, hitCol: ci, windowed: true };
+  renderZTable();
+  drawCurve('z', zRaw, tail);
+}
+
+// ── T: primary (tail p + df → critical value) ──
+function calcTPrimary() {
+  const p   = parseFloat(document.getElementById('t-p-select').value);
+  const df  = parseInt(document.getElementById('t-df-primary').value);
+  const res = document.getElementById('t-result');
+  if (isNaN(df) || df < 1) {
+    res.innerHTML = '<span class="r-desc">Enter degrees of freedom above.</span>';
+    state.t = { hitRow: null, hitCol: null, windowed: false };
+    renderTTable(); drawCurve('t', null, null); return;
+  }
+  let bestDi = 0, bestDist = Infinity;
+  T_DF_ROWS.forEach((d,i) => { const dist=Math.abs(d-df); if(dist<bestDist){bestDist=dist;bestDi=i;} });
+  const pi = T_TAIL_PROBS.indexOf(p);
+  const tCrit = tData[bestDi][pi];
+  const actualDf = T_DF_ROWS[bestDi];
+  const note = actualDf !== df
+    ? ` <span style="color:#888;font-size:10px">(nearest row: df=${actualDf})</span>` : '';
+  res.innerHTML = `<span class="r-val">t* = ${tCrit.toFixed(3)}</span>
+    <span class="r-desc">p = ${p}, df = ${df}${note}<br>
+    Reject H₀ (one-sided) if |t| > ${tCrit.toFixed(3)}</span>`;
+  state.t = { hitRow: bestDi, hitCol: pi, windowed: true };
+  renderTTable();
+  drawCurve('t', tCrit, 'above');
+}
+
+// ── T: inverse (t value + df → tail probability) ──
+function calcTInverse() {
+  const tRaw = parseFloat(document.getElementById('t-val-inv').value);
+  const df   = parseInt(document.getElementById('t-df-inv').value);
+  const tail = document.getElementById('t-tail-inv').value;
+  const res  = document.getElementById('t-result');
+  if (isNaN(tRaw) || isNaN(df) || df < 1) {
+    res.innerHTML = '<span class="r-desc">Enter t and df above.</span>';
+    state.t = { hitRow: null, hitCol: null, windowed: false };
+    renderTTable(); drawCurve('t', null, null); return;
+  }
+  const upperOne = tTail(tRaw, df) / 2;
+  const prob = tail === 'two' ? upperOne * 2 : upperOne;
+  const desc = tail === 'two'
+    ? `P(|t| > ${Math.abs(tRaw)}, df=${df}) = `
+    : `P(t > ${tRaw}, df=${df}) = `;
+  res.innerHTML = `<span class="r-val">${fmt(prob)}</span><span class="r-desc">${desc}${fmt(prob)}</span>`;
+  let bestDi = 0, bestDist = Infinity;
+  T_DF_ROWS.forEach((d,i) => { const dist=Math.abs(d-df); if(dist<bestDist){bestDist=dist;bestDi=i;} });
+  let bestPi = 0, bestPDist = Infinity;
+  T_TAIL_PROBS.forEach((p,i) => { const dist=Math.abs(p-upperOne); if(dist<bestPDist){bestPDist=dist;bestPi=i;} });
+  state.t = { hitRow: bestDi, hitCol: bestPi, windowed: true };
+  renderTTable();
+  drawCurve('t', tRaw, tail === 'two' ? 'two' : 'above');
+}
+
+function toggleTMode() {
+  const primary = document.getElementById('t-mode-primary');
+  const inverse = document.getElementById('t-mode-inverse');
+  const btn     = document.getElementById('t-invert-btn');
+  const isPrimary = primary.style.display !== 'none';
+  primary.style.display = isPrimary ? 'none' : '';
+  inverse.style.display = isPrimary ? '' : 'none';
+  btn.textContent = isPrimary ? '⇄ Look up by tail probability' : '⇄ Enter t value instead';
+  document.getElementById('t-result').innerHTML = '<span class="r-desc">' +
+    (isPrimary ? 'Enter t value and df above.' : 'Select tail probability and df above.') + '</span>';
+  document.getElementById('t-diagram').innerHTML = '';
+  state.t = { hitRow: null, hitCol: null, windowed: false };
+  renderTTable();
+}
+
+// ── CHI: primary (tail p + df → critical value) ──
+function calcChiPrimary() {
+  const p   = parseFloat(document.getElementById('chi-p-select').value);
+  const df  = parseInt(document.getElementById('chi-df-primary').value);
+  const res = document.getElementById('chi-result');
+  if (isNaN(df) || df < 1) {
+    res.innerHTML = '<span class="r-desc">Enter degrees of freedom above.</span>';
+    state.chi = { hitRow: null, hitCol: null, windowed: false };
+    renderChiTable(); drawCurve('chi', null, null); return;
+  }
+  let bestDi = 0, bestDist = Infinity;
+  CHI_DF_ROWS.forEach((d,i) => { const dist=Math.abs(d-df); if(dist<bestDist){bestDist=dist;bestDi=i;} });
+  const pi = CHI_TAIL_PROBS.indexOf(p);
+  const chiCrit = chiData[bestDi][pi];
+  const actualDf = CHI_DF_ROWS[bestDi];
+  const note = actualDf !== df
+    ? ` <span style="color:#888;font-size:10px">(nearest row: df=${actualDf})</span>` : '';
+  res.innerHTML = `<span class="r-val">χ²* = ${chiCrit.toFixed(2)}</span>
+    <span class="r-desc">p = ${p}, df = ${df}${note}<br>
+    Reject H₀ if χ² > ${chiCrit.toFixed(2)}</span>`;
+  state.chi = { hitRow: bestDi, hitCol: pi, windowed: true };
+  renderChiTable();
+  drawCurve('chi', chiCrit, df);
+}
+
+// ── CHI: inverse (χ² value + df → tail probability) ──
+function calcChiInverse() {
+  const chiRaw = parseFloat(document.getElementById('chi-val-inv').value);
+  const df     = parseInt(document.getElementById('chi-df-inv').value);
+  const res    = document.getElementById('chi-result');
+  if (isNaN(chiRaw) || chiRaw < 0 || isNaN(df) || df < 1) {
+    res.innerHTML = '<span class="r-desc">Enter χ² and df above.</span>';
+    state.chi = { hitRow: null, hitCol: null, windowed: false };
+    renderChiTable(); drawCurve('chi', null, null); return;
+  }
+  const prob = chi2Tail(chiRaw, df);
+  res.innerHTML = `<span class="r-val">${fmt(prob)}</span>
+    <span class="r-desc">P(χ² > ${chiRaw}, df=${df}) = ${fmt(prob)}</span>`;
+  let bestDi = 0, bestDist = Infinity;
+  CHI_DF_ROWS.forEach((d,i) => { const dist=Math.abs(d-df); if(dist<bestDist){bestDist=dist;bestDi=i;} });
+  let bestPi = 0, bestPDist = Infinity;
+  CHI_TAIL_PROBS.forEach((p,i) => { const dist=Math.abs(p-prob); if(dist<bestPDist){bestPDist=dist;bestPi=i;} });
+  state.chi = { hitRow: bestDi, hitCol: bestPi, windowed: true };
+  renderChiTable();
+  drawCurve('chi', chiRaw, df);
+}
+
+function toggleChiMode() {
+  const primary = document.getElementById('chi-mode-primary');
+  const inverse = document.getElementById('chi-mode-inverse');
+  const btn     = document.getElementById('chi-invert-btn');
+  const isPrimary = primary.style.display !== 'none';
+  primary.style.display = isPrimary ? 'none' : '';
+  inverse.style.display = isPrimary ? '' : 'none';
+  btn.textContent = isPrimary ? '⇄ Look up by tail probability' : '⇄ Enter χ² value instead';
+  document.getElementById('chi-result').innerHTML = '<span class="r-desc">' +
+    (isPrimary ? 'Enter χ² value and df above.' : 'Select tail probability and df above.') + '</span>';
+  document.getElementById('chi-diagram').innerHTML = '';
+  state.chi = { hitRow: null, hitCol: null, windowed: false };
+  renderChiTable();
+}
+
+/* ══════════════════════════════════════════════════════════
+   TAIL DIAGRAMS (SVG)
+   H is taller now; label text y is pushed down to H-2
+   with an extra background rect so it sits below the curve
+══════════════════════════════════════════════════════════ */
+function drawCurve(type, val, param) {
+  const el = document.getElementById(type + '-diagram');
+  if (!el) return;
+  if (val === null) { el.innerHTML = ''; return; }
+
+  const W = 190, H = 80, pad = 10;
+  // curve occupies top 60px, bottom 20px is label zone
+  const CURVE_H = 60;
+
+  function normY(x) { return Math.exp(-0.5*x*x)/Math.sqrt(2*Math.PI); }
+
+  if (type === 'chi') {
+    const df = param;
+    const mode = df > 2 ? df - 2 : 0.1;
+    const chiMax = Math.max(30, val * 1.5, df * 2.5);
+    function chiY(x) {
+      if (x <= 0) return 0;
+      return Math.exp((df/2-1)*Math.log(x) - x/2 - (df/2)*Math.log(2) - lgamma(df/2));
+    }
+    const chiYMax = chiY(mode);
+    function cx(x) { return pad + (x/chiMax)*(W-2*pad); }
+    function cy(y) { return CURVE_H - 4 - (y/chiYMax)*(CURVE_H - 14); }
+
+    let linePts = '';
+    const S = 200;
+    for (let i = 0; i <= S; i++) {
+      const x = (i/S)*chiMax;
+      const y = chiY(x);
+      if (isFinite(y) && y >= 0) linePts += `${cx(x).toFixed(1)},${cy(Math.min(y,chiYMax*1.02)).toFixed(1)} `;
+    }
+    const cv = Math.min(val, chiMax);
+    let shadePts = `${cx(cv).toFixed(1)},${cy(0).toFixed(1)} `;
+    for (let i = 0; i <= S; i++) {
+      const x = (i/S)*chiMax;
+      if (x >= cv) { const y = chiY(x); if(isFinite(y)) shadePts += `${cx(x).toFixed(1)},${cy(Math.min(y,chiYMax*1.02)).toFixed(1)} `; }
+    }
+    shadePts += `${cx(chiMax).toFixed(1)},${cy(0).toFixed(1)} `;
+    const mx = cx(cv);
+    const myTop = cy(chiY(cv)) - 1;
+    const myBot = cy(0);
+
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:${W}px">
+      <polygon points="${shadePts}" fill="#1a4d8f44"/>
+      <polyline points="${linePts}" fill="none" stroke="#1a4d8f" stroke-width="1.8"/>
+      <line x1="${mx.toFixed(1)}" y1="${myTop.toFixed(1)}" x2="${mx.toFixed(1)}" y2="${myBot.toFixed(1)}" stroke="#1a4d8f" stroke-width="1.5"/>
+      <rect x="0" y="${CURVE_H+2}" width="${W}" height="18" fill="white"/>
+      <text x="${W/2}" y="${CURVE_H+13}" text-anchor="middle" font-family="Arial" font-size="9" fill="#1a4d8f" font-weight="bold">P(χ² &gt; ${val})</text>
+    </svg>`;
+    return;
+  }
+
+  // Normal / t curve
+  const xMin = -3.8, xMax = 3.8;
+  function sx(x) { return pad + (x-xMin)/(xMax-xMin)*(W-2*pad); }
+  const yMax = normY(0);
+  function sy(y) { return CURVE_H - 4 - (y/yMax)*(CURVE_H - 14); }
+
+  const S = 160;
+  let linePts = '';
+  for (let i = 0; i <= S; i++) {
+    const x = xMin + i*(xMax-xMin)/S;
+    linePts += `${sx(x).toFixed(1)},${sy(normY(x)).toFixed(1)} `;
+  }
+
+  const tail = type === 'z'
+    ? document.getElementById('z-tail').value
+    : document.getElementById('t-tail').value;
+  const zv = Math.max(xMin, Math.min(xMax, val));
+  let shadePts = '', labelText = '';
+
+  if (tail === 'below') {
+    shadePts = `${sx(xMin).toFixed(1)},${sy(0).toFixed(1)} `;
+    for (let i = 0; i <= S; i++) {
+      const x = xMin + i*(xMax-xMin)/S;
+      if (x <= zv) shadePts += `${sx(x).toFixed(1)},${sy(normY(x)).toFixed(1)} `;
+    }
+    shadePts += `${sx(zv).toFixed(1)},${sy(0).toFixed(1)} `;
+    labelText = `P(Z &lt; ${val})`;
+  } else if (tail === 'above') {
+    shadePts = `${sx(zv).toFixed(1)},${sy(0).toFixed(1)} `;
+    for (let i = 0; i <= S; i++) {
+      const x = xMin + i*(xMax-xMin)/S;
+      if (x >= zv) shadePts += `${sx(x).toFixed(1)},${sy(normY(x)).toFixed(1)} `;
+    }
+    shadePts += `${sx(xMax).toFixed(1)},${sy(0).toFixed(1)} `;
+    labelText = type === 't' ? `P(t &gt; ${val})` : `P(Z &gt; ${val})`;
+  } else {
+    const av = Math.abs(zv);
+    let p1 = `${sx(xMin).toFixed(1)},${sy(0).toFixed(1)} `;
+    let p2 = `${sx(av).toFixed(1)},${sy(0).toFixed(1)} `;
+    for (let i = 0; i <= S; i++) {
+      const x = xMin + i*(xMax-xMin)/S;
+      if (x <= -av) p1 += `${sx(x).toFixed(1)},${sy(normY(x)).toFixed(1)} `;
+      if (x >= av)  p2 += `${sx(x).toFixed(1)},${sy(normY(x)).toFixed(1)} `;
+    }
+    p1 += `${sx(-av).toFixed(1)},${sy(0).toFixed(1)} `;
+    p2 += `${sx(xMax).toFixed(1)},${sy(0).toFixed(1)} `;
+    shadePts = `DOUBLE:${p1}|${p2}`;
+    labelText = `P(|t| &gt; ${Math.abs(val)})`;
+  }
+
+  const mx = sx(zv);
+  const myTop = sy(normY(zv)) - 1;
+  const myBot = sy(0);
+  let shadeHTML = '';
+  if (shadePts.startsWith('DOUBLE:')) {
+    const [p1,p2] = shadePts.slice(7).split('|');
+    shadeHTML = `<polygon points="${p1}" fill="#1a4d8f44"/><polygon points="${p2}" fill="#1a4d8f44"/>`;
+  } else {
+    shadeHTML = `<polygon points="${shadePts}" fill="#1a4d8f44"/>`;
+  }
+
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:${W}px">
+    ${shadeHTML}
+    <polyline points="${linePts}" fill="none" stroke="#1a4d8f" stroke-width="1.8"/>
+    <line x1="${mx.toFixed(1)}" y1="${myTop.toFixed(1)}" x2="${mx.toFixed(1)}" y2="${myBot.toFixed(1)}" stroke="#1a4d8f" stroke-width="1.5"/>
+    <rect x="0" y="${CURVE_H+2}" width="${W}" height="18" fill="white"/>
+    <text x="${W/2}" y="${CURVE_H+13}" text-anchor="middle" font-family="Arial" font-size="9" fill="#1a4d8f" font-weight="bold">${labelText}</text>
+  </svg>`;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TAB SWITCHING
+══════════════════════════════════════════════════════════ */
+function switchTab(name) {
+  document.querySelectorAll('.tbl-tab').forEach((t,i) => {
+    t.classList.toggle('active', ['z','t','chi'][i] === name);
+  });
+  document.querySelectorAll('.tbl-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-'+name).classList.add('active');
+}
+
+/* ══════════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════ */
+window.addEventListener('load', () => {
+  renderZTable();
+  renderTTable();
+  renderChiTable();
+});
+</script>
+
+<div class="pg-footer">
+  <span>Based on the AP Statistics 2026 Exam Reference Sheet &nbsp;·&nbsp; For instructional use</span>
+  <span>Interactive reference — click any row to expand</span>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
