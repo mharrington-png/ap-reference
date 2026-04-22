@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Statistics Unit Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style>
+:root {
+  --bg: #f0ede8;
+  --card: #ffffff;
+  --border: #e8e4de;
+  --text: #111418;
+  --sub: #6b6760;
+  --ink: #374151;
+  --hdr: #111418;
+  --accent: #c0392b;
+
+  --u1: #1e5fa8; --u2: #1a7a5e; --u3: #7a4420; --u4: #5c35a0;
+  --u5: #a06820; --u6: #1a7a5e; --u7: #a02020; --u8: #3a6e20; --u9: #20408a;
+
+  --conf: #14663a; --conf-light: #eaf4ee; --conf-border: #9ed4b0;
+  --rev:  #8a3010; --rev-light:  #fdf1ec; --rev-border:  #f0b898;
+
+  --radius: 12px;
+  --radius-sm: 7px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────────── */
+.hdr {
+  background: var(--hdr);
+  color: #fff;
+  padding: 22px 28px 0;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 1px 0 rgba(255,255,255,.06);
+}
+.hdr-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.hdr-brand h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.2px;
+  line-height: 1.2;
+}
+.hdr-brand p {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,.4);
+  margin-top: 2px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+.hdr-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+}
+#search {
+  flex: 1;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color .15s, background .15s;
+}
+#search::placeholder { color: rgba(255,255,255,.3); }
+#search:focus { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.3); }
+.hdr-btn {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.7);
+  padding: 7px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.hdr-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
+.search-count { font-size: 11px; color: rgba(255,255,255,.35); white-space: nowrap; min-width: 80px; }
+
+/* ─── TOOLBAR (filters + sort) ───────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-bottom: 14px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding-top: 12px;
+}
+.toolbar-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-right: 2px;
+}
+.tb-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,.12);
+  margin: 0 6px;
+}
+.filter-btn {
+  padding: 5px 13px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: transparent;
+  color: rgba(255,255,255,.55);
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+}
+.filter-btn:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+.filter-btn.active { background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.4); }
+.filter-btn.conf-filter.active { background: #14663a22; border-color: #9ed4b0; color: #9ed4b0; }
+.filter-btn.rev-filter.active  { background: #8a301022; border-color: #f0b898; color: #f0b898; }
+.sort-btn {
+  padding: 5px 13px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: transparent;
+  color: rgba(255,255,255,.55);
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+}
+.sort-btn:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+.sort-btn.active { background: rgba(255,255,255,.15); color: #fff; border-color: rgba(255,255,255,.4); }
+
+/* ─── MAIN ────────────────────────────────────────────────────────── */
+.main { max-width: 880px; margin: 0 auto; padding: 20px 14px 60px; }
+
+/* ─── BIG IDEAS LEGEND ────────────────────────────────────────────── */
+.legend {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 18px 22px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.legend-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 18px;
+  display: block;
+}
+.legend-k3 {
+  position: relative;
+  width: 320px;
+  height: 160px;
+  margin: 0 auto;
+}
+.legend-k3 svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.bi-node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 22px;
+  border: 1.5px solid;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 1;
+  line-height: 1.2;
+}
+.bi-node .bi-code {
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: .3px;
+}
+.bi-node .bi-desc {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: .8;
+}
+.bi-var { color: #1e5fa8; border-color: #b8d0ee; background: #f0f5fc; }
+.bi-unc { color: #5c35a0; border-color: #ccc2ec; background: #f5f2fc; }
+.bi-dat { color: #1a7a5e; border-color: #b0d8cc; background: #eef8f5; }
+
+/* ─── PROGRESS ────────────────────────────────────────────────────── */
+.progress-bar-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 13px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.prog-label { font-size: 11px; font-weight: 600; color: var(--sub); text-transform: uppercase; letter-spacing: .5px; flex-shrink: 0; }
+.prog-track {
+  flex: 1;
+  min-width: 120px;
+  height: 5px;
+  background: #e8e4de;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.prog-fill {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  transition: width .4s ease;
+}
+.prog-fill.conf { background: var(--conf); }
+.prog-fill.rev  { background: var(--rev); }
+.prog-stats { display: flex; gap: 14px; font-size: 12px; }
+.prog-stat { display: flex; align-items: center; gap: 5px; color: var(--sub); }
+.prog-stat .dot { width: 7px; height: 7px; border-radius: 50%; }
+.prog-stat strong { color: var(--text); font-weight: 700; }
+
+/* ─── UNIT CARD ───────────────────────────────────────────────────── */
+.unit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow .18s, border-left-color .18s;
+}
+.unit-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.07); }
+.unit-card.hidden { display: none; }
+.topic-item.hidden { display: none; }
+
+.unit-hdr {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  cursor: pointer;
+  user-select: none;
+  gap: 14px;
+}
+.unit-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  color: #fff;
+  flex-shrink: 0;
+  font-family: 'Manrope', monospace;
+}
+.unit-title-group { flex: 1; min-width: 0; }
+.unit-name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text);
+}
+.unit-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+.weight-tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sub);
+  background: #f0ede8;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.bi-tag-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid;
+}
+.bi-pill-var { color: #1e5fa8; border-color: #c5d9f0; background: #f0f5fc; }
+.bi-pill-unc { color: #5c35a0; border-color: #d5ccf0; background: #f5f2fc; }
+.bi-pill-dat { color: #1a7a5e; border-color: #c0e0d8; background: #eef8f5; }
+.unit-mini {
+  font-size: 11px;
+  color: var(--sub);
+  white-space: nowrap;
+}
+.unit-mini .mc { color: var(--conf); font-weight: 700; }
+.unit-mini .mr { color: var(--rev);  font-weight: 700; }
+.unit-chev {
+  color: #ccc;
+  font-size: 10px;
+  transition: transform .22s ease;
+  flex-shrink: 0;
+}
+.unit-card.open .unit-chev { transform: rotate(180deg); }
+.unit-card.open { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+
+/* ─── UNIT BODY ───────────────────────────────────────────────────── */
+.unit-body { display: none; border-top: 1px solid #f2efea; }
+.unit-card.open .unit-body { display: block; }
+
+/* ─── TOPIC ROWS ──────────────────────────────────────────────────── */
+.topics-wrap {}
+.topic-item { border-bottom: 1px solid #f4f2ee; }
+.topic-item:last-child { border-bottom: none; }
+
+.topic-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .12s;
+}
+.topic-hdr:hover { background: #faf9f7; }
+
+.status-ring {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  border: 2px solid #d8d4ce;
+  background: #fff;
+  flex-shrink: 0;
+  transition: all .18s;
+}
+.status-ring.confident { border-color: var(--conf); background: var(--conf); }
+.status-ring.review    { border-color: var(--rev);  background: var(--rev); }
+
+.topic-id-lbl {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #bbb;
+  min-width: 28px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.topic-name-lbl {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  flex: 1;
+  line-height: 1.4;
+}
+.topic-chev {
+  font-size: 9px;
+  color: #ccc;
+  transition: transform .18s ease;
+  flex-shrink: 0;
+}
+.topic-item.open .topic-chev { transform: rotate(180deg); }
+
+/* ─── TOPIC BODY ──────────────────────────────────────────────────── */
+.topic-body {
+  display: none;
+  padding: 2px 18px 16px 57px;
+  background: #faf9f7;
+}
+.topic-item.open .topic-body { display: block; }
+
+.ek-list {
+  list-style: none;
+  margin-bottom: 13px;
+  border-left: 2px solid #e8e4de;
+  padding-left: 14px;
+}
+.ek-list li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+  padding: 3px 0;
+}
+.ek-list li + li { border-top: 1px dashed #eee; padding-top: 5px; margin-top: 2px; }
+
+.topic-tip {
+  display: flex;
+  gap: 10px;
+  background: #fffbec;
+  border: 1px solid #edd97a;
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  margin-bottom: 13px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #4a3800;
+}
+.tip-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+
+/* ─── FLAG ROW ────────────────────────────────────────────────────── */
+.flag-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flag-lbl {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  color: #bbb;
+  text-transform: uppercase;
+  margin-right: 2px;
+}
+.fbtn {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  color: var(--sub);
+  transition: all .13s;
+  line-height: 1.3;
+}
+.fbtn:hover { border-color: #aaa; color: var(--text); }
+.fbtn.conf-active {
+  background: var(--conf-light);
+  border-color: var(--conf-border);
+  color: var(--conf);
+  font-weight: 600;
+}
+.fbtn.rev-active {
+  background: var(--rev-light);
+  border-color: var(--rev-border);
+  color: var(--rev);
+  font-weight: 600;
+}
+.fbtn.clr {
+  font-size: 11px;
+  color: #ccc;
+  border-color: transparent;
+  background: transparent;
+  padding: 5px 6px;
+}
+.fbtn.clr:hover { color: var(--sub); border-color: var(--border); }
+
+/* ─── PANELS (SPDC + Formulas) ────────────────────────────────────── */
+.unit-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 14px 16px;
+  border-top: 1px solid #f0ede8;
+  background: #faf9f7;
+}
+@media (max-width: 560px) { .unit-panels { grid-template-columns: 1fr; } }
+
+.panel {
+  border: 1px solid #e8e4de;
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+  background: #fff;
+}
+.panel-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 10px;
+}
+.spdc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.spdc-cell {
+  background: #faf9f7;
+  border-radius: 5px;
+  padding: 8px 10px;
+  border: 1px solid #eeebe6;
+}
+.spdc-step {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.spdc-text { font-size: 11.5px; color: var(--sub); line-height: 1.45; }
+.formula-list { display: flex; flex-direction: column; gap: 0; }
+.fline {
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #f0ede8;
+  line-height: 1.8;
+}
+.fline:last-child { border-bottom: none; }
+
+/* ─── SEARCH HIGHLIGHT ────────────────────────────────────────────── */
+mark { background: #ffe680; color: inherit; border-radius: 2px; padding: 0 1px; }
+
+/* ─── EMPTY STATE ─────────────────────────────────────────────────── */
+.empty {
+  text-align: center;
+  padding: 56px 20px;
+  color: var(--sub);
+  font-size: 14px;
+  display: none;
+}
+.empty-icon { font-size: 32px; margin-bottom: 12px; }
+
+/* ─── FOOTER ──────────────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  color: #bbb;
+  font-size: 11px;
+  margin-top: 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  letter-spacing: .3px;
+}
+
+/* ─── UNIT COLOR ACCENTS ──────────────────────────────────────────── */
+.u1.open,.u1:hover { border-left-color: var(--u1); } .u1 .unit-badge { background: var(--u1); }
+.u2.open,.u2:hover { border-left-color: var(--u2); } .u2 .unit-badge { background: var(--u2); }
+.u3.open,.u3:hover { border-left-color: var(--u3); } .u3 .unit-badge { background: var(--u3); }
+.u4.open,.u4:hover { border-left-color: var(--u4); } .u4 .unit-badge { background: var(--u4); }
+.u5.open,.u5:hover { border-left-color: var(--u5); } .u5 .unit-badge { background: var(--u5); }
+.u6.open,.u6:hover { border-left-color: var(--u6); } .u6 .unit-badge { background: var(--u6); }
+.u7.open,.u7:hover { border-left-color: var(--u7); } .u7 .unit-badge { background: var(--u7); }
+.u8.open,.u8:hover { border-left-color: var(--u8); } .u8 .unit-badge { background: var(--u8); }
+.u9.open,.u9:hover { border-left-color: var(--u9); } .u9 .unit-badge { background: var(--u9); }
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-top">
+    <div class="hdr-brand">
+      <h1>AP Statistics Unit Overview</h1>
+      <p>Middlesex School</p>
+    </div>
+    <div class="hdr-search">
+      <input type="text" id="search" placeholder="Search topics, formulas, vocabulary…" autocomplete="off">
+      <button class="hdr-btn" onclick="clearSearch()">Clear</button>
+      <span class="search-count" id="search-count"></span>
+    </div>
+  </div>
+  <div class="toolbar">
+    <span class="toolbar-label">Show</span>
+    <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn conf-filter" data-filter="confident" onclick="setFilter('confident',this)">✓ Confident</button>
+    <button class="filter-btn rev-filter"  data-filter="review"    onclick="setFilter('review',this)">✗ Needs review</button>
+    <button class="filter-btn" data-filter="untagged" onclick="setFilter('untagged',this)">Untagged</button>
+    <div class="tb-divider"></div>
+    <span class="toolbar-label">Sort</span>
+    <button class="sort-btn" id="sort-btn" onclick="toggleSort()">By exam weight ↕</button>
+    <div class="tb-divider"></div>
+    <button class="hdr-btn" onclick="resetAll()" style="font-size:11px;padding:5px 10px;">Reset flags</button>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- Big Ideas Legend: K3 triangle -->
+  <div class="legend">
+    <span class="legend-label">Big Ideas of the Course</span>
+    <div class="legend-k3" id="legend-k3">
+      <!-- SVG edges drawn by JS after layout -->
+      <svg id="k3-svg" aria-hidden="true"></svg>
+      <!-- Top: UNC -->
+      <div class="bi-node bi-unc" style="left:50%;top:14%">
+        <span class="bi-code">UNC</span>
+        <span class="bi-desc">Quantifying Uncertainty</span>
+      </div>
+      <!-- Bottom-left: VAR -->
+      <div class="bi-node bi-var" style="left:10%;top:70%">
+        <span class="bi-code">VAR</span>
+        <span class="bi-desc">Variation and Distributions</span>
+      </div>
+      <!-- Bottom-right: DAT -->
+      <div class="bi-node bi-dat" style="left:90%;top:70%">
+        <span class="bi-code">DAT</span>
+        <span class="bi-desc">Data-Based Decisions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap">
+    <span class="prog-label">Progress</span>
+    <div class="prog-track">
+      <div class="prog-fill rev"  id="pb-rev"  style="width:0%"></div>
+      <div class="prog-fill conf" id="pb-conf" style="width:0%"></div>
+    </div>
+    <div class="prog-stats">
+      <div class="prog-stat"><span class="dot" style="background:var(--conf)"></span><strong id="pc">0</strong> confident</div>
+      <div class="prog-stat"><span class="dot" style="background:var(--rev)"></span><strong id="pr">0</strong> review</div>
+      <div class="prog-stat" style="color:#ccc">/ <span id="pt">0</span> topics</div>
+    </div>
+  </div>
+
+  <div id="container"></div>
+  <div class="empty" id="empty">
+    <div class="empty-icon">∅</div>
+    No topics match the current filter.
+  </div>
+  <p class="footer">AP Statistics &nbsp;·&nbsp; Middlesex School</p>
+</main>
+
+<script>
+// ─── DATA ─────────────────────────────────────────────────────────────────
+const UNITS=[{num:1,name:"Exploring One-Variable Data",weight:"15–23%",weightMid:19,bigIdeas:["VAR","UNC"],mm:"Math Medic Units 1–2",topics:[{id:"1.1",name:"Introducing Statistics: What Can We Learn from Data?",ek:["Numbers may convey meaningful information <strong>when placed in context</strong>. A number without context is just a number."]},{id:"1.2",name:"The Language of Variation: Variables",ek:["A <strong>variable</strong> is a characteristic that changes from one individual to another.","A <strong>categorical variable</strong> takes on values that are category names or group labels.","A <strong>quantitative variable</strong> takes on numerical values for a measured or counted quantity — it can be <strong>discrete</strong> (countable) or <strong>continuous</strong> (infinite values, no gaps)."]},{id:"1.3",name:"Representing a Categorical Variable with Tables",ek:["A <strong>frequency table</strong> gives counts; a <strong>relative frequency table</strong> gives proportions. Percentages, rates, and relative frequencies all convey the same information.","Counts and relative frequencies can be used to justify claims about categorical data in context."],tip:"Proportions, percentages, and rates are interchangeable — the AP exam may use any of these. Know how to move between them fluently."},{id:"1.4",name:"Representing a Categorical Variable with Graphs",ek:["<strong>Bar charts</strong> display frequencies or relative frequencies; bar height = count or proportion in that category.","Segmented bar graphs, side-by-side bar graphs, and mosaic plots compare distributions of a categorical variable across groups."]},{id:"1.5",name:"Representing a Quantitative Variable with Graphs",ek:["<strong>Histograms</strong> show the count or proportion in each interval; individual values are not visible.","<strong>Stemplots</strong> split values into stems and leaves, preserving every individual value.","<strong>Dotplots</strong> represent each observation as a dot on a number line.","Cumulative relative frequency graphs are used to find and interpret percentiles."]},{id:"1.6",name:"Describing the Distribution of a Quantitative Variable",ek:["Describe quantitative distributions using <strong>SOCS + context</strong>: Shape, Outliers, Center, Spread.","Shapes: <strong>skewed right</strong> (right tail longer, mean &gt; median), <strong>skewed left</strong>, <strong>symmetric</strong>, <strong>bimodal</strong>.","An <strong>outlier</strong> is a data point unusually small or large relative to the rest of the data.","A <strong>gap</strong> is a region with no observed data; a <strong>cluster</strong> is a concentration of data usually separated by gaps.","Descriptive statistics describes the sample — it does not by itself generalize to a population."],tip:"Students most often skip 'Outliers' and 'context.' A response addressing only shape and center is incomplete. Always use hedging language: 'roughly symmetric,' 'approximately normal.'"},{id:"1.7",name:"Summary Statistics for a Quantitative Variable",ek:["A <strong>statistic</strong> is a numerical summary of sample data.","<strong>Mean</strong> x̄ = Σx/n; <strong>Median</strong> = middle value when ordered. <strong>Q1</strong> = median of the lower half; <strong>Q3</strong> = median of the upper half.","The <strong>pth percentile</strong> is the value with p% of data ≤ it. IQR = Q3 − Q1.","Mean, SD, and range are <strong>nonresistant</strong> (greatly affected by outliers). Median and IQR are <strong>resistant</strong>.","Use mean/SD for symmetric distributions; use median/IQR for skewed distributions or data with outliers."],tip:"'Resistant' vs. 'nonresistant' appears frequently on the MC section. Outliers pull the mean and SD sharply; the median barely moves."},{id:"1.8",name:"Graphical Representations of Summary Statistics",ek:["The <strong>five-number summary</strong>: min, Q1, median, Q3, max.","A <strong>boxplot</strong> displays the five-number summary; outliers are plotted individually beyond the whiskers.","Symmetric distribution: mean ≈ median. Skewed right: mean &gt; median. Skewed left: mean &lt; median."]},{id:"1.9",name:"Comparing Distributions of a Quantitative Variable",ek:["Any graphical display (side-by-side boxplots, histograms, etc.) can compare distributions.","When comparing, always use <strong>context and comparative language</strong>: 'the distribution of A has a higher median than B' — not just separate descriptions."],tip:"Simply describing each distribution without comparing earns partial credit. Use explicit comparative language every time."},{id:"1.10",name:"The Normal Distribution",ek:["A <strong>parameter</strong> is a numerical summary of a population (vs. a statistic from a sample).","A <strong>normal distribution</strong> N(μ, σ) is mound-shaped and symmetric about μ.","<strong>Empirical rule (68–95–99.7)</strong>: ≈68% within 1σ, ≈95% within 2σ, ≈99.7% within 3σ.","A <strong>z-score</strong> = (x − μ)/σ measures standard deviations from the mean.","<strong>normalcdf(lo, hi, μ, σ)</strong> → proportion; <strong>invNorm(area, μ, σ)</strong> → boundary value."],tip:"Know which function to use: 'find the proportion' → normalcdf; 'find the value' → invNorm. Mixing these up is one of the most common exam errors."}],formulas:["\\(z = \\dfrac{x - \\mu}{\\sigma}\\)","\\(s = \\sqrt{\\dfrac{\\sum(x_i - \\bar{x})^2}{n-1}}\\)","\\(\\text{IQR} = Q_3 - Q_1\\)"]},{num:2,name:"Exploring Two-Variable Data",weight:"5–7%",weightMid:6,bigIdeas:["VAR","DAT"],mm:"Math Medic Unit 3",topics:[{id:"2.1",name:"Introducing Statistics: Are Variables Related?",ek:["Apparent patterns and associations in data may be random or not."]},{id:"2.2",name:"Representing Two Categorical Variables",ek:["Side-by-side bar graphs, segmented bar graphs, and mosaic plots display two categorical variables.","A <strong>two-way (contingency) table</strong> summarizes two categorical variables simultaneously.","A <strong>joint relative frequency</strong> = cell count / grand total."]},{id:"2.3",name:"Statistics for Two Categorical Variables",ek:["<strong>Marginal relative frequencies</strong> = row or column totals / grand total.","A <strong>conditional relative frequency</strong> is computed relative to a specific row or column — used to detect association."],tip:"Association exists when conditional distributions differ across groups. If the column % are similar regardless of which group you condition on, the variables are likely not associated."},{id:"2.4",name:"Representing the Relationship Between Two Quantitative Variables",ek:["A <strong>scatterplot</strong> shows two values per observation; explanatory variable on x-axis, response on y-axis.","Describe with <strong>DUFS + context</strong>: Direction, Unusual features, Form, Strength.","<strong>Positive association</strong>: as x increases, y tends to increase. Negative: opposite."]},{id:"2.5",name:"Correlation",ek:["The <strong>correlation r</strong> measures direction and strength of the <em>linear</em> association; always between −1 and 1, unit-free.","A strong r does not mean a linear model is appropriate — always check scatterplot and residual plot.","<strong>Correlation ≠ causation.</strong>"],tip:"r only measures linear association. A perfectly curved relationship could have r ≈ 0. Never use r to describe a non-linear relationship."},{id:"2.6",name:"Linear Regression Models",ek:["<strong>ŷ = a + bx</strong>: slope b is the change in predicted y per unit increase in x; y-intercept a is predicted y when x = 0.","<strong>Extrapolation</strong>: predicting outside the range of data — unreliable.","r² = proportion of variation in y explained by the linear relationship with x."]},{id:"2.7",name:"Residuals",ek:["<strong>Residual = actual − predicted</strong> (y − ŷ). Positive residual: point is above the line.","<strong>Random scatter</strong> in a residual plot → linear model is appropriate. A curved or fanning pattern → try a transformation."],tip:"When asked to interpret a residual, state the actual value, the predicted value, and whether the point falls above or below the line."},{id:"2.8",name:"Least Squares Regression",ek:["The <strong>LSRL minimizes the sum of squared residuals</strong> and always passes through (x̄, ȳ).","b = r·(sᵧ/sₓ); a = ȳ − b·x̄.","r² template: '[r²×100]% of the variation in [y] is explained by the linear relationship with [x].'"],tip:"Don't conflate high r² with 'the model fits well' — always check the residual plot."},{id:"2.9",name:"Analyzing Departures from Linearity",ek:["<strong>Outlier</strong> in regression: large residual. <strong>High-leverage point</strong>: extreme x-value. <strong>Influential point</strong>: removing it changes slope, intercept, or r substantially.","<strong>Transformations</strong> (log, square root) can linearize non-linear data. Choose the model with higher r² and most random residual plot."]}],formulas:["\\(\\hat{y} = a + bx\\)","\\(b = r \\cdot \\dfrac{s_y}{s_x}, \\quad a = \\bar{y} - b\\bar{x}\\)","\\(\\text{Residual} = y - \\hat{y}\\)","\\(r^2 = \\text{proportion of variation in } y \\text{ explained by } x\\)"]},{num:3,name:"Collecting Data",weight:"12–15%",weightMid:13.5,bigIdeas:["VAR","DAT"],mm:"Math Medic Unit 4",topics:[{id:"3.1",name:"Introducing Statistics: Do the Data Tell the Truth?",ek:["Methods for data collection that do not rely on chance result in untrustworthy conclusions."]},{id:"3.2",name:"Introduction to Planning a Study",ek:["An <strong>observational study</strong> does not impose treatments — can show association, cannot establish causation.","An <strong>experiment</strong> assigns treatments — can establish causation with random assignment.","Generalization is only valid to the population from which the sample was <em>randomly selected</em>."]},{id:"3.3",name:"Random Sampling and Data Collection",ek:["<strong>SRS</strong>: every group of a given size has equal chance of selection (label → randomize → select).","<strong>Stratified</strong>: homogeneous strata → SRS from each ('sample some from all groups').","<strong>Cluster</strong>: heterogeneous clusters → select whole clusters ('sample all from some groups').","<strong>Systematic</strong>: random start, then every kth individual."],tip:"Stratified vs. cluster is a classic MC trap. Stratified: homogeneous groups, take some from each. Cluster: heterogeneous groups, take entire groups."},{id:"3.4",name:"Potential Problems with Sampling",ek:["<strong>Voluntary response bias</strong>: volunteers biased toward extreme opinions.","<strong>Undercoverage</strong>: part of the population less likely to be included.","<strong>Nonresponse bias</strong>: selected individuals refuse or can't be reached.","<strong>Response bias</strong>: wording of question, interviewer effects, or self-reporting of sensitive behaviors."]},{id:"3.5",name:"Introduction to Experimental Design",ek:["A <strong>confounding variable</strong> is related to the explanatory variable AND influences the response.","A <strong>well-designed experiment</strong>: ① Comparison ② Random assignment ③ Replication ④ Control.","<strong>Single-blind</strong>: subjects don't know treatment. <strong>Double-blind</strong>: neither subjects nor researchers know.","<strong>Placebo effect</strong>: subjects respond to a fake treatment — blinding controls for this.","<strong>Matched pairs</strong>: each subject gets both treatments in randomized order (block of size 2)."],tip:"Be ready to identify the confounding variable and explain why it prevents a causal conclusion. Name it, explain its relationship to both the explanatory and response variables."},{id:"3.6",name:"Selecting an Experimental Design",ek:["<strong>Randomized block design</strong>: group similar units into blocks; randomly assign treatments within blocks. Reduces known variability.","Each design has trade-offs depending on the research question and available resources."]},{id:"3.7",name:"Inference and Experiments",ek:["<strong>Random assignment</strong> → can conclude differences were <em>caused</em> by treatment.","<strong>Random sample</strong> → can generalize to the population. Random assignment alone does not guarantee this."],tip:"Two independent questions: (1) Random sample? → generalize to population. (2) Random assignment? → conclude causation."}],formulas:[]},{num:4,name:"Probability, Random Variables, and Probability Distributions",weight:"10–20%",weightMid:15,bigIdeas:["VAR","UNC"],mm:"Math Medic Units 5–6",topics:[{id:"4.1",name:"Introducing Statistics: Random and Non-Random Patterns?",ek:["Patterns in data do not necessarily mean that variation is non-random."]},{id:"4.2",name:"Estimating Probabilities Using Simulation",ek:["<strong>Simulation</strong> models random events so simulated outcomes closely match real-world outcomes (coins, dice, RNG, applets).","<strong>Law of Large Numbers</strong>: as the number of trials grows, simulated probabilities approach the true probability.","If P(result | claim is true) &lt; 5%, this is statistically significant evidence against the claim."]},{id:"4.3",name:"Introduction to Probability",ek:["The <strong>sample space</strong> is all possible non-overlapping outcomes.","If all outcomes equally likely: P(E) = # outcomes in E / total # outcomes.","Probability is always between 0 and 1. <strong>Complement rule</strong>: P(Aᶜ) = 1 − P(A)."]},{id:"4.4",name:"Mutually Exclusive Events",ek:["Two events are <strong>mutually exclusive (disjoint)</strong> if they cannot both occur: P(A ∩ B) = 0.","<strong>Addition rule for mutually exclusive events</strong>: P(A ∪ B) = P(A) + P(B)."]},{id:"4.5",name:"Conditional Probability",ek:["\\(P(A|B) = P(A \\cap B) / P(B)\\): probability of A given that B occurred.","<strong>General multiplication rule</strong>: \\(P(A \\cap B) = P(A) \\cdot P(B|A)\\)."]},{id:"4.6",name:"Independent Events and Unions of Events",ek:["A and B are <strong>independent</strong> if P(A|B) = P(A) — knowing B didn't change P(A).","If independent: P(A ∩ B) = P(A) · P(B).","<strong>General addition rule</strong>: P(A ∪ B) = P(A) + P(B) − P(A ∩ B)."],tip:"Mutually exclusive events with positive probabilities are DEPENDENT — knowing A happened guarantees B didn't. Mutually exclusive ≠ independent."},{id:"4.7",name:"Introduction to Random Variables and Probability Distributions",ek:["A <strong>discrete random variable</strong> takes a countable number of values, each assigned a probability; all probabilities sum to 1.","Describe probability distributions using shape, center, and spread — same language as data distributions."]},{id:"4.8",name:"Mean and Standard Deviation of Random Variables",ek:["<strong>Expected value</strong>: μₓ = Σ[x · P(x)] — the long-run average.","<strong>Standard deviation</strong>: σₓ = √[Σ(x − μₓ)² · P(x)]."]},{id:"4.9",name:"Combining Random Variables",ek:["μ<sub>X+Y</sub> = μₓ + μᵧ; μ<sub>X−Y</sub> = μₓ − μᵧ.","For <em>independent</em> X and Y: σ²<sub>X+Y</sub> = σ²<sub>X−Y</sub> = σ²ₓ + σ²ᵧ. <strong>Variances add; SDs do not.</strong>","For Y = a + bX: μᵧ = a + bμₓ and σᵧ = |b|·σₓ (shape unchanged)."],tip:"σ(X−Y) ≠ σₓ − σᵧ. When subtracting independent RVs, variances still ADD. This is one of the most frequently missed concepts."},{id:"4.10",name:"Introduction to the Binomial Distribution",ek:["A <strong>binomial RV</strong> X counts successes in n independent trials, each with probability of success p.","<strong>BINS conditions</strong>: Binary, Independent, Number of trials fixed, Same p.","P(X = k) = ₙCₖ · pᵏ · (1−p)ⁿ⁻ᵏ"]},{id:"4.11",name:"Parameters for Binomial Distributions",ek:["<strong>Mean</strong>: \\(\\mu_x = np\\). <strong>SD</strong>: \\(\\sigma_x = \\sqrt{np(1-p)}\\).","<strong>Large Counts condition</strong>: np ≥ 10 AND n(1−p) ≥ 10 → Normal approximation is valid.","<strong>10% condition</strong>: treat as independent if n ≤ 10% of N (sampling without replacement)."]},{id:"4.12",name:"The Geometric Distribution",ek:["A <strong>geometric RV</strong> X = trial number of the <em>first</em> success (minimum = 1).","\\(P(X = k) = (1-p)^{k-1} \\cdot p\\). Mean: \\(\\mu_x = 1/p\\). Shape: always skewed right."],tip:"Geometric counts trials UNTIL the first success — including the success trial. So X ≥ 1, and there's no upper bound on X."}],formulas:["\\(P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}\\)","\\(P(A \\cup B) = P(A)+P(B)-P(A \\cap B)\\)","\\(\\mu_X = \\sum x_i \\cdot P(x_i)\\)","\\(\\sigma^2_{X+Y} = \\sigma^2_X + \\sigma^2_Y \\quad \\text{[independent]}\\)","Binomial: \\(P(X=k) = \\binom{n}{k}p^k(1-p)^{n-k},\\; \\mu=np,\\; \\sigma=\\sqrt{np(1-p)}\\)","Geometric: \\(P(X=k) = (1-p)^{k-1}p,\\; \\mu=1/p\\)"]},{num:5,name:"Sampling Distributions",weight:"7–12%",weightMid:9.5,bigIdeas:["VAR","UNC"],mm:"Math Medic Unit 7",topics:[{id:"5.1",name:"Introducing Statistics: Why Is My Sample Not Like Yours?",ek:["Variation in statistics computed from samples taken from the same population may be random or not."]},{id:"5.2",name:"The Normal Distribution, Revisited",ek:["A <strong>continuous random variable</strong> can take any value in a domain; P(X = exact value) = 0.","Normal distributions are symmetric, bell-shaped, and described by μ and σ. Area = probability."]},{id:"5.3",name:"The Central Limit Theorem",ek:["A <strong>sampling distribution</strong> of a statistic is the distribution of all values of that statistic for all possible samples of a given size n.","<strong>CLT</strong>: when n ≥ 30, the sampling distribution of x̄ is approximately Normal — regardless of the population's shape."],tip:"CLT applies to the distribution of x̄ across many samples. It does NOT say the original data become normal."},{id:"5.4",name:"Biased and Unbiased Point Estimates",ek:["An estimator is <strong>unbiased</strong> if the mean of its sampling distribution = the population parameter.","A good estimator has <strong>low bias</strong> (accurate) and <strong>low variability</strong> (precise). Increasing n reduces variability."]},{id:"5.5",name:"Sampling Distributions for Sample Proportions",ek:["μ<sub>p̂</sub> = p and σ<sub>p̂</sub> = √(p(1−p)/n). Check <strong>10% condition</strong> when sampling without replacement.","Approximately Normal when <strong>Large Counts</strong> holds: np ≥ 10 AND n(1−p) ≥ 10."],tip:"Large Counts here uses the TRUE p (not p̂), because we're considering all possible samples from a population where p is known."},{id:"5.6",name:"Sampling Distributions for Differences in Sample Proportions",ek:["μ<sub>p̂₁−p̂₂</sub> = p₁ − p₂. σ<sub>p̂₁−p̂₂</sub> = √(p₁(1−p₁)/n₁ + p₂(1−p₂)/n₂).","Approximately Normal when Large Counts holds for both groups."]},{id:"5.7",name:"Sampling Distributions for Sample Means",ek:["μ<sub>x̄</sub> = μ and σ<sub>x̄</sub> = σ/√n. Check 10% condition when sampling without replacement.","Approximately Normal if population ≈ Normal, OR n ≥ 30 (CLT)."]},{id:"5.8",name:"Sampling Distributions for Differences in Sample Means",ek:["μ<sub>x̄₁−x̄₂</sub> = μ₁ − μ₂. σ<sub>x̄₁−x̄₂</sub> = √(σ₁²/n₁ + σ₂²/n₂).","Approximately Normal when both populations ≈ Normal or both n ≥ 30 (CLT)."]}],formulas:["\\(\\mu_{\\hat{p}} = p \\qquad \\sigma_{\\hat{p}} = \\sqrt{\\dfrac{p(1-p)}{n}}\\)","\\(\\mu_{\\bar{x}} = \\mu \\qquad \\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}}\\)","\\(z = \\dfrac{\\hat{p}-p}{\\sigma_{\\hat{p}}} \\qquad z = \\dfrac{\\bar{x}-\\mu}{\\sigma_{\\bar{x}}}\\)"]},{num:6,name:"Inference for Categorical Data: Proportions",weight:"12–15%",weightMid:13.5,bigIdeas:["UNC","DAT"],mm:"Math Medic Units 8–9",spdc:{state:"Define p (or p₁−p₂) in context; write H₀ and Hₐ; state significance level α",plan:"Name procedure (one/two-proportion z-test or interval); verify: Random, 10% if applicable, Large Counts",do:"\\(z = \\dfrac{\\hat{p}-p_0}{\\sqrt{p_0(1-p_0)/n}}\\); find p-value; two-sided: multiply by 2",conclude:"Interpret p-value; make decision (reject/fail to reject H₀); write conclusion in context"},topics:[{id:"6.1",name:"Introducing Statistics: Why Be Normal?",ek:["Variation in shapes of data distributions may be random or not."]},{id:"6.2",name:"Constructing a Confidence Interval for a Population Proportion",ek:["<strong>Conditions</strong>: ① Random ② 10% condition (n ≤ 0.10N, only when sampling without replacement) ③ Large Counts: np̂ ≥ 10 and n(1−p̂) ≥ 10.","<strong>One-proportion z-interval</strong>: p̂ ± z*·√(p̂(1−p̂)/n).","<strong>Minimum sample size</strong>: solve M.E. formula for n; use p̂ = 0.5 if unknown; always round UP."],tip:"The 10% condition does NOT apply in randomized experiments — only when sampling without replacement from a finite population. This is one of the most commonly misapplied conditions."},{id:"6.3",name:"Justifying a Claim Based on a CI for a Proportion",ek:["Interpretation: <strong>'We are __% confident that the interval from A to B captures the true [p in context].'</strong>","Confidence level: in repeated sampling, about __% of intervals would capture the true p.","Higher confidence level → wider interval. Larger n → narrower interval."],tip:"'There is a 95% probability that p is between A and B' is wrong — p is a fixed value. Say 'we are 95% confident the interval captures p.'"},{id:"6.4",name:"Setting Up a Test for a Population Proportion",ek:["H₀ always contains an equality: <strong>H₀: p = p₀</strong>.","One-sided Hₐ: p &lt; p₀ or p &gt; p₀. Two-sided Hₐ: p ≠ p₀."]},{id:"6.5",name:"Interpreting p-Values",ek:["A <strong>p-value</strong> = P(result as extreme or more extreme | H₀ is true).","Template: <strong>'Assuming H₀ is true (p = __), there is a __ probability of getting a p̂ of __ or more extreme purely by chance.'</strong>"],tip:"The p-value is NOT the probability that H₀ is true. It's the probability of the data (or more extreme) given H₀. This distinction is tested frequently."},{id:"6.6",name:"Concluding a Test for a Population Proportion",ek:["p-value ≤ α → <strong>reject H₀</strong>, convincing evidence for Hₐ in context.","p-value &gt; α → <strong>fail to reject H₀</strong>, not convincing evidence for Hₐ in context.","A significance test can never <em>prove</em> H₀ is true — only fail to find evidence against it."]},{id:"6.7",name:"Potential Errors When Performing Tests",ek:["<strong>Type I error</strong>: H₀ is true, but we reject it. P(Type I) = α.","<strong>Type II error</strong>: Hₐ is true, but we fail to reject H₀. P(Type II) = 1 − Power.","<strong>Power</strong> = P(reject H₀ | Hₐ is true). Increases when: n↑, α↑, or true parameter is farther from H₀."],tip:"Write Type I and Type II errors in context — explicitly state what each error means for the specific scenario, not just 'reject when you shouldn't.'"},{id:"6.8",name:"Confidence Intervals for the Difference of Two Proportions",ek:["Conditions × 2: independent random samples (or random assignment), 10% × 2 (if applicable), Large Counts × 2.","(+, +) interval → p₁ &gt; p₂; (−, −) → p₁ &lt; p₂; (−, +) → no convincing evidence of a difference."]},{id:"6.9",name:"Justifying a Claim Based on a CI for a Difference of Proportions",ek:["If 0 is in the interval, there is no convincing evidence of a difference between the two proportions.","Interpretation: 'We are __% confident the interval captures the true difference in [p₁ context] and [p₂ context].'"]},{id:"6.10",name:"Setting Up a Test for a Difference of Two Proportions",ek:["<strong>H₀: p₁ − p₂ = 0</strong> (i.e., p₁ = p₂). Hₐ: difference is &lt;, &gt;, or ≠ 0."]},{id:"6.11",name:"Carrying Out a Test for the Difference of Two Proportions",ek:["Test uses <strong>pooled proportion</strong> p̂_c = (X₁+X₂)/(n₁+n₂) — because H₀ says p₁ = p₂."],tip:"Two-proportion z-<em>test</em> uses pooled p̂_c. Two-proportion z-<em>interval</em> does NOT pool. Using pooled proportions in an interval is an error."}],formulas:["1-prop z-interval: \\(\\hat{p} \\pm z^* \\sqrt{\\dfrac{\\hat{p}(1-\\hat{p})}{n}}\\)","1-prop z-test: \\(z = \\dfrac{\\hat{p}-p_0}{\\sqrt{p_0(1-p_0)/n}}\\)","2-prop z-interval: \\((\\hat{p}_1-\\hat{p}_2) \\pm z^*\\sqrt{\\dfrac{\\hat{p}_1(1-\\hat{p}_1)}{n_1}+\\dfrac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}\\)","2-prop z-test: uses pooled \\(\\hat{p}_c = \\dfrac{X_1+X_2}{n_1+n_2}\\)"]},{num:7,name:"Inference for Quantitative Data: Means",weight:"10–18%",weightMid:14,bigIdeas:["UNC","DAT"],mm:"Math Medic Units 10–11",spdc:{state:"Define μ (or μ_diff, or μ₁−μ₂) in context; write H₀ and Hₐ; state α",plan:"Name procedure (one-sample t, paired t, or two-sample t); verify: Random, 10% if applicable, Normal/Large Sample",do:"\\(t = \\dfrac{\\bar{x}-\\mu_0}{s/\\sqrt{n}}\\); find p-value from t-distribution with correct df",conclude:"Interpret p-value; reject or fail to reject H₀; state conclusion in context"},topics:[{id:"7.1",name:"Introducing Statistics: Why Should I Worry About Error?",ek:["Random variation may result in errors in statistical inference."]},{id:"7.2",name:"Constructing a Confidence Interval for a Population Mean",ek:["When σ is unknown, use sample s and a <strong>t-distribution</strong> (broader than Normal, extra uncertainty from estimating σ).","<strong>Conditions</strong>: ① Random ② 10% (when sampling without replacement) ③ <strong>Normal/Large Sample</strong>: population ≈ Normal, OR n ≥ 30 (CLT), OR sample shows no strong skew/outliers.","df = n − 1; find t* from Table B (round DOWN if df not listed).","<strong>One-sample t-interval</strong>: \\(\\bar{x} \\pm t^* \\cdot (s/\\sqrt{n})\\)."],tip:"For n &lt; 30 where CLT doesn't guarantee normality, check a graph of the sample for strong skew or outliers. If it looks reasonably symmetric, proceed."},{id:"7.3",name:"Justifying a Claim About a Population Mean Based on a CI",ek:["Interpretation: 'We are __% confident the interval from A to B captures the true mean [context].'","If the H₀ value falls inside the CI, you would fail to reject H₀ at the corresponding α."]},{id:"7.4",name:"Setting Up a Test for a Population Mean",ek:["<strong>H₀: μ = μ₀</strong>; Hₐ: μ &lt; μ₀, μ &gt; μ₀, or μ ≠ μ₀.","For <strong>matched pairs</strong>: compute differences d = x₁ − x₂ first; H₀: μ_diff = 0. Define the direction of subtraction explicitly."]},{id:"7.5",name:"Carrying Out a Test for a Population Mean",ek:["Test statistic: \\(t = (\\bar{x} - \\mu_0)/(s/\\sqrt{n})\\) with df = n − 1.","p-value template: 'Assuming H₀ is true (μ = __), there is a __ probability of getting an x̄ of __ or more extreme purely by chance.'"]},{id:"7.6",name:"Confidence Intervals for the Difference of Two Means",ek:["Conditions: ① independent random samples ② 10% × 2 (when applicable) ③ Normal/Large Sample × 2.","Two-sample t-interval: \\((\\bar{x}_1 - \\bar{x}_2) \\pm t^* \\sqrt{s_1^2/n_1 + s_2^2/n_2}\\).","(+, +) → μ₁ &gt; μ₂; (−, −) → μ₁ &lt; μ₂; (−, +) → no convincing evidence of difference."]},{id:"7.7",name:"Justifying a Claim About the Difference of Two Means Based on a CI",ek:["If 0 is in the interval, no convincing evidence of a difference in population means.","Interpretation: 'We are __% confident the interval captures the true difference in mean [context].'"]},{id:"7.8",name:"Setting Up a Test for the Difference of Two Population Means",ek:["<strong>H₀: μ₁ − μ₂ = 0</strong>; Hₐ: &lt;, &gt;, or ≠ 0. Define which group is 1 and which is 2 explicitly."]},{id:"7.9",name:"Carrying Out a Test for the Difference of Two Population Means",ek:["\\(t = (\\bar{x}_1 - \\bar{x}_2)/\\sqrt{s_1^2/n_1 + s_2^2/n_2}\\); df from calculator (Welch's approximation)."],tip:"Paired vs. two-sample: Paired = one set of differences (subtract first, then average). Two-sample = truly independent groups (average separately). Wrong procedure costs points."},{id:"7.10",name:"Skills Focus: Selecting, Implementing, and Communicating Inference",ek:["<strong>CI ↔ test connection</strong>: if the H₀ value is inside a CI, you would fail to reject H₀ at the matching α.","To choose: (1) categorical or quantitative? (2) one or two samples? (3) paired or independent?"]}],formulas:["1-sample t-interval: \\(\\bar{x} \\pm t^* \\dfrac{s}{\\sqrt{n}},\\; df=n-1\\)","1-sample t-test: \\(t = \\dfrac{\\bar{x}-\\mu_0}{s/\\sqrt{n}}\\)","2-sample t-interval: \\((\\bar{x}_1-\\bar{x}_2) \\pm t^*\\sqrt{\\dfrac{s_1^2}{n_1}+\\dfrac{s_2^2}{n_2}}\\)","2-sample t-test: \\(t = \\dfrac{(\\bar{x}_1-\\bar{x}_2)}{\\sqrt{s_1^2/n_1+s_2^2/n_2}}\\)","Paired: compute \\(d_i = x_{1i}-x_{2i}\\), then 1-sample t on \\(\\bar{d}\\)"]},{num:8,name:"Inference for Categorical Data: Chi-Square",weight:"2–5%",weightMid:3.5,bigIdeas:["UNC","DAT"],mm:"Math Medic Unit 12",topics:[{id:"8.1",name:"Introducing Statistics: Are My Results Unexpected?",ek:["Variation between what we observe and what we expect may be random or not."]},{id:"8.2",name:"Setting Up a Chi-Square Goodness of Fit Test",ek:["<strong>χ² GOF test</strong>: 1 sample, 1 categorical variable — tests whether data match a claimed distribution.","H₀: claimed distribution is true. Hₐ: it is not. Expected counts: E = n × p. df = categories − 1.","<strong>Large Counts condition</strong>: all expected counts ≥ 5."]},{id:"8.3",name:"Carrying Out a Chi-Square Test for Goodness of Fit",ek:["\\(\\chi^2 = \\sum(O-E)^2/E\\); always ≥ 0; always right-tailed.","p-value = area to the right of χ² under the χ²(df) distribution.","<strong>Follow-up analysis</strong> (if significant): identify cell with largest (O−E)²/E component; state direction of discrepancy."]},{id:"8.4",name:"Expected Counts in Two-Way Tables",ek:["Expected count: <strong>E = (row total × column total) / grand total</strong>.","This formula assumes H₀ is true."]},{id:"8.5",name:"Setting Up Chi-Square Tests for Two-Way Tables",ek:["<strong>χ² homogeneity</strong>: 2+ independent samples, 1 variable; H₀: distributions same across groups.","<strong>χ² independence</strong>: 1 sample, 2 variables; H₀: no association between the variables.","df = (rows − 1)(cols − 1) for both."],tip:"Same mechanics, different framing. Homogeneity = multiple populations compared. Independence = one sample, testing association between two variables."},{id:"8.6",name:"Carrying Out Chi-Square Tests for Two-Way Tables",ek:["Same χ² formula, same right-tailed p-value.","Follow-up: identify the cell driving significance; state whether observed was higher or lower than expected."]},{id:"8.7",name:"Skills Focus: Selecting an Appropriate Chi-Square Procedure",ek:["<strong>GOF</strong>: 1 sample, 1 variable, compare to a claimed distribution.","<strong>Homogeneity</strong>: 2+ samples, 1 variable, compare distributions across groups.","<strong>Independence</strong>: 1 sample, 2 variables, test for association."]}],formulas:["\\(\\chi^2 = \\sum \\dfrac{(O-E)^2}{E}\\)","GOF: \\(E = np,\\quad df = \\text{categories}-1\\)","Table: \\(E = \\dfrac{(\\text{row total})(\\text{col total})}{\\text{grand total}},\\quad df=(r-1)(c-1)\\)"]},{num:9,name:"Inference for Quantitative Data: Slopes",weight:"2–5%",weightMid:3.5,bigIdeas:["UNC","DAT"],mm:"Math Medic Unit 13",spdc:{state:"β = true slope of the LSRL of [y] on [x]; H₀: β = 0; Hₐ: β ≠ 0 (or directional); state α",plan:"t-test for slope; verify LINER conditions (Linear, Independent, Normal, Equal SD, Random)",do:"\\(t = b/SE_b\\) (from computer output); df = n−2; find p-value",conclude:"Interpret p-value; reject or fail to reject H₀; state conclusion about linear relationship in context"},topics:[{id:"9.1",name:"Introducing Statistics: Do Those Points Align?",ek:["Variation in points' positions relative to a theoretical line may be random or non-random."]},{id:"9.2",name:"Confidence Intervals for the Slope of a Regression Model",ek:["Population model: μᵧ = α + βx. Sample LSRL: ŷ = a + bx. b estimates β; SE_b from computer output.","<strong>LINER conditions</strong>: Linear, Independent (n ≤ 0.10N), Normal (residuals ≈ normal), Equal SD (consistent spread in residual plot), Random.","<strong>t-interval for slope</strong>: \\(b \\pm t^* \\cdot SE_b\\); df = n − 2.","CI interpretation: 'We are __% confident that for each additional [x-unit], the true mean [y] increases/decreases by between A and B.'"],tip:"All values (b, SE_b, t, p-value) come from computer output — identify the slope row, not the intercept row. This distinction is tested every year."},{id:"9.3",name:"Justifying a Claim About the Slope Based on a CI",ek:["If 0 is in the CI for slope, there is no convincing evidence of a linear relationship between x and y in the population."]},{id:"9.4",name:"Setting Up a Test for the Slope",ek:["H₀: β = 0 (no linear relationship). Hₐ: β ≠ 0 (or directional).","Same LINER conditions as for the CI."]},{id:"9.5",name:"Carrying Out a Test for the Slope",ek:["Test statistic: \\(t = b / SE_b\\); df = n − 2.","p-value interpretation: 'Assuming no linear relationship (β = 0), there is a __ probability of getting a sample slope of __ or more extreme purely by chance.'"]},{id:"9.6",name:"Skills Focus: Selecting an Appropriate Inference Procedure",ek:["To select: (1) proportion, mean, or slope? (2) one or two groups? (3) paired or independent?","Slope inference generalizes a linear relationship from sample data to the population."]}],formulas:["t-interval for slope: \\(b \\pm t^* \\cdot SE_b,\\quad df=n-2\\)","t-test for slope: \\(t = \\dfrac{b}{SE_b}\\quad (H_0:\\beta=0)\\)"]}];
+
+// ─── STATE ─────────────────────────────────────────────────────────────────
+const LS = 'mxap2_';
+const getFlag = id => { try{return localStorage.getItem(LS+id);}catch(e){return null;} };
+const setFlag = (id,v) => { try{ v?localStorage.setItem(LS+id,v):localStorage.removeItem(LS+id); }catch(e){} };
+
+let currentFilter = 'all';
+let sortByWeight  = false;
+let currentQuery  = '';
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+const biPillClass = { VAR:'bi-pill-var', UNC:'bi-pill-unc', DAT:'bi-pill-dat' };
+
+function topicHTML(t) {
+  const flag = getFlag(t.id);
+  const dotCls = flag ? ` ${flag}` : '';
+  const ekLi = (t.ek||[]).map(e=>`<li>${e}</li>`).join('');
+  const tipHTML = t.tip ? `<div class="topic-tip"><span class="tip-icon">★</span><span>${t.tip}</span></div>` : '';
+  const cA = flag==='confident' ? ' conf-active' : '';
+  const rA = flag==='review'    ? ' rev-active'  : '';
+  const clrBtn = flag ? `<button class="fbtn clr" onclick="doFlag('${t.id}',null,event)">clear</button>` : '';
+  const srch = [t.id, t.name, ...(t.ek||[]), t.tip||''].join(' ').toLowerCase();
+  return `<div class="topic-item" id="ti-${t.id}" data-tid="${t.id}" data-s="${srch}" data-flag="${flag||'none'}">
+    <div class="topic-hdr" onclick="toggleT('${t.id}')">
+      <div class="status-ring${dotCls}" id="dot-${t.id}"></div>
+      <span class="topic-id-lbl">${t.id}</span>
+      <span class="topic-name-lbl">${t.name}</span>
+      <span class="topic-chev">▼</span>
+    </div>
+    <div class="topic-body">
+      <ul class="ek-list">${ekLi}</ul>
+      ${tipHTML}
+      <div class="flag-row">
+        <span class="flag-lbl">Self-assess</span>
+        <button class="fbtn${cA}" onclick="doFlag('${t.id}','confident',event)">✓ I'm 95% confident</button>
+        <button class="fbtn${rA}" onclick="doFlag('${t.id}','review',event)">✗ Not convincing evidence I know this</button>
+        ${clrBtn}
+      </div>
+    </div>
+  </div>`;
+}
+
+function unitHTML(u) {
+  const ids = u.topics.map(t=>t.id);
+  const c = ids.filter(id=>getFlag(id)==='confident').length;
+  const r = ids.filter(id=>getFlag(id)==='review').length;
+  const miniStr = (c||r)
+    ? `<span class="mc">${c}✓</span> <span class="mr">${r}✗</span> <span style="color:#ddd">/</span> ${u.topics.length}`
+    : `${u.topics.length} topics`;
+
+  const biPills = u.bigIdeas.map(b=>`<span class="bi-tag-pill ${biPillClass[b]}">${b}</span>`).join('');
+  const topicsHTML = u.topics.map(topicHTML).join('');
+
+  const spdcPanel = u.spdc ? `<div class="panel"><div class="panel-title">SPDC Framework</div>
+    <div class="spdc-grid">
+      <div class="spdc-cell"><div class="spdc-step" style="color:#1d5fa0">State</div><div class="spdc-text">${u.spdc.state}</div></div>
+      <div class="spdc-cell"><div class="spdc-step" style="color:#1a7a5e">Plan</div><div class="spdc-text">${u.spdc.plan}</div></div>
+      <div class="spdc-cell"><div class="spdc-step" style="color:#7a4420">Do</div><div class="spdc-text">${u.spdc.do}</div></div>
+      <div class="spdc-cell"><div class="spdc-step" style="color:#5c35a0">Conclude</div><div class="spdc-text">${u.spdc.conclude}</div></div>
+    </div></div>` : '';
+  const formulasPanel = u.formulas?.length ? `<div class="panel"><div class="panel-title">Key Formulas</div>
+    <div class="formula-list">${u.formulas.map(f=>`<div class="fline">${f}</div>`).join('')}</div></div>` : '';
+  const panels = (spdcPanel||formulasPanel) ? `<div class="unit-panels">${spdcPanel}${formulasPanel}</div>` : '';
+
+  const allSearch = [u.name, u.weight, ...u.bigIdeas, u.mm,
+    ...u.topics.flatMap(t=>[t.id, t.name, ...(t.ek||[]), t.tip||'']),
+    ...(u.formulas||[]),
+    u.spdc ? Object.values(u.spdc).join(' ') : ''
+  ].join(' ').toLowerCase();
+
+  return `<div class="unit-card u${u.num}" id="unit-${u.num}" data-num="${u.num}" data-wt="${u.weightMid}" data-s="${allSearch}">
+    <div class="unit-hdr" onclick="toggleU(${u.num})">
+      <span class="unit-badge">Unit ${u.num}</span>
+      <div class="unit-title-group">
+        <div class="unit-name">${u.name}</div>
+        <div class="unit-meta">
+          <span class="weight-tag">${u.weight} of exam</span>
+          ${biPills}
+          <span style="font-size:10px;color:#ccc">${u.mm}</span>
+        </div>
+      </div>
+      <span class="unit-mini" id="umini-${u.num}">${miniStr}</span>
+      <span class="unit-chev">▼</span>
+    </div>
+    <div class="unit-body">
+      <div class="topics-wrap">${topicsHTML}</div>
+      ${panels}
+    </div>
+  </div>`;
+}
+
+function renderAll() {
+  let units = [...UNITS];
+  if (sortByWeight) units = [...units].sort((a,b) => b.weightMid - a.weightMid);
+  document.getElementById('container').innerHTML = units.map(unitHTML).join('');
+  applyFilter();
+  updateAllMinis();
+  updateProgress();
+  if (window.MathJax) mjTypeset();
+}
+
+// ─── TOGGLE ─────────────────────────────────────────────────────────────────
+function toggleU(n) {
+  const card = document.getElementById(`unit-${n}`);
+  card.classList.toggle('open');
+  mjTypeset(card);
+}
+function toggleT(id) {
+  const item = document.getElementById(`ti-${id}`);
+  item.classList.toggle('open');
+  mjTypeset(item);
+}
+
+// ─── FLAGS ───────────────────────────────────────────────────────────────────
+function doFlag(topicId, val, e) {
+  e.stopPropagation();
+  const cur = getFlag(topicId);
+  const nv  = (cur === val) ? null : val;
+  setFlag(topicId, nv);
+
+  // Update dot
+  const dot = document.getElementById(`dot-${topicId}`);
+  if (dot) dot.className = 'status-ring' + (nv ? ` ${nv}` : '');
+
+  // Update data-flag
+  const item = document.getElementById(`ti-${topicId}`);
+  if (item) {
+    item.dataset.flag = nv || 'none';
+    item.querySelectorAll('.fbtn:not(.clr)').forEach((b,i) => {
+      b.classList.remove('conf-active','rev-active');
+      if (i===0 && nv==='confident') b.classList.add('conf-active');
+      if (i===1 && nv==='review')    b.classList.add('rev-active');
+    });
+    let clr = item.querySelector('.clr');
+    if (nv && !clr) {
+      const fr = item.querySelector('.flag-row');
+      const cb = document.createElement('button');
+      cb.className='fbtn clr'; cb.textContent='clear';
+      cb.onclick = ev => { ev.stopPropagation(); doFlag(topicId,null,ev); };
+      fr.appendChild(cb);
+    } else if (!nv && clr) clr.remove();
+  }
+  updateAllMinis();
+  updateProgress();
+  // re-apply filter in case we're in a filtered view
+  if (currentFilter !== 'all') applyFilter();
+}
+
+function resetAll() {
+  if (!confirm('Reset all self-assessment flags?')) return;
+  try { Object.keys(localStorage).filter(k=>k.startsWith(LS)).forEach(k=>localStorage.removeItem(k)); } catch(e){}
+  renderAll();
+}
+
+// ─── SORT ────────────────────────────────────────────────────────────────────
+function toggleSort() {
+  sortByWeight = !sortByWeight;
+  const btn = document.getElementById('sort-btn');
+  btn.classList.toggle('active', sortByWeight);
+  btn.textContent = sortByWeight ? 'By unit number ↕' : 'By exam weight ↕';
+  renderAll();
+  applySearch(currentQuery);
+}
+
+// ─── FILTER ──────────────────────────────────────────────────────────────────
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  applyFilter();
+}
+
+function applyFilter() {
+  const cards = document.querySelectorAll('.unit-card');
+  let totalVisible = 0;
+
+  cards.forEach(card => {
+    const topics = card.querySelectorAll('.topic-item');
+    let anyVisible = false;
+
+    topics.forEach(ti => {
+      const flag = ti.dataset.flag || 'none';
+      let show = true;
+      if      (currentFilter === 'confident') show = flag === 'confident';
+      else if (currentFilter === 'review')    show = flag === 'review';
+      else if (currentFilter === 'untagged')  show = flag === 'none';
+      // also respect active search
+      if (currentQuery && !(ti.dataset.s||'').includes(currentQuery)) show = false;
+
+      ti.classList.toggle('hidden', !show);
+      if (show) anyVisible = true;
+    });
+
+    card.classList.toggle('hidden', !anyVisible);
+    if (anyVisible) totalVisible++;
+  });
+
+  document.getElementById('empty').style.display = totalVisible === 0 ? 'block' : 'none';
+  updateSearchCount(totalVisible);
+}
+
+// ─── SEARCH ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('search').addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    if (q === currentQuery) return;
+    currentQuery = q;
+    applySearch(q);
+  });
+});
+
+function applySearch(q) {
+  clearHL();
+  const cards = document.querySelectorAll('.unit-card');
+  let vis = 0;
+
+  cards.forEach(card => {
+    const topics = card.querySelectorAll('.topic-item');
+    let anyVis = false;
+
+    topics.forEach(ti => {
+      const flag = ti.dataset.flag || 'none';
+      let passFilter = true;
+      if      (currentFilter === 'confident') passFilter = flag === 'confident';
+      else if (currentFilter === 'review')    passFilter = flag === 'review';
+      else if (currentFilter === 'untagged')  passFilter = flag === 'none';
+
+      const passSearch = !q || (ti.dataset.s||'').includes(q);
+      const show = passFilter && passSearch;
+
+      ti.classList.toggle('hidden', !show);
+      if (show) {
+        anyVis = true;
+        if (q) { ti.classList.add('open'); hlNode(ti.querySelector('.topic-body'), q); }
+      }
+    });
+
+    card.classList.toggle('hidden', !anyVis);
+    if (anyVis) { vis++; if (q) card.classList.add('open'); else card.classList.remove('open'); }
+  });
+
+  document.getElementById('empty').style.display = vis === 0 ? 'block' : 'none';
+  updateSearchCount(vis);
+  if (q) mjTypeset();
+}
+
+function updateSearchCount(n) {
+  const el = document.getElementById('search-count');
+  if (!el) return;
+  el.textContent = currentQuery ? `${n} unit${n!==1?'s':''} found` : '';
+}
+
+function clearSearch() {
+  const el = document.getElementById('search');
+  if (el) el.value = '';
+  currentQuery = '';
+  clearHL();
+  document.querySelectorAll('.unit-card').forEach(c=>c.classList.remove('open'));
+  applyFilter();
+}
+
+function clearHL() {
+  document.querySelectorAll('mark').forEach(m => m.parentNode.replaceChild(document.createTextNode(m.textContent), m));
+  document.normalize?.();
+}
+
+function hlNode(el, q) {
+  if (!el || !q) return;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    if (!node.parentElement || ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) return;
+    if (re.test(node.textContent)) {
+      const span = document.createElement('span');
+      span.innerHTML = node.textContent.replace(re, '<mark>$1</mark>');
+      node.parentNode.replaceChild(span, node);
+    }
+  });
+}
+
+// ─── PROGRESS + MINIS ────────────────────────────────────────────────────────
+function updateProgress() {
+  const all   = UNITS.flatMap(u=>u.topics.map(t=>t.id));
+  const total = all.length;
+  const conf  = all.filter(id=>getFlag(id)==='confident').length;
+  const rev   = all.filter(id=>getFlag(id)==='review').length;
+  document.getElementById('pc').textContent = conf;
+  document.getElementById('pr').textContent = rev;
+  document.getElementById('pt').textContent = total;
+  document.getElementById('pb-conf').style.width = (conf/total*100)+'%';
+  document.getElementById('pb-rev').style.width  = (rev/total*100)+'%';
+}
+
+function updateAllMinis() {
+  UNITS.forEach(u => {
+    const el = document.getElementById(`umini-${u.num}`);
+    if (!el) return;
+    const ids = u.topics.map(t=>t.id);
+    const c = ids.filter(id=>getFlag(id)==='confident').length;
+    const r = ids.filter(id=>getFlag(id)==='review').length;
+    el.innerHTML = (c||r)
+      ? `<span class="mc">${c}✓</span> <span class="mr">${r}✗</span> <span style="color:#ddd">/</span> ${u.topics.length}`
+      : `${u.topics.length} topics`;
+  });
+}
+
+// ─── MATHJAX SAFE WRAPPER ────────────────────────────────────────────────────
+function mjTypeset(el) {
+  if (window.MathJax && typeof MathJax.typesetPromise === 'function') {
+    const targets = el ? (Array.isArray(el) ? el : [el]) : undefined;
+    MathJax.typesetPromise(targets).catch(err => console.warn('MathJax:', err));
+  }
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+renderAll();
+
+// ─── K3 LEGEND EDGES ─────────────────────────────────────────────────────────
+function drawK3() {
+  const wrap = document.getElementById('legend-k3');
+  const svg  = document.getElementById('k3-svg');
+  if (!wrap || !svg) return;
+  const nodes = wrap.querySelectorAll('.bi-node');
+  if (nodes.length < 3) return;
+  const wRect = wrap.getBoundingClientRect();
+
+  const centers = Array.from(nodes).map(n => {
+    const r = n.getBoundingClientRect();
+    return { x: r.left - wRect.left + r.width/2, y: r.top - wRect.top + r.height/2, w: r.width, h: r.height };
+  });
+
+  // Returns the point on the border of node `a` facing toward node `b`
+  function edgePt(a, b, pad = 6) {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len = Math.sqrt(dx*dx + dy*dy);
+    const nx = dx/len, ny = dy/len;
+    const hw = a.w/2 + pad, hh = a.h/2 + pad;
+    const tx = nx ? hw / Math.abs(nx) : Infinity;
+    const ty = ny ? hh / Math.abs(ny) : Infinity;
+    const t  = Math.min(tx, ty);
+    return { x: a.x + nx*t, y: a.y + ny*t };
+  }
+
+  const edgeColors = ['#98ccc0','#a0bcdc','#b8aae0'];
+  const defs = edgeColors.map((col, i) =>
+    `<marker id="ah${i}e" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M1,1.5 L7,4 L1,6.5" fill="none" stroke="${col}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="ah${i}s" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse">
+      <path d="M1,1.5 L7,4 L1,6.5" fill="none" stroke="${col}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>`
+  ).join('');
+
+  svg.innerHTML = `<defs>${defs}</defs>` + [[0,1],[0,2],[1,2]].map(([a,b], i) => {
+    const p1 = edgePt(centers[a], centers[b]);
+    const p2 = edgePt(centers[b], centers[a]);
+    return `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}"
+      stroke="${edgeColors[i]}" stroke-width="2.5"
+      marker-start="url(#ah${i}s)" marker-end="url(#ah${i}e)"/>`;
+  }).join('');
+}
+requestAnimationFrame(() => requestAnimationFrame(drawK3));
+window.addEventListener('resize', drawK3);
+
+// Typeset after MathJax finishes loading (it's async)
+if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+  MathJax.startup.promise.then(() => mjTypeset());
+} else {
+  let _attempts = 0;
+  const _poll = setInterval(() => {
+    if (typeof MathJax?.typesetPromise === 'function') { mjTypeset(); clearInterval(_poll); }
+    if (++_attempts > 20) clearInterval(_poll);
+  }, 300);
+}
+</script>
+</body>
+</html>
