@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Calculus Unit Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<script>MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+<style>
+:root {
+  --bg:#f0ede8; --card:#fff; --border:#e8e4de; --text:#111418; --sub:#6b6760; --hdr:#111418;
+  --u1:#1a6b3a; --u2:#8a4a18; --u3:#1a4a8a; --u4:#6b1a5a; --u5:#1a5c6b;
+  --u6:#5a6b1a; --u7:#6b3a1a; --u8:#1a3a6b; --u9:#4a1a6b; --u10:#8a1a2e;
+  --conf:#14663a; --conf-light:#eaf4ee; --conf-border:#9ed4b0;
+  --rev:#8a3010;  --rev-light:#fdf1ec;  --rev-border:#f0b898;
+  --bc-color:#5c35a0; --bc-bg:#f3f0fb; --bc-border:#ccc2ec;
+  --radius:12px; --radius-sm:7px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);font-size:14.5px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+
+/* HEADER */
+.hdr{background:var(--hdr);color:#fff;padding:22px 28px 0;position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(255,255,255,.06);}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.hdr-brand h1{font-family:'Playfair Display',Georgia,serif;font-size:20px;font-weight:700;letter-spacing:-.2px;line-height:1.2;}
+.hdr-brand p{font-size:11px;font-weight:400;color:rgba(255,255,255,.4);margin-top:2px;letter-spacing:.5px;text-transform:uppercase;}
+.hdr-search{display:flex;gap:8px;align-items:center;flex:1;max-width:400px;}
+#search{flex:1;padding:8px 14px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-family:'Manrope',sans-serif;font-size:13px;outline:none;transition:border-color .15s,background .15s;}
+#search::placeholder{color:rgba(255,255,255,.3);}
+#search:focus{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.3);}
+.hdr-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.7);padding:7px 12px;border-radius:7px;cursor:pointer;font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;transition:all .15s;white-space:nowrap;}
+.hdr-btn:hover{background:rgba(255,255,255,.18);color:#fff;}
+.search-count{font-size:11px;color:rgba(255,255,255,.35);white-space:nowrap;min-width:80px;}
+
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;justify-content:center;gap:6px;padding-bottom:14px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.07);padding-top:12px;}
+.toolbar-label{font-size:10.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-right:2px;}
+.tb-divider{width:1px;height:18px;background:rgba(255,255,255,.12);margin:0 6px;}
+.filter-btn{padding:5px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.55);font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;}
+.filter-btn:hover{color:#fff;border-color:rgba(255,255,255,.4);}
+.filter-btn.active{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4);}
+.filter-btn.conf-filter.active{background:#14663a22;border-color:#9ed4b0;color:#9ed4b0;}
+.filter-btn.rev-filter.active{background:#8a301022;border-color:#f0b898;color:#f0b898;}
+.filter-btn.ab-filter.active{background:rgba(26,74,138,.35);border-color:#90b4e8;color:#b8d0f4;}
+.sort-btn{padding:5px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.55);font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;}
+.sort-btn:hover{color:#fff;border-color:rgba(255,255,255,.4);}
+.sort-btn.active{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4);}
+
+/* MAIN */
+.main{max-width:880px;margin:0 auto;padding:20px 14px 60px;}
+
+/* LEGEND */
+.legend{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-bottom:14px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.legend-label{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--sub);flex-shrink:0;}
+.legend-items{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12.5px;}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.legend-sep{width:1px;height:16px;background:var(--border);}
+.bc-pill-lg{font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;background:var(--bc-bg);color:var(--bc-color);border:1px solid var(--bc-border);}
+
+/* PROGRESS */
+.progress-bar-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:13px 18px;margin-bottom:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.prog-label{font-size:11px;font-weight:600;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;}
+.prog-track{flex:1;min-width:120px;height:5px;background:#e8e4de;border-radius:10px;overflow:hidden;position:relative;}
+.prog-fill{height:100%;position:absolute;top:0;left:0;border-radius:10px;transition:width .4s ease;}
+.prog-fill.conf{background:var(--conf);}
+.prog-fill.rev{background:var(--rev);}
+.prog-stats{display:flex;gap:14px;font-size:12px;}
+.prog-stat{display:flex;align-items:center;gap:5px;color:var(--sub);}
+.prog-stat .dot{width:7px;height:7px;border-radius:50%;}
+.prog-stat strong{color:var(--text);font-weight:700;}
+
+/* UNIT CARD */
+.unit-card{background:var(--card);border:1px solid var(--border);border-left:3px solid transparent;border-radius:var(--radius);margin-bottom:8px;overflow:hidden;transition:box-shadow .18s,border-left-color .18s;}
+.unit-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);}
+.unit-card.hidden{display:none;}
+.unit-hdr{display:flex;align-items:center;padding:14px 18px;cursor:pointer;user-select:none;gap:14px;}
+.unit-badge{font-size:10px;font-weight:800;letter-spacing:.3px;padding:3px 9px;border-radius:5px;color:#fff;flex-shrink:0;}
+.unit-title-group{flex:1;min-width:0;}
+.unit-name{font-size:14px;font-weight:700;line-height:1.3;color:var(--text);}
+.unit-meta{display:flex;align-items:center;gap:8px;margin-top:3px;flex-wrap:wrap;}
+.weight-tag{font-size:11px;font-weight:600;color:var(--sub);background:#f0ede8;padding:2px 8px;border-radius:4px;}
+.bc-only-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--bc-bg);color:var(--bc-color);border:1px solid var(--bc-border);}
+.unit-mini{font-size:10px;color:var(--sub);white-space:nowrap;}
+.unit-mini .mc{color:var(--conf);font-weight:700;}
+.unit-mini .mr{color:var(--rev);font-weight:700;}
+.unit-chev{color:#ccc;font-size:10px;transition:transform .22s ease;flex-shrink:0;}
+.unit-card.open .unit-chev{transform:rotate(180deg);}
+.unit-card.open{box-shadow:0 4px 24px rgba(0,0,0,.08);}
+
+/* UNIT BODY */
+.unit-body{display:none;border-top:1px solid #f2efea;}
+.unit-card.open .unit-body{display:block;}
+
+/* TOPIC ROWS */
+.topic-item{border-bottom:1px solid #f4f2ee;}
+.topic-item:last-child{border-bottom:none;}
+.topic-item.hidden{display:none;}
+.topic-hdr{display:flex;align-items:center;gap:10px;padding:10px 18px 10px 16px;cursor:pointer;user-select:none;transition:background .12s;}
+.topic-hdr:hover{background:#faf9f7;}
+.status-ring{width:9px;height:9px;border-radius:50%;border:2px solid #d8d4ce;background:#fff;flex-shrink:0;transition:all .18s;}
+.status-ring.confident{border-color:var(--conf);background:var(--conf);}
+.status-ring.review{border-color:var(--rev);background:var(--rev);}
+.topic-id-lbl{font-size:10.5px;font-weight:700;color:#bbb;min-width:32px;flex-shrink:0;font-variant-numeric:tabular-nums;}
+.topic-name-lbl{font-size:13px;font-weight:500;color:#374151;flex:1;line-height:1.4;}
+.bc-topic-pill{font-size:9.5px;font-weight:700;padding:1px 6px;border-radius:3px;background:var(--bc-bg);color:var(--bc-color);border:1px solid var(--bc-border);flex-shrink:0;margin-right:2px;}
+.topic-chev{font-size:9px;color:#ccc;transition:transform .18s ease;flex-shrink:0;}
+.topic-item.open .topic-chev{transform:rotate(180deg);}
+
+/* TOPIC BODY */
+.topic-body{display:none;padding:2px 18px 16px 57px;background:#faf9f7;}
+.topic-item.open .topic-body{display:block;}
+.ek-list{list-style:none;margin-bottom:13px;border-left:2px solid #e8e4de;padding-left:14px;}
+.ek-list li{font-size:13px;line-height:1.9;color:#374151;padding:4px 0;overflow:visible;}
+.ek-list li+li{border-top:1px dashed #eee;padding-top:5px;margin-top:2px;}
+.topic-tip{display:flex;gap:10px;background:#fffbec;border:1px solid #edd97a;border-radius:var(--radius-sm);padding:9px 12px;margin-bottom:13px;font-size:12.5px;line-height:1.55;color:#4a3800;}
+.tip-icon{font-size:13px;flex-shrink:0;margin-top:1px;}
+
+/* FLAGS */
+.flag-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.flag-lbl{font-size:10.5px;font-weight:600;letter-spacing:.3px;color:#bbb;text-transform:uppercase;margin-right:2px;}
+.fbtn{font-size:12px;font-weight:500;padding:5px 13px;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-family:'Manrope',sans-serif;color:var(--sub);transition:all .13s;line-height:1.3;}
+.fbtn:hover{border-color:#aaa;color:var(--text);}
+.fbtn.conf-active{background:var(--conf-light);border-color:var(--conf-border);color:var(--conf);font-weight:600;}
+.fbtn.rev-active{background:var(--rev-light);border-color:var(--rev-border);color:var(--rev);font-weight:600;}
+.fbtn.clr{font-size:11px;color:#ccc;border-color:transparent;background:transparent;padding:5px 6px;}
+.fbtn.clr:hover{color:var(--sub);border-color:var(--border);}
+.fbtn-sub{font-size:10px;font-weight:400;opacity:.65;display:block;margin-top:2px;line-height:1.3;}
+
+/* FORMULA PANELS */
+.unit-panels{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 14px;border-top:1px solid #f0ede8;background:#faf9f7;}
+@media(max-width:560px){.unit-panels{grid-template-columns:1fr;}}
+.panel{border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 13px;background:#fff;}
+.panel-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#bbb;margin-bottom:7px;}
+.formula-list{display:flex;flex-direction:column;gap:0;overflow:visible;}
+.fline{padding:10px 0;font-size:13.5px;border-bottom:1px solid #f0ede8;line-height:normal;overflow:visible;}
+.fline:last-child{border-bottom:none;padding-bottom:4px;}
+
+mark{background:#ffe680;color:inherit;border-radius:2px;padding:0 1px;}
+.empty{text-align:center;padding:56px 20px;color:var(--sub);font-size:14px;display:none;}
+.empty-icon{font-size:32px;margin-bottom:12px;}
+.footer{text-align:center;color:#bbb;font-size:11px;margin-top:32px;padding-top:18px;border-top:1px solid var(--border);letter-spacing:.3px;}
+
+/* UNIT COLORS */
+.u1.open,.u1:hover{border-left-color:var(--u1);} .u1 .unit-badge{background:var(--u1);}
+.u2.open,.u2:hover{border-left-color:var(--u2);} .u2 .unit-badge{background:var(--u2);}
+.u3.open,.u3:hover{border-left-color:var(--u3);} .u3 .unit-badge{background:var(--u3);}
+.u4.open,.u4:hover{border-left-color:var(--u4);} .u4 .unit-badge{background:var(--u4);}
+.u5.open,.u5:hover{border-left-color:var(--u5);} .u5 .unit-badge{background:var(--u5);}
+.u6.open,.u6:hover{border-left-color:var(--u6);} .u6 .unit-badge{background:var(--u6);}
+.u7.open,.u7:hover{border-left-color:var(--u7);} .u7 .unit-badge{background:var(--u7);}
+.u8.open,.u8:hover{border-left-color:var(--u8);} .u8 .unit-badge{background:var(--u8);}
+.u9.open,.u9:hover{border-left-color:var(--u9);} .u9 .unit-badge{background:var(--u9);}
+.u10.open,.u10:hover{border-left-color:var(--u10);} .u10 .unit-badge{background:var(--u10);}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-top">
+    <div class="hdr-brand">
+      <h1>AP Calculus Unit Overview</h1>
+      <p>Middlesex School · Math 55</p>
+    </div>
+    <div class="hdr-search">
+      <input type="text" id="search" placeholder="Search topics, formulas, vocabulary…" autocomplete="off">
+      <button class="hdr-btn" onclick="clearSearch()">Clear</button>
+      <span class="search-count" id="search-count"></span>
+    </div>
+  </div>
+  <div class="toolbar">
+    <span class="toolbar-label">Show</span>
+    <span class="toolbar-label">AB/BC</span>
+    <button class="filter-btn ab-filter" id="ab-toggle" onclick="toggleAB(this)">AB topics only</button>
+    <div class="tb-divider"></div>
+    <span class="toolbar-label">Progress</span>
+    <button class="filter-btn active"       data-filter="all"       onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn conf-filter"  data-filter="confident" onclick="setFilter('confident',this)">✓ Confident</button>
+    <button class="filter-btn rev-filter"   data-filter="review"    onclick="setFilter('review',this)">✗ Needs review</button>
+    <button class="filter-btn"              data-filter="untagged"  onclick="setFilter('untagged',this)">Untagged</button>
+    <div class="tb-divider"></div>
+    <span class="toolbar-label">Sort</span>
+    <button class="sort-btn" id="sort-btn" onclick="toggleSort()">By exam weight ↕</button>
+    <div class="tb-divider"></div>
+    <button class="hdr-btn" onclick="resetAll()" style="font-size:11px;padding:5px 10px;">Reset flags</button>
+  </div>
+</header>
+
+<main class="main">
+  <div class="legend">
+    <span class="legend-label">Course</span>
+    <div class="legend-items">
+      <div class="legend-item"><span class="legend-dot" style="background:#1a4a8a"></span> Units 1–8 appear on both AB and BC exams</div>
+      <div class="legend-sep"></div>
+      <div class="legend-item"><span class="legend-dot" style="background:#4a1a6b"></span> Units 9–10 are BC only</div>
+      <div class="legend-sep"></div>
+      <div class="legend-item"><span class="bc-pill-lg">BC</span> denotes BC-only topics within Units 1–8</div>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <span class="prog-label">Progress</span>
+    <div class="prog-track">
+      <div class="prog-fill rev"  id="pb-rev"  style="width:0%"></div>
+      <div class="prog-fill conf" id="pb-conf" style="width:0%"></div>
+    </div>
+    <div class="prog-stats">
+      <div class="prog-stat"><span class="dot" style="background:var(--conf)"></span><strong id="pc">0</strong> confident</div>
+      <div class="prog-stat"><span class="dot" style="background:var(--rev)"></span><strong id="pr">0</strong> needs review</div>
+      <div class="prog-stat" style="color:#ccc">/ <span id="pt">0</span> topics</div>
+    </div>
+  </div>
+
+  <div id="container"></div>
+  <div class="empty" id="empty"><div class="empty-icon">∅</div>No topics match the current filter.</div>
+  <p class="footer">AP Calculus AB/BC &nbsp;·&nbsp; Middlesex School</p>
+</main>
+
+<script>
+// ab: true = appears on AB exam; false = BC only
+// bcOnly on unit = entire unit is BC only
+const UNITS = [
+{num:1,name:"Limits and Continuity",weightAB:"10–12%",weightBC:"4–7%",weightMidAB:11,weightMidBC:5.5,bigIdeas:["LIM","CHA"],topics:[
+  {id:"1.1",ab:true,name:"Introducing Calculus: Can Change Occur at an Instant?",ek:[
+    "Calculus is built on the study of <strong>instantaneous rates of change</strong> and <strong>accumulation of change</strong>.",
+    "The limit concept allows us to describe and quantify change at a single instant — something average rates of change cannot capture."]},
+  {id:"1.2",ab:true,name:"Defining Limits and Using Limit Notation",ek:[
+    "\\(\\lim_{x \\to c} f(x) = L\\) means the values of f(x) get arbitrarily close to L as x approaches c from both sides.",
+    "The <strong>limit describes behavior near a point</strong>, not necessarily at the point — f&#40;c&#41; may not equal L or may not exist.",
+    "One-sided limits: \\(\\lim_{x \\to c^-} f(x)\\) (from the left) and \\(\\lim_{x \\to c^+} f(x)\\) (from the right)."]},
+  {id:"1.3",ab:true,name:"Estimating Limit Values from Graphs",ek:[
+    "From a graph, estimate the limit by tracing behavior as x approaches c from both sides.",
+    "If the left- and right-hand limits are equal, the two-sided limit exists and equals their common value.",
+    "A limit can exist at x = c even if f&#40;c&#41; is undefined or f&#40;c&#41; ≠ L."]},
+  {id:"1.4",ab:true,name:"Estimating Limit Values from Tables",ek:[
+    "Use tables of values with x approaching c from both sides to estimate \\(\\lim_{x \\to c} f(x)\\).",
+    "Tables can suggest but not prove a limit — they only estimate."]},
+  {id:"1.5",ab:true,name:"Determining Limits Using Algebraic Properties",ek:[
+    "<strong>Limit laws</strong>: limits of sums, differences, products, quotients, and scalar multiples equal the corresponding operations on the individual limits, provided those limits exist.",
+    "\\(\\lim_{x \\to c} [f(x) + g(x)] = \\lim_{x \\to c} f(x) + \\lim_{x \\to c} g(x)\\), and similarly for products and quotients (denominator limit ≠ 0)."],
+    tip:"The limit of a quotient requires that the denominator's limit is nonzero. When it is 0 but the numerator isn't, the limit DNE (or is ±∞). When both are 0, try algebraic manipulation."},
+  {id:"1.6",ab:true,name:"Determining Limits Using Algebraic Manipulation",ek:[
+    "When direct substitution yields 0/0 (indeterminate form), try <strong>factoring and canceling</strong>, <strong>rationalizing</strong>, or simplifying the expression.",
+    "After canceling a common factor, substitute to evaluate the simplified expression.",
+    "Limits may exist even when the original expression is undefined at x = c."]},
+  {id:"1.7",ab:true,name:"Selecting Procedures for Determining Limits",ek:[
+    "Choose the appropriate technique: direct substitution → factoring/canceling → rationalizing → Squeeze Theorem → L'Hôpital's Rule (Unit 4).",
+    "Piecewise functions may require evaluating one-sided limits separately."]},
+  {id:"1.8",ab:true,name:"Determining Limits Using the Squeeze Theorem",ek:[
+    "<strong>Squeeze (Sandwich) Theorem</strong>: if \\(g(x) \\leq f(x) \\leq h(x)\\) near c, and \\(\\lim_{x \\to c} g(x) = \\lim_{x \\to c} h(x) = L\\), then \\(\\lim_{x \\to c} f(x) = L\\).",
+    "Commonly used to show \\(\\lim_{x \\to 0} x\\sin(1/x) = 0\\) by bounding between \\(-|x|\\) and \\(|x|\\)."]},
+  {id:"1.9",ab:true,name:"Connecting Multiple Representations of Limits",ek:[
+    "Limits can be estimated or evaluated from graphs, tables, algebraic expressions, and verbal descriptions.",
+    "Consistent results across representations increase confidence in a limit value."]},
+  {id:"1.10",ab:true,name:"Exploring Types of Discontinuities",ek:[
+    "A function is <strong>discontinuous</strong> at x = c if the limit DNE, if f&#40;c&#41; is undefined, or if the limit ≠ f&#40;c&#41;.",
+    "<strong>Removable discontinuity</strong>: limit exists but ≠ f&#40;c&#41; (or f&#40;c&#41; undefined) — a 'hole.'",
+    "<strong>Jump discontinuity</strong>: one-sided limits exist but differ.",
+    "<strong>Infinite discontinuity</strong>: one or both one-sided limits are ±∞."]},
+  {id:"1.11",ab:true,name:"Defining Continuity at a Point",ek:[
+    "f is <strong>continuous at x = c</strong> if: (1) f&#40;c&#41; is defined, (2) \\(\\lim_{x \\to c} f(x)\\) exists, and (3) the limit equals f&#40;c&#41;.",
+    "Polynomials, rational functions (where defined), trig functions, exponentials, and logarithms are continuous on their domains."],
+    tip:"All three conditions must be stated when verifying continuity — just saying 'the limit exists' is incomplete."},
+  {id:"1.12",ab:true,name:"Confirming Continuity over an Interval",ek:[
+    "A function is continuous on an open interval if it is continuous at every point in the interval.",
+    "Continuity on a closed interval [a, b] additionally requires right-continuity at a and left-continuity at b."]},
+  {id:"1.13",ab:true,name:"Removing Discontinuities",ek:[
+    "A removable discontinuity can be 'fixed' by redefining f&#40;c&#41; = \\(\\lim_{x \\to c} f(x)\\).",
+    "The extended or 'repaired' function is then continuous at x = c."]},
+  {id:"1.14",ab:true,name:"Connecting Infinite Limits and Vertical Asymptotes",ek:[
+    "If \\(\\lim_{x \\to c} f(x) = \\pm\\infty\\), then x = c is a <strong>vertical asymptote</strong> of f.",
+    "Vertical asymptotes of rational functions occur where the denominator is 0 and the numerator is not."]},
+  {id:"1.15",ab:true,name:"Connecting Limits at Infinity and Horizontal Asymptotes",ek:[
+    "If \\(\\lim_{x \\to \\infty} f(x) = L\\) or \\(\\lim_{x \\to -\\infty} f(x) = L\\), then y = L is a <strong>horizontal asymptote</strong>.",
+    "For rational functions, compare degrees: deg(num) &lt; deg(den) → y = 0; equal degrees → ratio of leading coefficients; deg(num) &gt; deg(den) → no horizontal asymptote.",
+    "<strong>Relative magnitudes</strong> (growth rate hierarchy): logarithms grow slowest, then powers of x, then exponentials grow fastest. Confirmed with limits: \\(\\lim_{x\\to\\infty} \\dfrac{\\ln x}{x} = 0\\) and \\(\\lim_{x\\to\\infty} \\dfrac{x^n}{e^x} = 0\\) for any n."]},
+  {id:"1.16",ab:true,name:"Working with the Intermediate Value Theorem",ek:[
+    "<strong>IVT</strong>: if f is continuous on [a, b] and k is any value between f(a) and f(b), then there exists at least one c in (a, b) with f&#40;c&#41; = k.",
+    "IVT guarantees existence of a solution but does not find it.",
+    "Must verify <strong>continuity</strong> on [a, b] before applying IVT."],
+    tip:"A common error is forgetting to verify continuity before claiming IVT applies. State it explicitly."}
+],formulas:["\\(\\lim_{x \\to c} f(x) = L\\) if both one-sided limits equal L","Squeeze: \\(g \\leq f \\leq h\\) and \\(\\lim g = \\lim h = L \\Rightarrow \\lim f = L\\)","\\(\\lim_{x \\to 0} \\dfrac{\\sin x}{x} = 1\\)","\\(\\lim_{x \\to 0} \\dfrac{1 - \\cos x}{x} = 0\\)"]},
+
+{num:2,name:"Differentiation: Definition and Fundamental Properties",weightAB:"10–12%",weightBC:"4–7%",weightMidAB:11,weightMidBC:5.5,bigIdeas:["CHA","FUN"],topics:[
+  {id:"2.1",ab:true,name:"Defining Average and Instantaneous Rates of Change",ek:[
+    "<strong>Average rate of change</strong> of f over [a, b]: \\(\\dfrac{f(b)-f(a)}{b-a}\\) — slope of the secant line.",
+    "<strong>Instantaneous rate of change</strong> at x = a: \\(\\lim_{h \\to 0} \\dfrac{f(a+h)-f(a)}{h}\\) — slope of the tangent line."]},
+  {id:"2.2",ab:true,name:"Defining the Derivative and Using Derivative Notation",ek:[
+    "The <strong>derivative</strong> \\(f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h)-f(x)}{h}\\) gives the instantaneous rate of change at each x.",
+    "Notations: \\(f'(x)\\), \\(\\dfrac{dy}{dx}\\), \\(\\dfrac{d}{dx}[f(x)]\\), \\(\\dot{y}\\) all mean the same thing.",
+    "The derivative at a point is the slope of the <strong>tangent line</strong> to the graph at that point."]},
+  {id:"2.3",ab:true,name:"Estimating Derivatives of a Function at a Point",ek:[
+    "From a graph, estimate f'(a) by estimating the slope of the tangent line at x = a.",
+    "From a table, approximate f'(a) using a symmetric difference quotient: \\(f'(a) \\approx \\dfrac{f(a+h)-f(a-h)}{2h}\\)."]},
+  {id:"2.4",ab:true,name:"Connecting Differentiability and Continuity",ek:[
+    "If f is <strong>differentiable at x = c</strong>, then f is <strong>continuous at x = c</strong> — but the converse is not necessarily true.",
+    "f fails to be differentiable at x = c if f has a corner, cusp, vertical tangent, or discontinuity there."],
+    tip:"The contrapositive is key: if f is discontinuous at c, it is not differentiable there. Continuity is necessary but not sufficient for differentiability."},
+  {id:"2.5",ab:true,name:"Applying the Power Rule",ek:[
+    "<strong>Power Rule</strong>: \\(\\dfrac{d}{dx}[x^n] = nx^{n-1}\\) for any real number n.",
+    "Applies to all power functions including \\(\\sqrt{x} = x^{1/2}\\) and \\(1/x = x^{-1}\\)."]},
+  {id:"2.6",ab:true,name:"Derivative Rules: Constant, Sum, Difference, Constant Multiple",ek:[
+    "\\(\\dfrac{d}{dx}[c] = 0\\); \\(\\dfrac{d}{dx}[cf(x)] = cf'(x)\\)",
+    "\\(\\dfrac{d}{dx}[f(x) \\pm g(x)] = f'(x) \\pm g'(x)\\)"]},
+  {id:"2.7",ab:true,name:"Derivatives of cos x, sin x, eˣ, and ln x",ek:[
+    "\\(\\dfrac{d}{dx}[\\sin x] = \\cos x\\); \\(\\dfrac{d}{dx}[\\cos x] = -\\sin x\\)",
+    "\\(\\dfrac{d}{dx}[e^x] = e^x\\); \\(\\dfrac{d}{dx}[\\ln x] = \\dfrac{1}{x}\\)",
+    "<strong>Recognizing limit definitions of derivatives:</strong> some limits are derivatives in disguise. E.g., \\(\\lim_{h\\to 0}\\dfrac{\\sin(x+h)-\\sin x}{h} = \\cos x\\). Identify f and a in \\(\\lim_{h\\to 0}\\dfrac{f(a+h)-f(a)}{h}\\) to evaluate without L'Hôpital."]},
+  {id:"2.8",ab:true,name:"The Product Rule",ek:[
+    "<strong>Product Rule</strong>: \\(\\dfrac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)\\)",
+    "The derivative of a product is NOT the product of the derivatives."]},
+  {id:"2.9",ab:true,name:"The Quotient Rule",ek:[
+    "<strong>Quotient Rule</strong>: \\(\\dfrac{d}{dx}\\left[\\dfrac{f(x)}{g(x)}\\right] = \\dfrac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}\\)",
+    "'Low d-High minus High d-Low over Low squared' — denominator must be nonzero."]},
+  {id:"2.10",ab:true,name:"Derivatives of tan, cot, sec, and csc",ek:[
+    "\\(\\dfrac{d}{dx}[\\tan x] = \\sec^2 x\\); \\(\\dfrac{d}{dx}[\\cot x] = -\\csc^2 x\\)",
+    "\\(\\dfrac{d}{dx}[\\sec x] = \\sec x \\tan x\\); \\(\\dfrac{d}{dx}[\\csc x] = -\\csc x \\cot x\\)"]}
+],formulas:["\\(f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h)-f(x)}{h}\\)","Power: \\(\\dfrac{d}{dx}[x^n] = nx^{n-1}\\)","Product: \\((fg)' = f'g + fg'\\)","Quotient: \\(\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f'g - fg'}{g^2}\\)"]},
+
+{num:3,name:"Differentiation: Composite, Implicit, and Inverse Functions",weightAB:"9–13%",weightBC:"4–7%",weightMidAB:11,weightMidBC:5.5,bigIdeas:["FUN","CHA"],topics:[
+  {id:"3.1",ab:true,name:"The Chain Rule",ek:[
+    "<strong>Chain Rule</strong>: \\(\\dfrac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)\\) — 'derivative of the outside times derivative of the inside.'",
+    "In Leibniz notation: \\(\\dfrac{dy}{dx} = \\dfrac{dy}{du} \\cdot \\dfrac{du}{dx}\\).",
+    "The Chain Rule applies whenever a function is composed of two or more functions."],
+    tip:"Identify the outer function and inner function first. A common error is forgetting to multiply by the derivative of the inner function."},
+  {id:"3.2",ab:true,name:"Implicit Differentiation",ek:[
+    "When a relationship between x and y is given implicitly (not solved for y), differentiate both sides with respect to x.",
+    "Apply the Chain Rule: \\(\\dfrac{d}{dx}[y^n] = ny^{n-1}\\dfrac{dy}{dx}\\).",
+    "Collect \\(\\dfrac{dy}{dx}\\) terms on one side and solve."]},
+  {id:"3.3",ab:true,name:"Differentiating Inverse Functions",ek:[
+    "If g is the inverse of f, then \\(g'(x) = \\dfrac{1}{f'(g(x))}\\).",
+    "Equivalently: \\(\\dfrac{d}{dx}[f^{-1}(x)] = \\dfrac{1}{f'(f^{-1}(x))}\\).",
+    "Used when the inverse function itself is hard to write explicitly."]},
+  {id:"3.4",ab:true,name:"Differentiating Inverse Trigonometric Functions",ek:[
+    "\\(\\dfrac{d}{dx}[\\arcsin x] = \\dfrac{1}{\\sqrt{1-x^2}}\\); \\(\\dfrac{d}{dx}[\\arccos x] = -\\dfrac{1}{\\sqrt{1-x^2}}\\)",
+    "\\(\\dfrac{d}{dx}[\\arctan x] = \\dfrac{1}{1+x^2}\\)"]},
+  {id:"3.5",ab:true,name:"Selecting Procedures for Calculating Derivatives",ek:[
+    "Identify which rule(s) apply: Power, Product, Quotient, Chain, Implicit, or Inverse.",
+    "Complex expressions often require combining multiple rules — work from outside in for composed functions."]},
+  {id:"3.6",ab:true,name:"Calculating Higher-Order Derivatives",ek:[
+    "The <strong>second derivative</strong> \\(f''(x) = \\dfrac{d}{dx}[f'(x)]\\) gives the rate of change of the rate of change.",
+    "\\(f''(x)\\) describes <strong>concavity</strong>; \\(f'''(x)\\) and higher orders arise in physics (jerk) and error analysis.",
+    "Higher-order derivatives are found by differentiating repeatedly."]}
+],formulas:["Chain: \\(\\dfrac{d}{dx}[f(g(x))] = f'(g(x)) \\cdot g'(x)\\)","\\(\\dfrac{d}{dx}[\\arcsin x] = \\dfrac{1}{\\sqrt{1-x^2}}\\)","\\(\\dfrac{d}{dx}[\\arctan x] = \\dfrac{1}{1+x^2}\\)","Inverse: \\(g'(x) = \\dfrac{1}{f'(g(x))}\\)"]},
+
+{num:4,name:"Contextual Applications of Differentiation",weightAB:"10–15%",weightBC:"6–9%",weightMidAB:12.5,weightMidBC:7.5,bigIdeas:["CHA","FUN"],topics:[
+  {id:"4.1",ab:true,name:"Interpreting the Meaning of the Derivative in Context",ek:[
+    "\\(f'(a)\\) represents the <strong>instantaneous rate of change</strong> of f with respect to x at x = a.",
+    "Interpretation template: 'At x = a, f is increasing/decreasing at a rate of |f'(a)| [y-units] per [x-unit].'",
+    "The sign of f'(a) indicates whether f is increasing (positive) or decreasing (negative) at that point."]},
+  {id:"4.2",ab:true,name:"Straight-Line Motion: Connecting Position, Velocity, and Acceleration",ek:[
+    "If s(t) = position, then <strong>velocity</strong> v(t) = s'(t) and <strong>acceleration</strong> a(t) = v'(t) = s''(t).",
+    "Speed = |v(t)|. An object speeds up when v and a have the <strong>same sign</strong>; slows down when they have <strong>opposite signs</strong>.",
+    "The object is moving right/up when v(t) > 0 and left/down when v(t) < 0."],
+    tip:"Speed and velocity are different. Speed is always non-negative. 'Speeding up' requires checking that v and a have the same sign — not just that a > 0."},
+  {id:"4.3",ab:true,name:"Rates of Change in Applied Contexts Other Than Motion",ek:[
+    "The derivative can model any instantaneous rate of change: population growth, temperature change, fluid flow, etc.",
+    "Units of f'(x) = [units of f] per [units of x]. Always interpret with units and context."]},
+  {id:"4.4",ab:true,name:"Introduction to Related Rates",ek:[
+    "In <strong>related rates</strong> problems, multiple quantities change with respect to time. Differentiating an equation relating them implicitly with respect to t gives a relationship among their rates.",
+    "Draw a diagram, identify all variables and given rates, write an equation relating the variables."]},
+  {id:"4.5",ab:true,name:"Solving Related Rates Problems",ek:[
+    "Differentiate the relating equation with respect to t (applying Chain Rule to each variable).",
+    "Substitute known values for rates and quantities at the specific instant in question.",
+    "Solve for the unknown rate. Check units and reasonableness of the answer."],
+    tip:"Do NOT substitute specific values for quantities before differentiating — that eliminates variables needed for the rate equation."},
+  {id:"4.6",ab:true,name:"Approximating Values Using Local Linearity and Linearization",ek:[
+    "The <strong>tangent line</strong> at x = a approximates f near a: \\(L(x) = f(a) + f'(a)(x-a)\\).",
+    "This is the <strong>local linearization</strong> (or linear approximation) of f at a.",
+    "For small \\(\\Delta x\\): \\(f(a + \\Delta x) \\approx f(a) + f'(a)\\Delta x\\).",
+    "<strong>Over/underestimate:</strong> if f is <strong>concave up</strong> (f''&gt; 0) near a, the tangent line lies <em>below</em> the curve → linearization <strong>underestimates</strong>. If f is <strong>concave down</strong> (f\'\' &lt; 0), the tangent line lies <em>above</em> → linearization <strong>overestimates</strong>."]},
+  {id:"4.7",ab:true,name:"Using L'Hôpital's Rule",ek:[
+    "<strong>L'Hôpital's Rule</strong>: if \\(\\lim_{x \\to c} \\dfrac{f(x)}{g(x)}\\) gives the indeterminate form \\(0/0\\) or \\(\\infty/\\infty\\), then the limit equals \\(\\lim_{x \\to c} \\dfrac{f'(x)}{g'(x)}\\), provided this limit exists. Can be applied repeatedly if still indeterminate.",
+    "<strong>Other indeterminate forms (BC enrichment)</strong> — rewrite algebraically first, then apply L'Hôpital:",
+    "\\(0 \\cdot \\infty\\): rewrite as \\(0/0\\) or \\(\\infty/\\infty\\) by taking the reciprocal of one factor.",
+    "\\(\\infty - \\infty\\): combine fractions or use conjugate to reach \\(0/0\\) or \\(\\infty/\\infty\\).",
+    "\\(0^0, 1^\\infty, \\infty^0\\): take the natural log to bring the exponent down, evaluate the resulting \\(0/0\\) or \\(\\infty/\\infty\\) limit, then exponentiate the result.",
+    "<em>Note: these forms are excluded from AP exam assessment but are expected in BC Calculus.</em>"],
+    tip:"L'Hôpital differentiates numerator and denominator separately — it is NOT the Quotient Rule. Always verify the indeterminate form before applying. For exponential forms, the answer is e raised to the limit of the log, not the limit of the log itself."}
+],formulas:["\\(L(x) = f(a) + f'(a)(x-a)\\)","L'Hôpital: \\(\\lim \\dfrac{f}{g} = \\lim \\dfrac{f'}{g'}\\) when form is \\(0/0\\) or \\(\\infty/\\infty\\)"]},
+
+{num:5,name:"Analytical Applications of Differentiation",weightAB:"15–18%",weightBC:"8–11%",weightMidAB:16.5,weightMidBC:9.5,bigIdeas:["FUN","CHA"],topics:[
+  {id:"5.1",ab:true,name:"Using the Mean Value Theorem",ek:[
+    "<strong>MVT</strong>: if f is continuous on [a, b] and differentiable on (a, b), then there exists at least one c in (a, b) such that \\(f'(c) = \\dfrac{f(b)-f(a)}{b-a}\\).",
+    "The MVT guarantees that the instantaneous rate of change equals the average rate of change at some point.",
+    "Must verify both hypotheses (continuity and differentiability) before applying."],
+    tip:"The MVT guarantees existence but doesn't find c. You will be asked to justify its application — always state both conditions."},
+  {id:"5.2",ab:true,name:"Extreme Value Theorem, Global Extrema, and Critical Points",ek:[
+    "<strong>EVT</strong>: if f is continuous on [a, b], then f attains both an absolute maximum and absolute minimum on [a, b].",
+    "A <strong>critical point</strong> occurs where f'(x) = 0 or f'(x) is undefined.",
+    "Absolute extrema on a closed interval occur at critical points or at endpoints — check all candidates."]},
+  {id:"5.3",ab:true,name:"Determining Intervals on Which a Function Is Increasing or Decreasing",ek:[
+    "f is <strong>increasing</strong> on an interval where f'(x) > 0; <strong>decreasing</strong> where f'(x) < 0.",
+    "Create a sign chart for f'(x) using critical points as boundaries."]},
+  {id:"5.4",ab:true,name:"Using the First Derivative Test to Determine Relative Extrema",ek:[
+    "<strong>First Derivative Test</strong>: at a critical point x = c, if f' changes from positive to negative, f has a <strong>local max</strong>; negative to positive → <strong>local min</strong>; no sign change → neither."]},
+  {id:"5.5",ab:true,name:"Using the Candidates Test for Absolute Extrema",ek:[
+    "On a closed interval, evaluate f at all critical points and endpoints. The largest value is the absolute max; the smallest is the absolute min.",
+    "On an open interval or unbounded domain, analyze behavior as x approaches the boundaries."]},
+  {id:"5.6",ab:true,name:"Determining Concavity",ek:[
+    "f is <strong>concave up</strong> where f''(x) > 0 (graph curves upward like a cup ∪); <strong>concave down</strong> where f''(x) < 0 (∩).",
+    "An <strong>inflection point</strong> is where f'' changes sign (concavity changes) — requires a sign change, not just f''(c) = 0."],
+    tip:"f''(c) = 0 alone does NOT make x = c an inflection point. There must be a sign change in f'' at that point."},
+  {id:"5.7",ab:true,name:"Using the Second Derivative Test",ek:[
+    "<strong>Second Derivative Test</strong>: if f'(c) = 0 and f''(c) > 0, then f has a <strong>local min</strong> at c; if f''(c) < 0, a <strong>local max</strong>.",
+    "If f''(c) = 0, the test is inconclusive — use the First Derivative Test instead."]},
+  {id:"5.8",ab:true,name:"Sketching Graphs of Functions and Their Derivatives",ek:[
+    "Given f, sketch f' by reading where f is increasing (f' > 0), decreasing (f' < 0), and has extrema (f' = 0).",
+    "Given f', sketch f by identifying where the derivative is positive, negative, and zero."]},
+  {id:"5.9",ab:true,name:"Connecting f, f', and f''",ek:[
+    "f increasing → f' > 0; f decreasing → f' < 0; f has local extremum → f' = 0 (or undefined) with sign change.",
+    "f' increasing → f'' > 0 → f concave up; f' decreasing → f'' < 0 → f concave down.",
+    "f' has a local extremum → f'' = 0 with sign change → f has an inflection point."]},
+  {id:"5.10",ab:true,name:"Introduction to Optimization Problems",ek:[
+    "Identify the <strong>objective function</strong> (what to maximize/minimize) and any <strong>constraint equations</strong>.",
+    "Use the constraint to reduce the objective function to one variable, then find critical points."]},
+  {id:"5.11",ab:true,name:"Solving Optimization Problems",ek:[
+    "Find critical points of the objective function, verify using First or Second Derivative Test (or EVT on closed interval).",
+    "Always verify the answer makes physical sense and satisfies the constraint.",
+    "State the answer with appropriate units and context."],
+    tip:"Don't just find the critical point — verify it actually gives the optimum. On a closed interval, also check endpoints."},
+  {id:"5.12",ab:true,name:"Exploring Behaviors of Implicit Relations",ek:[
+    "Use implicit differentiation to find dy/dx for implicitly defined curves.",
+    "Horizontal tangents: set dy/dx = 0 (numerator = 0 with denominator ≠ 0); vertical tangents: denominator = 0 with numerator ≠ 0."]}
+],formulas:["MVT: \\(f'(c) = \\dfrac{f(b)-f(a)}{b-a}\\) for some \\(c \\in (a,b)\\)","Sign of \\(f'\\) → increasing/decreasing","Sign of \\(f''\\) → concavity"]},
+
+{num:6,name:"Integration and Accumulation of Change",weightAB:"17–20%",weightBC:"17–20%",weightMidAB:18.5,weightMidBC:18.5,bigIdeas:["CHA","FUN"],topics:[
+  {id:"6.1",ab:true,name:"Exploring Accumulations of Change",ek:[
+    "The area under a rate-of-change function represents the <strong>accumulated change</strong> in the original quantity.",
+    "Positive rates accumulate positive change; negative rates accumulate negative change."]},
+  {id:"6.2",ab:true,name:"Approximating Areas with Riemann Sums",ek:[
+    "<strong>Left, Right, and Midpoint Riemann sums</strong> approximate \\(\\int_a^b f(x)\\,dx\\) using rectangles.",
+    "<strong>Trapezoidal sum</strong> averages left and right endpoint values: \\(\\dfrac{\\Delta x}{2}[f(x_0) + 2f(x_1) + \\cdots + f(x_n)]\\).",
+    "For <strong>increasing</strong> f: Left underestimates, Right overestimates; reversed if decreasing.",
+    "For <strong>concave-up</strong> f: Trapezoid overestimates, Midpoint underestimates; reversed if concave down."],
+    tip:"Monotonicity and concavity both affect Riemann sum accuracy. Increasing + concave up → Left underestimates, Trapezoid overestimates, Midpoint underestimates. These rules combine — know the effect of each method under each condition."},
+  {id:"6.3",ab:true,name:"Riemann Sums, Summation Notation, and Definite Integral Notation",ek:[
+    "\\(\\int_a^b f(x)\\,dx = \\lim_{n \\to \\infty} \\sum_{i=1}^{n} f(x_i^*) \\Delta x\\)",
+    "The definite integral represents the <strong>net signed area</strong> between f and the x-axis over [a, b]."]},
+  {id:"6.4",ab:true,name:"The Fundamental Theorem of Calculus and Accumulation Functions",ek:[
+    "<strong>FTC Part 1</strong>: if \\(F(x) = \\int_a^x f(t)\\,dt\\), then \\(F'(x) = f(x)\\).",
+    "Generalized: \\(\\dfrac{d}{dx}\\int_a^{g(x)} f(t)\\,dt = f(g(x)) \\cdot g'(x)\\) (Chain Rule applies)."],
+    tip:"When the upper limit is a function of x (not just x itself), apply the Chain Rule: multiply by the derivative of the upper limit."},
+  {id:"6.5",ab:true,name:"Interpreting the Behavior of Accumulation Functions Involving Area",ek:[
+    "For \\(F(x) = \\int_a^x f(t)\\,dt\\): F is increasing where f > 0, decreasing where f < 0, has local extrema where f changes sign, and has inflection points where f has extrema."]},
+  {id:"6.6",ab:true,name:"Applying Properties of Definite Integrals",ek:[
+    "\\(\\int_a^a f\\,dx = 0\\); \\(\\int_a^b f\\,dx = -\\int_b^a f\\,dx\\); \\(\\int_a^b f\\,dx + \\int_b^c f\\,dx = \\int_a^c f\\,dx\\)",
+    "\\(\\int_a^b [f \\pm g] = \\int_a^b f\\,dx \\pm \\int_a^b g\\,dx\\); \\(\\int_a^b cf\\,dx = c\\int_a^b f\\,dx\\)"]},
+  {id:"6.7",ab:true,name:"The Fundamental Theorem of Calculus and Definite Integrals",ek:[
+    "<strong>FTC Part 2</strong>: \\(\\int_a^b f(x)\\,dx = F(b) - F(a)\\), where F is any antiderivative of f.",
+    "Connecting differentiation and integration: they are inverse processes."]},
+  {id:"6.8",ab:true,name:"Finding Antiderivatives and Indefinite Integrals: Basic Rules",ek:[
+    "\\(\\int x^n\\,dx = \\dfrac{x^{n+1}}{n+1} + C\\) (\\(n \\neq -1\\)); \\(\\int \\dfrac{1}{x}\\,dx = \\ln|x| + C\\)",
+    "\\(\\int e^x\\,dx = e^x + C\\); \\(\\int \\sin x\\,dx = -\\cos x + C\\); \\(\\int \\cos x\\,dx = \\sin x + C\\)",
+    "\\(\\int \\sec^2 x\\,dx = \\tan x + C\\); \\(\\int \\sec x \\tan x\\,dx = \\sec x + C\\)",
+    "\\(\\int \\csc^2 x\\,dx = -\\cot x + C\\); \\(\\int \\csc x \\cot x\\,dx = -\\csc x + C\\)",
+    "Inverse trig forms: \\(\\int \\dfrac{du}{\\sqrt{1-u^2}} = \\arcsin u + C\\); \\(\\int \\dfrac{du}{1+u^2} = \\arctan u + C\\)",
+    "Always include \\(+ C\\) for indefinite integrals."]},
+  {id:"6.9",ab:true,name:"Integrating Using Substitution",ek:[
+    "<strong>u-substitution</strong>: let u = g(x), then du = g'(x)dx. Transforms \\(\\int f(g(x))g'(x)\\,dx\\) into \\(\\int f(u)\\,du\\).",
+    "For definite integrals, change the limits of integration when substituting, or revert to x after finding the antiderivative.",
+    "The integrand must contain a function and (essentially) its derivative."],
+    tip:"Always check that du is present (up to a constant) in the integrand. If not, substitution may not work directly."},
+  {id:"6.10",ab:false,name:"Integrating Using Long Division and Completing the Square",ek:[
+    "For improper rational functions (degree of numerator ≥ denominator), use <strong>polynomial long division</strong> first.",
+    "For integrals of the form \\(\\int \\dfrac{dx}{x^2 + bx + c}\\), complete the square to get the form \\(\\int \\dfrac{du}{u^2 + a^2}\\) → \\(\\arctan\\) form."]},
+  {id:"6.11",ab:false,name:"Integrating Using Integration by Parts",ek:[
+    "<strong>Integration by Parts</strong>: \\(\\int u\\,dv = uv - \\int v\\,du\\).",
+    "Choose u and dv using LIATE: Logarithm, Inverse trig, Algebraic, Trig, Exponential — u is the first applicable type.",
+    "May need to apply multiple times or recognize a repeating integral."]},
+  {id:"6.12",ab:false,name:"Using Linear Partial Fractions",ek:[
+    "Decompose a rational function with distinct linear factors in the denominator into a sum of simpler fractions.",
+    "\\(\\dfrac{f(x)}{(x-a)(x-b)} = \\dfrac{A}{x-a} + \\dfrac{B}{x-b}\\) — solve for A and B, then integrate each term."]},
+  {id:"6.13",ab:false,name:"Evaluating Improper Integrals",ek:[
+    "An <strong>improper integral</strong> has an infinite limit of integration or an integrand with a vertical asymptote on [a, b].",
+    "Evaluate by replacing the problematic bound with a limit variable and taking the limit: \\(\\int_a^\\infty f = \\lim_{t \\to \\infty} \\int_a^t f\\).",
+    "If the limit exists (is finite), the integral <strong>converges</strong>; otherwise it <strong>diverges</strong>."]},
+  {id:"6.14",ab:true,name:"Selecting Techniques for Antidifferentiation",ek:[
+    "Recognize which technique applies: basic rules, u-substitution, by parts (BC), partial fractions (BC), or trig identities.",
+    "Not all integrals have elementary antiderivatives — the question may ask only to set up or approximate."]}
+],formulas:["FTC 1: \\(\\dfrac{d}{dx}\\int_a^{g(x)} f(t)\\,dt = f(g(x)) \\cdot g'(x)\\)","FTC 2: \\(\\int_a^b f(x)\\,dx = F(b)-F(a)\\)","Parts (BC): \\(\\int u\\,dv = uv - \\int v\\,du\\)","\\(\\int x^n\\,dx = \\dfrac{x^{n+1}}{n+1}+C\\), \\(n\\neq -1\\)"]},
+
+{num:7,name:"Differential Equations",weightAB:"6–12%",weightBC:"6–9%",weightMidAB:9,weightMidBC:7.5,bigIdeas:["FUN","CHA"],topics:[
+  {id:"7.1",ab:true,name:"Modeling Situations with Differential Equations",ek:[
+    "A <strong>differential equation</strong> is an equation involving a function and one or more of its derivatives.",
+    "Many real-world phenomena are modeled by DEs: population growth, cooling, radioactive decay."]},
+  {id:"7.2",ab:true,name:"Verifying Solutions for Differential Equations",ek:[
+    "To verify that f(x) is a solution to a DE, substitute f and its relevant derivatives into the equation and check equality.",
+    "A <strong>general solution</strong> contains an arbitrary constant C; a <strong>particular solution</strong> satisfies a given initial condition."]},
+  {id:"7.3",ab:true,name:"Sketching Slope Fields",ek:[
+    "A <strong>slope field</strong> represents a first-order DE \\(\\dfrac{dy}{dx} = F(x,y)\\) by drawing short line segments with slope F(x,y) at each lattice point.",
+    "Each solution curve must be tangent to the slope field at every point it passes through."]},
+  {id:"7.4",ab:true,name:"Reasoning Using Slope Fields",ek:[
+    "From a slope field, sketch the shape of particular solutions passing through given points.",
+    "Use the slope field to determine long-run behavior of solutions (equilibrium, growth, decay)."]},
+  {id:"7.5",ab:false,name:"Approximating Solutions Using Euler's Method",ek:[
+    "<strong>Euler's Method</strong>: approximate a solution using small steps \\(\\Delta x\\) along the tangent line.",
+    "\\(y_{n+1} = y_n + f'(x_n, y_n) \\cdot \\Delta x\\), where \\(f'(x_n, y_n)\\) comes from the DE.",
+    "Smaller step size → better approximation. Concavity determines whether Euler overestimates or underestimates."],
+    tip:"If the solution is concave up, Euler's method underestimates; concave down → overestimates."},
+  {id:"7.6",ab:true,name:"Finding General Solutions Using Separation of Variables",ek:[
+    "For \\(\\dfrac{dy}{dx} = g(x)h(y)\\), separate: \\(\\dfrac{dy}{h(y)} = g(x)\\,dx\\), then integrate both sides.",
+    "Include \\(+ C\\) on one side; do not split C into two separate constants."]},
+  {id:"7.7",ab:true,name:"Finding Particular Solutions Using Initial Conditions",ek:[
+    "After finding the general solution, substitute the initial condition to solve for C.",
+    "Present the particular solution explicitly (solve for y if possible)."]},
+  {id:"7.8",ab:true,name:"Exponential Models with Differential Equations",ek:[
+    "\\(\\dfrac{dy}{dt} = ky\\) has the solution \\(y = Ce^{kt}\\), where C is the initial value (at t = 0).",
+    "k &gt; 0 → exponential growth; k &lt; 0 → exponential decay.",
+    "Models: population growth, radioactive decay, Newton's Law of Cooling (where the rate of temperature change is proportional to the difference from ambient temperature).",
+    "<strong>Motion application:</strong> if \\(v'(t) = g\\) (constant acceleration), then \\(v(t) = v_0 + gt\\) and \\(s(t) = s_0 + v_0 t + \\frac{1}{2}gt^2\\) — found by integrating with initial conditions."]},
+  {id:"7.9",ab:false,name:"Logistic Models with Differential Equations",ek:[
+    "<strong>Logistic equation</strong>: \\(\\dfrac{dP}{dt} = kP\\left(1 - \\dfrac{P}{M}\\right)\\), where M is the <strong>carrying capacity</strong>.",
+    "As P → M, growth rate → 0; as P → 0, growth is approximately exponential. The model produces an S-shaped (sigmoidal) curve.",
+    "<strong>General solution:</strong> \\(P(t) = \\dfrac{M}{1 + Ae^{-kMt}}\\), where \\(A = \\dfrac{M - P_0}{P_0}\\) and \\(P_0\\) is the initial population.",
+    "<strong>Inflection point</strong> occurs when \\(P = M/2\\) — this is when the growth rate \\(dP/dt\\) is maximized.",
+    "<strong>Time to inflection:</strong> \\(t^* = \\dfrac{\\ln A}{kM} = \\dfrac{\\ln\\left(\\frac{M-P_0}{P_0}\\right)}{kM}\\)",
+    "From the slope field / qualitative analysis: if \\(P_0 &lt; M/2\\), the solution is concave up then concave down; if \\(P_0 &gt; M/2\\), it is concave down throughout (no inflection reached from above)."],
+    tip:"On the AP exam, you will typically be asked to interpret the logistic model qualitatively rather than solve it. Know where growth is fastest (P = M/2), what happens as t → ∞ (P → M), and how to read the phase portrait from dP/dt."}
+],formulas:["Separable: \\(\\int \\dfrac{dy}{h(y)} = \\int g(x)\\,dx\\)","Exponential: \\(\\dfrac{dy}{dt}=ky \\Rightarrow y=Ce^{kt}\\)","Euler (BC): \\(y_{n+1} = y_n + F(x_n,y_n)\\Delta x\\)","Logistic DE: \\(\\dfrac{dP}{dt}=kP\\left(1-\\dfrac{P}{M}\\right)\\)","General solution: \\(P(t)=\\dfrac{M}{1+Ae^{-kMt}}\\), \\(A=\\dfrac{M-P_0}{P_0}\\)","Inflection at \\(P=M/2\\); time: \\(t^*=\\dfrac{\\ln A}{kM}\\)"]},
+
+{num:8,name:"Applications of Integration",weightAB:"10–15%",weightBC:"6–9%",weightMidAB:12.5,weightMidBC:7.5,bigIdeas:["CHA","FUN"],topics:[
+  {id:"8.1",ab:true,name:"Finding the Average Value of a Function on an Interval",ek:[
+    "<strong>Average value</strong>: \\(f_{avg} = \\dfrac{1}{b-a}\\int_a^b f(x)\\,dx\\).",
+    "<strong>Mean Value Theorem for Integrals</strong>: there exists at least one c in [a, b] where f&#40;c&#41; equals the average value."]},
+  {id:"8.2",ab:true,name:"Connecting Position, Velocity, and Acceleration Using Integrals",ek:[
+    "\\(v(t) = v(t_0) + \\int_{t_0}^t a(s)\\,ds\\); \\(s(t) = s(t_0) + \\int_{t_0}^t v(s)\\,ds\\)",
+    "<strong>Displacement</strong> = \\(\\int_{t_1}^{t_2} v(t)\\,dt\\) (signed); <strong>Total distance</strong> = \\(\\int_{t_1}^{t_2} |v(t)|\\,dt\\)."],
+    tip:"Displacement and total distance are different. Total distance requires splitting the integral at zeros of velocity (where the object changes direction) and taking absolute values."},
+  {id:"8.3",ab:true,name:"Using Accumulation Functions and Definite Integrals in Applied Contexts",ek:[
+    "\\(\\int_a^b R(t)\\,dt\\) gives the total accumulated amount when R(t) is a rate.",
+    "Net change from t = a to t = b equals \\(f(b) - f(a) = \\int_a^b f'(t)\\,dt\\) (FTC)."]},
+  {id:"8.4",ab:true,name:"Finding the Area Between Curves Expressed as Functions of x",ek:[
+    "Area between f and g where \\(f(x) \\geq g(x)\\) on [a, b]: \\(\\int_a^b [f(x) - g(x)]\\,dx\\).",
+    "Find intersection points to determine limits of integration; identify which function is on top."]},
+  {id:"8.5",ab:true,name:"Finding the Area Between Curves Expressed as Functions of y",ek:[
+    "When curves are better described as functions of y, integrate with respect to y.",
+    "Area = \\(\\int_c^d [x_{right}(y) - x_{left}(y)]\\,dy\\)."]},
+  {id:"8.6",ab:true,name:"Finding the Area Between Curves That Intersect More Than Twice",ek:[
+    "Identify all intersection points to break the region into subregions where the top/bottom function doesn't change.",
+    "Add the absolute values of each sub-integral, or integrate \\(|f(x) - g(x)|\\)."]},
+  {id:"8.7",ab:true,name:"Volumes with Cross Sections: Squares and Rectangles",ek:[
+    "Volume = \\(\\int_a^b A(x)\\,dx\\), where A(x) is the cross-sectional area perpendicular to the x-axis.",
+    "For square cross sections: \\(A(x) = [f(x) - g(x)]^2\\); for rectangles, \\(A(x) = w \\cdot [f(x)-g(x)]\\)."]},
+  {id:"8.8",ab:true,name:"Volumes with Cross Sections: Triangles and Semicircles",ek:[
+    "Equilateral triangle cross section: \\(A(x) = \\dfrac{\\sqrt{3}}{4}[f(x)-g(x)]^2\\).",
+    "Semicircle cross section: diameter = f(x) − g(x), so \\(A(x) = \\dfrac{\\pi}{8}[f(x)-g(x)]^2\\)."]},
+  {id:"8.9",ab:true,name:"Volume with Disc Method: Revolving Around x- or y-Axis",ek:[
+    "Revolving f around the x-axis: \\(V = \\pi\\int_a^b [f(x)]^2\\,dx\\).",
+    "Revolving around the y-axis: \\(V = \\pi\\int_c^d [g(y)]^2\\,dy\\)."]},
+  {id:"8.10",ab:true,name:"Volume with Disc Method: Revolving Around Other Axes",ek:[
+    "Revolving around y = k: radius = |f(x) − k|, so \\(V = \\pi\\int_a^b [f(x)-k]^2\\,dx\\).",
+    "Revolving around x = k: integrate with respect to y."]},
+  {id:"8.11",ab:true,name:"Volume with Washer Method: Revolving Around x- or y-Axis",ek:[
+    "When a region bounded by two curves is revolved: \\(V = \\pi\\int_a^b \\left([R(x)]^2 - [r(x)]^2\\right)dx\\).",
+    "R(x) = outer radius, r(x) = inner radius. Identify which function gives the outer boundary."]},
+  {id:"8.12",ab:true,name:"Volume with Washer Method: Revolving Around Other Axes",ek:[
+    "When revolving around y = k or x = k, compute radii as distances from the axis of revolution.",
+    "R and r depend on which curve is farther from the axis."]},
+  {id:"8.13",ab:false,name:"Arc Length and Distance Traveled",ek:[
+    "<strong>Arc length</strong> of y = f(x) from a to b: \\(L = \\int_a^b \\sqrt{1 + [f'(x)]^2}\\,dx\\).",
+    "For parametric curves (Unit 9): \\(L = \\int_{t_1}^{t_2} \\sqrt{\\left(\\dfrac{dx}{dt}\\right)^2 + \\left(\\dfrac{dy}{dt}\\right)^2}\\,dt\\)."]}
+],formulas:["Average value: \\(\\dfrac{1}{b-a}\\int_a^b f\\,dx\\)","Disc: \\(V = \\pi\\int [R(x)]^2\\,dx\\)","Washer: \\(V = \\pi\\int ([R]^2-[r]^2)\\,dx\\)","Arc length (BC): \\(\\int_a^b\\sqrt{1+(f')^2}\\,dx\\)"]},
+
+{num:9,bcOnly:true,name:"Parametric Equations, Polar Coordinates, and Vector-Valued Functions",weightAB:"BC only",weightBC:"11–12%",weightMidAB:0,weightMidBC:11.5,bigIdeas:["FUN","CHA"],topics:[
+  {id:"9.1",ab:false,name:"Defining and Differentiating Parametric Equations",ek:[
+    "A <strong>parametric curve</strong> is defined by \\(x = x(t)\\) and \\(y = y(t)\\) for a parameter t.",
+    "\\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt}\\) provided \\(dx/dt \\neq 0\\)."]},
+  {id:"9.2",ab:false,name:"Second Derivatives of Parametric Equations",ek:[
+    "\\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{dt}\\left(\\dfrac{dy}{dx}\\right) \\div \\dfrac{dx}{dt}\\)",
+    "Used to determine concavity of parametric curves."]},
+  {id:"9.3",ab:false,name:"Finding Arc Lengths of Curves Given by Parametric Equations",ek:[
+    "Arc length: \\(L = \\int_{t_1}^{t_2} \\sqrt{\\left(\\dfrac{dx}{dt}\\right)^2 + \\left(\\dfrac{dy}{dt}\\right)^2}\\,dt\\)"]},
+  {id:"9.4",ab:false,name:"Defining and Differentiating Vector-Valued Functions",ek:[
+    "A vector-valued function: \\(\\mathbf{r}(t) = \\langle x(t), y(t) \\rangle\\).",
+    "\\(\\mathbf{r}'(t) = \\langle x'(t), y'(t) \\rangle\\) = velocity vector; \\(|\\mathbf{r}'(t)|\\) = speed."]},
+  {id:"9.5",ab:false,name:"Integrating Vector-Valued Functions",ek:[
+    "Integrate component by component: \\(\\int \\mathbf{r}(t)\\,dt = \\langle \\int x(t)\\,dt, \\int y(t)\\,dt \\rangle + \\mathbf{C}\\)."]},
+  {id:"9.6",ab:false,name:"Solving Motion Problems Using Parametric and Vector-Valued Functions",ek:[
+    "Position, velocity, acceleration, speed, and distance traveled all extend naturally to parametric and vector form.",
+    "Total distance = \\(\\int_{t_1}^{t_2} |\\mathbf{r}'(t)|\\,dt = \\int_{t_1}^{t_2} \\sqrt{(x')^2 + (y')^2}\\,dt\\)."]},
+  {id:"9.7",ab:false,name:"Defining Polar Coordinates and Differentiating in Polar Form",ek:[
+    "Polar: \\((r, \\theta)\\) where \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\).",
+    "\\(\\dfrac{dy}{dx} = \\dfrac{(dr/d\\theta)\\sin\\theta + r\\cos\\theta}{(dr/d\\theta)\\cos\\theta - r\\sin\\theta}\\)"]},
+  {id:"9.8",ab:false,name:"Finding the Area of a Polar Region",ek:[
+    "Area of a polar region: \\(A = \\dfrac{1}{2}\\int_\\alpha^\\beta [r(\\theta)]^2\\,d\\theta\\)"]},
+  {id:"9.9",ab:false,name:"Area Bounded by Two Polar Curves",ek:[
+    "Area between two polar curves: \\(A = \\dfrac{1}{2}\\int_\\alpha^\\beta \\left([r_{outer}]^2 - [r_{inner}]^2\\right)d\\theta\\)",
+    "Find intersection points to determine limits of integration."]}
+],formulas:["\\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt}\\)","Arc length: \\(\\int\\sqrt{(dx/dt)^2+(dy/dt)^2}\\,dt\\)","Polar area: \\(\\dfrac{1}{2}\\int r^2\\,d\\theta\\)"]},
+
+{num:10,bcOnly:true,name:"Infinite Sequences and Series",weightAB:"BC only",weightBC:"17–18%",weightMidAB:0,weightMidBC:17.5,bigIdeas:["LIM","FUN"],topics:[
+  {id:"10.1",ab:false,name:"Defining Convergent and Divergent Infinite Series",ek:[
+    "An <strong>infinite series</strong> \\(\\sum a_n\\) <strong>converges</strong> to S if the sequence of partial sums \\(S_n\\) approaches S; otherwise it <strong>diverges</strong>.",
+    "A convergent series has a well-defined sum; a divergent series does not."]},
+  {id:"10.2",ab:false,name:"Working with Geometric Series",ek:[
+    "A <strong>geometric series</strong> \\(\\sum_{n=0}^\\infty ar^n\\) converges to \\(\\dfrac{a}{1-r}\\) when |r| < 1; diverges when |r| ≥ 1.",
+    "Recognizing geometric series form is essential for both convergence and finding the sum."]},
+  {id:"10.3",ab:false,name:"The nth Term Test for Divergence",ek:[
+    "If \\(\\lim_{n \\to \\infty} a_n \\neq 0\\), then \\(\\sum a_n\\) <strong>diverges</strong>.",
+    "If \\(\\lim_{n \\to \\infty} a_n = 0\\), the test is <strong>inconclusive</strong> — the series may still diverge (harmonic series)."],
+    tip:"The nth Term Test can only prove divergence, never convergence. Don't conclude convergence because the terms go to zero."},
+  {id:"10.4",ab:false,name:"Integral Test for Convergence",ek:[
+    "If f is continuous, positive, and decreasing for x ≥ 1, then \\(\\sum f(n)\\) and \\(\\int_1^\\infty f(x)\\,dx\\) either both converge or both diverge."]},
+  {id:"10.5",ab:false,name:"Harmonic Series and p-Series",ek:[
+    "<strong>p-series</strong>: \\(\\sum \\dfrac{1}{n^p}\\) converges if p > 1, diverges if p ≤ 1.",
+    "The <strong>harmonic series</strong> \\(\\sum \\dfrac{1}{n}\\) diverges (p = 1)."]},
+  {id:"10.6",ab:false,name:"Comparison Tests for Convergence",ek:[
+    "<strong>Direct Comparison</strong>: if \\(0 \\leq a_n \\leq b_n\\) and \\(\\sum b_n\\) converges, then \\(\\sum a_n\\) converges; if \\(\\sum a_n\\) diverges, so does \\(\\sum b_n\\).",
+    "<strong>Limit Comparison</strong>: if \\(\\lim_{n\\to\\infty} \\dfrac{a_n}{b_n} = L > 0\\) (finite), then both series have the same convergence behavior."]},
+  {id:"10.7",ab:false,name:"Alternating Series Test for Convergence",ek:[
+    "<strong>AST</strong>: \\(\\sum(-1)^n b_n\\) converges if \\(b_n\\) is decreasing and \\(\\lim b_n = 0\\).",
+    "The error of a partial sum approximation is bounded by the <strong>first omitted term</strong>: \\(|S - S_n| \\leq b_{n+1}\\)."]},
+  {id:"10.8",ab:false,name:"Ratio Test for Convergence",ek:[
+    "<strong>Ratio Test</strong>: compute \\(L = \\lim_{n\\to\\infty} \\left|\\dfrac{a_{n+1}}{a_n}\\right|\\).",
+    "If L < 1: converges absolutely; L > 1 (or ∞): diverges; L = 1: test inconclusive.",
+    "Especially useful for series involving factorials or exponentials."]},
+  {id:"10.9",ab:false,name:"Determining Absolute or Conditional Convergence",ek:[
+    "<strong>Absolutely convergent</strong>: \\(\\sum |a_n|\\) converges → \\(\\sum a_n\\) converges absolutely.",
+    "<strong>Conditionally convergent</strong>: \\(\\sum a_n\\) converges but \\(\\sum |a_n|\\) diverges.",
+    "Absolute convergence implies convergence; the converse is not necessarily true."]},
+  {id:"10.10",ab:false,name:"Alternating Series Error Bound",ek:[
+    "For a convergent alternating series, the error in approximating S by the nth partial sum \\(S_n\\) satisfies \\(|S - S_n| \\leq |a_{n+1}|\\).",
+    "The approximation overshoots or undershoots depending on whether the last included term is positive or negative."]},
+  {id:"10.11",ab:false,name:"Finding Taylor Polynomial Approximations",ek:[
+    "The <strong>nth-degree Taylor polynomial</strong> for f centered at x = a: \\(P_n(x) = \\sum_{k=0}^n \\dfrac{f^{(k)}(a)}{k!}(x-a)^k\\).",
+    "Better approximations require higher-degree polynomials and/or x values closer to a."],
+    tip:"The Maclaurin polynomial is centered at a = 0. Know the standard series for eˣ, sin x, cos x, and 1/(1−x)."},
+  {id:"10.12",ab:false,name:"Lagrange Error Bound",ek:[
+    "The error \\(|f(x) - P_n(x)| \\leq \\dfrac{M}{(n+1)!}|x-a|^{n+1}\\), where M is the maximum of \\(|f^{(n+1)}|\\) on the interval between a and x.",
+    "Used to guarantee a Taylor polynomial is accurate to a desired tolerance."]},
+  {id:"10.13",ab:false,name:"Radius and Interval of Convergence of Power Series",ek:[
+    "A <strong>power series</strong> \\(\\sum c_n(x-a)^n\\) converges for |x − a| < R (radius of convergence R) and diverges for |x − a| > R.",
+    "Use the Ratio Test to find R. Check endpoints of the interval separately to determine the full interval of convergence."]},
+  {id:"10.14",ab:false,name:"Finding Taylor or Maclaurin Series for a Function",ek:[
+    "<strong>Core Maclaurin series (memorize these):</strong>",
+    "\\(e^x = \\displaystyle\\sum_{n=0}^\\infty \\dfrac{x^n}{n!}\\), all x",
+    "\\(\\sin x = \\displaystyle\\sum_{n=0}^\\infty \\dfrac{(-1)^n x^{2n+1}}{(2n+1)!}\\), all x",
+    "\\(\\cos x = \\displaystyle\\sum_{n=0}^\\infty \\dfrac{(-1)^n x^{2n}}{(2n)!}\\), all x",
+    "\\(\\dfrac{1}{1-x} = \\displaystyle\\sum_{n=0}^\\infty x^n\\), \\(|x| &lt; 1\\)",
+    "\\(\\dfrac{1}{1+x} = \\displaystyle\\sum_{n=0}^\\infty (-1)^n x^n\\), \\(|x| &lt; 1\\) (substitute \\(-x\\) into \\(1/(1-x)\\))",
+    "\\(\\dfrac{1}{1+x^2} = \\displaystyle\\sum_{n=0}^\\infty (-1)^n x^{2n}\\), \\(|x| &lt; 1\\) (substitute \\(-x^2\\))",
+    "\\(\\ln(1+x) = \\displaystyle\\sum_{n=1}^\\infty \\dfrac{(-1)^{n+1} x^n}{n}\\), \\(-1 &lt; x \\leq 1\\) (integrate \\(1/(1+x)\\))",
+    "\\(\\arctan x = \\displaystyle\\sum_{n=0}^\\infty \\dfrac{(-1)^n x^{2n+1}}{2n+1}\\), \\(|x| \\leq 1\\) (integrate \\(1/(1+x^2)\\))",
+    "<strong>Taylor series for \\(\\ln x\\) centered at \\(x = 1\\):</strong> \\(\\ln x = \\displaystyle\\sum_{n=1}^\\infty \\dfrac{(-1)^{n+1}(x-1)^n}{n}\\), \\(0 &lt; x \\leq 2\\)",
+    "Build new series by substituting, differentiating, or integrating known series — this approach is preferred over computing coefficients from scratch."]},
+  {id:"10.15",ab:false,name:"Representing Functions as Power Series",ek:[
+    "Differentiation and integration of power series may be done term by term within the radius of convergence.",
+    "Use geometric series, substitution, differentiation, or integration of known series to find power series representations of new functions."]}
+],formulas:["Geometric: \\(\\sum_{n=0}^\\infty ar^n = \\dfrac{a}{1-r}\\), \\(|r|<1\\)","Taylor: \\(P_n(x) = \\sum_{k=0}^n \\dfrac{f^{(k)}(a)}{k!}(x-a)^k\\)","Lagrange: \\(|f(x)-P_n(x)| \\leq \\dfrac{M}{(n+1)!}|x-a|^{n+1}\\)","\\(e^x = \\sum \\dfrac{x^n}{n!}\\); \\(\\sin x = \\sum \\dfrac{(-1)^n x^{2n+1}}{(2n+1)!}\\); \\(\\ln(1+x) = \\sum \\dfrac{(-1)^{n+1}x^n}{n}\\); \\(\\arctan x = \\sum \\dfrac{(-1)^n x^{2n+1}}{2n+1}\\)"]}
+];
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+const LS = 'mxcalc_';
+const getFlag = id => { try{return localStorage.getItem(LS+id);}catch(e){return null;} };
+const setFlag = (id,v) => { try{ v?localStorage.setItem(LS+id,v):localStorage.removeItem(LS+id); }catch(e){} };
+let currentFilter='all', abOnly=false, sortByWeight=false, currentQuery='';
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function topicHTML(t) {
+  const flag = getFlag(t.id);
+  const dotCls = flag ? ` ${flag}` : '';
+  const ekLi = (t.ek||[]).map(e=>`<li>${e}</li>`).join('');
+  const tipHTML = t.tip ? `<div class="topic-tip"><span class="tip-icon">★</span><span>${t.tip}</span></div>` : '';
+  const cA = flag==='confident' ? ' conf-active' : '';
+  const rA = flag==='review'    ? ' rev-active'  : '';
+  const clrBtn = flag ? `<button class="fbtn clr" onclick="doFlag('${t.id}',null,event)">clear</button>` : '';
+  const bcPill = !t.ab ? `<span class="bc-topic-pill">BC</span>` : '';
+  const srch = [t.id, t.name, ...(t.ek||[]), t.tip||''].join(' ').toLowerCase();
+  return `<div class="topic-item" id="ti-${t.id}" data-tid="${t.id}" data-ab="${t.ab}" data-s="${srch}" data-flag="${flag||'none'}">
+    <div class="topic-hdr" onclick="toggleT('${t.id}')">
+      <div class="status-ring${dotCls}" id="dot-${t.id}"></div>
+      <span class="topic-id-lbl">${t.id}</span>
+      ${bcPill}
+      <span class="topic-name-lbl">${t.name}</span>
+      <span class="topic-chev">▼</span>
+    </div>
+    <div class="topic-body">
+      <ul class="ek-list">${ekLi}</ul>
+      ${tipHTML}
+      <div class="flag-row">
+        <span class="flag-lbl">Self-assess</span>
+        <button class="fbtn${cA}" onclick="doFlag('${t.id}','confident',event)">Confident<span class="fbtn-sub">(move on)</span></button>
+        <button class="fbtn${rA}" onclick="doFlag('${t.id}','review',event)">Needs review<span class="fbtn-sub">(come back)</span></button>
+        ${clrBtn}
+      </div>
+    </div>
+  </div>`;
+}
+
+function unitHTML(u) {
+  const ids = u.topics.map(t=>t.id);
+  const c = ids.filter(id=>getFlag(id)==='confident').length;
+  const r = ids.filter(id=>getFlag(id)==='review').length;
+  const miniStr = (c||r)
+    ? `<span class="mc">${c}✓</span> <span class="mr">${r}✗</span> <span style="color:#ddd">/</span> ${u.topics.length}`
+    : `${u.topics.length} topics`;
+
+  const weightStr = u.bcOnly
+    ? `BC only · ${u.weightBC}`
+    : `AB ${u.weightAB} · BC ${u.weightBC}`;
+
+  const bcBadge = u.bcOnly ? `<span class="bc-only-badge">BC only</span>` : '';
+  const topicsHTML = u.topics.map(topicHTML).join('');
+
+  const formulasPanel = u.formulas?.length ? `<div class="panel"><div class="panel-title">Key Formulas</div>
+    <div class="formula-list">${u.formulas.map(f=>`<div class="fline">${f}</div>`).join('')}</div></div>` : '';
+  const panels = formulasPanel ? `<div class="unit-panels"><div style="grid-column:1/-1">${formulasPanel}</div></div>` : '';
+
+  const allSearch = [u.name, u.weightAB, u.weightBC, ...u.topics.flatMap(t=>[t.id,t.name,...(t.ek||[]),t.tip||'']), ...(u.formulas||[])].join(' ').toLowerCase();
+
+  return `<div class="unit-card u${u.num}" id="unit-${u.num}" data-num="${u.num}" data-wt="${u.weightMidAB}" data-bc="${u.bcOnly||false}" data-s="${allSearch}">
+    <div class="unit-hdr" onclick="toggleU(${u.num})">
+      <span class="unit-badge">Unit ${u.num}</span>
+      <div class="unit-title-group">
+        <div class="unit-name">${u.name}</div>
+        <div class="unit-meta">
+          <span class="weight-tag">${weightStr}</span>
+          ${bcBadge}
+          <span style="font-size:10px;color:#ccc">${u.bigIdeas.join(' · ')}</span>
+        </div>
+      </div>
+      <span class="unit-mini" id="umini-${u.num}">${miniStr}</span>
+      <span class="unit-chev">▼</span>
+    </div>
+    <div class="unit-body">
+      <div>${topicsHTML}</div>
+      ${panels}
+    </div>
+  </div>`;
+}
+
+function renderAll() {
+  let units = [...UNITS];
+  if (sortByWeight) { const key = abOnly ? 'weightMidAB' : 'weightMidBC'; units = [...units].sort((a,b)=>b[key]-a[key]); }
+  document.getElementById('container').innerHTML = units.map(unitHTML).join('');
+  applyFilter();
+  updateAllMinis();
+  updateProgress();
+}
+
+// ─── TOGGLES ─────────────────────────────────────────────────────────────────
+function toggleU(n) {
+  const card = document.getElementById(`unit-${n}`);
+  card.classList.toggle('open');
+  mjTypeset(card);
+}
+function toggleT(id) {
+  const item = document.getElementById(`ti-${id}`);
+  item.classList.toggle('open');
+  mjTypeset(item);
+}
+
+// ─── FLAGS ────────────────────────────────────────────────────────────────────
+function doFlag(topicId, val, e) {
+  e.stopPropagation();
+  const cur = getFlag(topicId);
+  const nv  = (cur===val) ? null : val;
+  setFlag(topicId, nv);
+  const dot = document.getElementById(`dot-${topicId}`);
+  if (dot) dot.className = 'status-ring' + (nv ? ` ${nv}` : '');
+  const item = document.getElementById(`ti-${topicId}`);
+  if (item) {
+    item.dataset.flag = nv || 'none';
+    item.querySelectorAll('.fbtn:not(.clr)').forEach((b,i)=>{
+      b.classList.remove('conf-active','rev-active');
+      if (i===0 && nv==='confident') b.classList.add('conf-active');
+      if (i===1 && nv==='review')    b.classList.add('rev-active');
+    });
+    let clr = item.querySelector('.clr');
+    if (nv && !clr) {
+      const fr = item.querySelector('.flag-row');
+      const cb = document.createElement('button');
+      cb.className='fbtn clr'; cb.textContent='clear';
+      cb.onclick = ev=>{ev.stopPropagation(); doFlag(topicId,null,ev);};
+      fr.appendChild(cb);
+    } else if (!nv && clr) clr.remove();
+  }
+  updateAllMinis(); updateProgress();
+  if (currentFilter!=='all') applyFilter();
+}
+
+function resetAll() {
+  if (!confirm('Reset all self-assessment flags?')) return;
+  try { Object.keys(localStorage).filter(k=>k.startsWith(LS)).forEach(k=>localStorage.removeItem(k)); } catch(e){}
+  renderAll();
+}
+
+// ─── SORT ─────────────────────────────────────────────────────────────────────
+function toggleSort() {
+  sortByWeight = !sortByWeight;
+  updateSortBtn();
+  renderAll();
+  applySearch(currentQuery);
+}
+
+function updateSortBtn() {
+  const btn = document.getElementById('sort-btn');
+  btn.classList.toggle('active', sortByWeight);
+  if (!sortByWeight) { btn.textContent = 'By exam weight ↕'; return; }
+  btn.textContent = abOnly ? 'By unit number ↕ (AB weight)' : 'By unit number ↕ (BC weight)';
+}
+
+// ─── FILTER ───────────────────────────────────────────────────────────────────
+function setFilter(f, el) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn:not(#ab-toggle)').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  applyFilter();
+}
+
+function toggleAB(el) {
+  abOnly = !abOnly;
+  el.classList.toggle('active', abOnly);
+  updateSortBtn();
+  if (sortByWeight) renderAll();
+  else applyFilter();
+}
+
+function applyFilter() {
+  const cards = document.querySelectorAll('.unit-card');
+  let totalVisible = 0;
+  cards.forEach(card => {
+    const isUnitBC = card.dataset.bc === 'true';
+    if (abOnly && isUnitBC) { card.classList.add('hidden'); return; }
+    const topics = card.querySelectorAll('.topic-item');
+    let anyVisible = false;
+    topics.forEach(ti => {
+      const flag = ti.dataset.flag || 'none';
+      const isTopicAB = ti.dataset.ab === 'true';
+      let show = true;
+      if (abOnly && !isTopicAB) show = false;
+      if (show) {
+        if      (currentFilter === 'confident') show = flag === 'confident';
+        else if (currentFilter === 'review')    show = flag === 'review';
+        else if (currentFilter === 'untagged')  show = flag === 'none';
+      }
+      if (currentQuery && !(ti.dataset.s||'').includes(currentQuery)) show = false;
+      ti.classList.toggle('hidden', !show);
+      if (show) anyVisible = true;
+    });
+    card.classList.toggle('hidden', !anyVisible);
+    if (anyVisible) totalVisible++;
+  });
+  document.getElementById('empty').style.display = totalVisible===0 ? 'block' : 'none';
+  updateSearchCount(totalVisible);
+}
+
+// ─── SEARCH ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.getElementById('search').addEventListener('input', function(){
+    const q = this.value.trim().toLowerCase();
+    if (q===currentQuery) return;
+    currentQuery = q;
+    applySearch(q);
+  });
+});
+
+function applySearch(q) {
+  clearHL();
+  const cards = document.querySelectorAll('.unit-card');
+  let vis = 0;
+  cards.forEach(card => {
+    const isUnitBC = card.dataset.bc === 'true';
+    if (abOnly && isUnitBC) { card.classList.add('hidden'); return; }
+    const topics = card.querySelectorAll('.topic-item');
+    let anyVis = false;
+    topics.forEach(ti => {
+      const flag = ti.dataset.flag||'none';
+      const isTopicAB = ti.dataset.ab==='true';
+      let passFilter = true;
+      if (abOnly && !isTopicAB) passFilter = false;
+      if (passFilter) {
+        if      (currentFilter==='confident') passFilter = flag==='confident';
+        else if (currentFilter==='review')    passFilter = flag==='review';
+        else if (currentFilter==='untagged')  passFilter = flag==='none';
+      }
+      const passSearch = !q || (ti.dataset.s||'').includes(q);
+      const show = passFilter && passSearch;
+      ti.classList.toggle('hidden', !show);
+      if (show) { anyVis=true; if(q){ti.classList.add('open'); hlNode(ti.querySelector('.topic-body'),q);} }
+    });
+    card.classList.toggle('hidden', !anyVis);
+    if (anyVis) { vis++; if(q) card.classList.add('open'); else card.classList.remove('open'); }
+  });
+  document.getElementById('empty').style.display = vis===0?'block':'none';
+  updateSearchCount(vis);
+  if (q) mjTypeset();
+}
+
+function updateSearchCount(n) {
+  const el = document.getElementById('search-count');
+  if (el) el.textContent = currentQuery ? `${n} unit${n!==1?'s':''} found` : '';
+}
+function clearSearch() {
+  const el = document.getElementById('search');
+  if (el) el.value='';
+  currentQuery='';
+  clearHL();
+  document.querySelectorAll('.unit-card').forEach(c=>c.classList.remove('open'));
+  applyFilter();
+}
+function clearHL() {
+  document.querySelectorAll('mark').forEach(m=>m.parentNode.replaceChild(document.createTextNode(m.textContent),m));
+  document.normalize?.();
+}
+function hlNode(el, q) {
+  if (!el||!q) return;
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes=[];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node=>{
+    if(!node.parentElement||['SCRIPT','STYLE'].includes(node.parentElement.tagName)) return;
+    if(re.test(node.textContent)){
+      const span=document.createElement('span');
+      span.innerHTML=node.textContent.replace(re,'<mark>$1</mark>');
+      node.parentNode.replaceChild(span,node);
+    }
+  });
+}
+
+// ─── PROGRESS + MINIS ────────────────────────────────────────────────────────
+function updateProgress() {
+  const all=UNITS.flatMap(u=>u.topics.map(t=>t.id));
+  const total=all.length;
+  const conf=all.filter(id=>getFlag(id)==='confident').length;
+  const rev =all.filter(id=>getFlag(id)==='review').length;
+  document.getElementById('pc').textContent=conf;
+  document.getElementById('pr').textContent=rev;
+  document.getElementById('pt').textContent=total;
+  document.getElementById('pb-conf').style.width=(conf/total*100)+'%';
+  document.getElementById('pb-rev').style.width=(rev/total*100)+'%';
+}
+function updateAllMinis() {
+  UNITS.forEach(u=>{
+    const el=document.getElementById(`umini-${u.num}`);
+    if(!el) return;
+    const ids=u.topics.map(t=>t.id);
+    const c=ids.filter(id=>getFlag(id)==='confident').length;
+    const r=ids.filter(id=>getFlag(id)==='review').length;
+    el.innerHTML=(c||r)?`<span class="mc">${c}✓</span> <span class="mr">${r}✗</span> <span style="color:#ddd">/</span> ${u.topics.length}`:`${u.topics.length} topics`;
+  });
+}
+
+// ─── MATHJAX ─────────────────────────────────────────────────────────────────
+function mjTypeset(el) {
+  if (window.MathJax && typeof MathJax.typesetPromise==='function') {
+    const targets = el ? (Array.isArray(el)?el:[el]) : undefined;
+    MathJax.typesetPromise(targets).catch(err=>console.warn('MathJax:',err));
+  }
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+renderAll();
+if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+  MathJax.startup.promise.then(()=>mjTypeset());
+} else {
+  let _a=0;
+  const _p=setInterval(()=>{
+    if(typeof MathJax?.typesetPromise==='function'){mjTypeset();clearInterval(_p);}
+    if(++_a>20) clearInterval(_p);
+  },300);
+}
+</script>
+</body>
+</html>
