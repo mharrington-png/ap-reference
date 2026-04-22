@@ -1,5 +1,5 @@
-Created by [Your Name], Middlesex School, 2026.
+Created by Mike Harrington, Middlesex School, 2026.
 For free noncommercial educational use.
-Based on the AP Statistics 2026 Exam Reference Sheet by College Board.
-AP Statistics is a trademark of College Board.
-This tool is not affiliated with or endorsed by College Board.
+Based on the AP Statistics and AP Calculus Course and Exam Description by College Board.
+AP is a trademark of College Board.
+These tools is not affiliated with or endorsed by College Board.
