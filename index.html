@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Statistics Reference · Middlesex School</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #f0ede8;
+  --card:  #ffffff;
+  --border:#e8e4de;
+  --text:  #111418;
+  --sub:   #6b6760;
+  --hdr:   #111418;
+  --blue:  #1e5fa8;
+  --plum:  #5c35a0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────────── */
+header {
+  background: var(--hdr);
+  color: #fff;
+  padding: 52px 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid texture */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.hdr-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hdr-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hdr-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: rgba(255,255,255,.25);
+}
+
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.3px;
+  margin-bottom: 14px;
+}
+
+.hdr-desc {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,.5);
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+/* ─── MAIN ────────────────────────────────────────────────────────── */
+main {
+  flex: 1;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 36px 20px 64px;
+}
+
+.section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 16px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 560px) {
+  .cards { grid-template-columns: 1fr; }
+}
+
+/* ─── RESOURCE CARDS ──────────────────────────────────────────────── */
+.card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  border-radius: 12px;
+  padding: 28px 26px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .2s ease, border-left-color .2s ease, transform .15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: '→';
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  font-size: 16px;
+  color: #ccc;
+  transition: color .2s, transform .2s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,.09);
+  transform: translateY(-2px);
+}
+.card:hover::after {
+  transform: translateX(3px);
+}
+
+.card.blue { --accent: var(--blue); }
+.card.plum { --accent: var(--plum); }
+
+.card:hover { border-left-color: var(--accent); }
+.card:hover::after { color: var(--accent); }
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+.card.blue .card-icon { background: #eef3fb; color: var(--blue); }
+.card.plum .card-icon { background: #f3f0fb; color: var(--plum); }
+
+.card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.card-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--sub);
+  margin-bottom: 20px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: .2px;
+}
+.card.blue .tag { background: #eef3fb; color: var(--blue); }
+.card.plum .tag { background: #f3f0fb; color: var(--plum); }
+
+/* ─── FOOTER ──────────────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+  color: #bbb;
+  border-top: 1px solid var(--border);
+  letter-spacing: .3px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-inner">
+    <p class="hdr-eyebrow">Middlesex School</p>
+    <h1>AP Statistics<br>Reference</h1>
+    <p class="hdr-desc">Course review materials for AP Statistics. Use each before and during exam prep.</p>
+  </div>
+</header>
+
+<main>
+  <p class="section-label">Resources</p>
+  <div class="cards">
+
+    <a href="formula-sheet.html" class="card blue">
+      <div class="card-icon">∑</div>
+      <div class="card-title">Formula Sheet</div>
+      <p class="card-desc">All AP Statistics formulas organized by unit, using College Board notation. Includes distribution tables and key inference procedures.</p>
+      <div class="card-tags">
+        <span class="tag">Formulas</span>
+        <span class="tag">Reference</span>
+        <span class="tag">All units</span>
+      </div>
+    </a>
+
+    <a href="unit-overview.html" class="card plum">
+      <div class="card-icon">◎</div>
+      <div class="card-title">Unit Overview</div>
+      <p class="card-desc">Essential Knowledge statements by topic, with AP exam weighting, SPDC inference framework, and self-assessment tracking.</p>
+      <div class="card-tags">
+        <span class="tag">9 units</span>
+        <span class="tag">CED aligned</span>
+        <span class="tag">Self-assessment</span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>AP Statistics &nbsp;·&nbsp; Middlesex School</footer>
+
+</body>
+</html>
