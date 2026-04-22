@@ -486,6 +486,22 @@ body {
   padding: 5px 6px;
 }
 .fbtn.clr:hover { color: var(--sub); border-color: var(--border); }
+.fbtn-sub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.65;
+  display: block;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+.fbtn-sub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.65;
+  display: block;
+  margin-top: 2px;
+  line-height: 1.3;
+}
 
 /* ─── PANELS (SPDC + Formulas) ────────────────────────────────────── */
 .unit-panels {
@@ -685,8 +701,8 @@ function topicHTML(t) {
       ${tipHTML}
       <div class="flag-row">
         <span class="flag-lbl">Self-assess</span>
-        <button class="fbtn${cA}" onclick="doFlag('${t.id}','confident',event)">✓ I'm 95% confident</button>
-        <button class="fbtn${rA}" onclick="doFlag('${t.id}','review',event)">✗ Not convincing evidence I know this</button>
+        <button class="fbtn${cA}" onclick="doFlag('${t.id}','confident',event)">Hₐ: I know this material<br><span class="fbtn-sub">(reject the null — move on)</span></button>
+        <button class="fbtn${rA}" onclick="doFlag('${t.id}','review',event)">H₀: I don't know this material<br><span class="fbtn-sub">(fail to reject — come back)</span></button>
         ${clrBtn}
       </div>
     </div>
